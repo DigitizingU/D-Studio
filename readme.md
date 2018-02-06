@@ -1,5 +1,5 @@
-### Stocknews Project
- stocknews project for cl
+### DU Lite Website Project
+ Intro
 
 
 Getting Started
