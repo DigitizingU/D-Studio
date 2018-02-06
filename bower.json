@@ -1,0 +1,36 @@
+{
+  "name": "du-lite",
+  "description": "THE LITE VERSION OF THE OFFICIAL WEBSITE FOR DIGITIZINGU.COM",
+  "main": "gulpfile.js",
+  "authors": [
+    "THE DIGITIZINGU CORE DEV TEAM"
+  ],
+  "license": "SEE LICENSE IN License.txt",
+  "keywords": [
+    "DIGITAL",
+    "BUSINESS",
+    "DIGITAL",
+    "PLATFORM",
+    "DIGITAL",
+    "NETWORK",
+    "DIGITIZINGYOU",
+    "DIGITIZINGU",
+    "DIGTIZING",
+    "WORLD",
+    "THE",
+    "DIGITAL",
+    "NETWORK"
+  ],
+  "homepage": "https://github.com/DigitizingU/DU-Lite",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.x"
+  }
+}

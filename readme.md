@@ -1,63 +1,75 @@
-### DU Lite Website Project
- Intro
+## DU Lite Website Project
+
+####Intro
+	This is the official lite version website for the digitizingu.com digital platform 
 
 
-Getting Started
+####Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 
-### Prerequisites
+##### Prerequisites
 
-What things you need to install the software and how to install them
+Things you need to install before setting up the 
 
 
 ```
-Node JS 
-NPM 
-The Respository (without the dist folder)
+NPM (Install with NodeJs package)
+Git Version Control (Install from the Git website)
+The Respository (Clone from URL: https://github.com/DigitizingU/DU-Lite.git)
+
 
 ```
-This will get the project setup on your machine for development and distribution
+#####This will get the project setup on your machine for development / distribution
+
+Run These from a Linux / Git Bash Command Line (for windows find equivalent commands)
+
+1. cd <to project folder>
+2. npm install
+3. bower install
 
 
 
-### Installing
 
-A step by step series of examples that tell you have to get a development env running
+### Running
 
-Say what the step will be
+These steps will run the project in appropriate linux server environment
 
-Give the example
-And repeat
+####For Launching a Web server which is a Proxy Server mirroring your Local Linux Server Environment
 
-until finished
-End with an example of getting some data out of the system or using it for a little demo
+These steps will launch a web server which will refresh on detecting file changes in your working directory
 
-Running the tests
+1. change the proxy address to resonate to your local server port number
 
-Explain how to run the automated tests for this system
+	```
+		browserSync.init({
+	        proxy: "localhost:your-port-number/DU-Lite" // change this to your server proxy address
+	    });
 
-Break down into end to end tests
+	```
 
-Explain what these tests test and why
+2. run command `gulp run`
+  
 
-Give an example
-And coding style tests
+####For Using your own Local Linux Server Environment but compiles your files on file change
 
-Explain what these tests test and why
+These steps compile necessary files again on detecting file changes in your working directory
 
-Give an example
-Deployment
+1. change the proxy address to resonate to your local server port number
 
-Add additional notes about how to deploy this on a live system
 
-Built With
+2. run command `gulp`
+  
+##nothing beyond this point is updated at the moment
 
-Dropwizard - The web framework used
-Maven - Dependency Management
-ROME - Used to generate RSS Feeds
-Contributing
+####Deployment
+
+#Add additional notes about how to deploy this on a live system
+
+####Built With
+
+#######will list later
 
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 

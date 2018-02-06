@@ -32,14 +32,12 @@ yarn.lock
 # Build Systems #
 ######################
 node_modules/
-bower_components/
 .sass-cache
 *.css.map
-build/
-dist/
 maps/
 extras/
 controller/
+$template/
 
 # Packages #
 ############
