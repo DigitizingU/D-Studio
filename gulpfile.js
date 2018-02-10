@@ -115,14 +115,12 @@ function swallowError (error) {
 
 	// task for concatenating and linting the primary js file 
 	gulp.task('js',['vendorJS'],function(){ 
-		        return gulp.src(['./assets/js/*.js'])
+		        return gulp.src(['./assets/js/script.js'])
 		        .pipe(plumber({
 					errorHandler: onError
 				}))
 				.pipe(sourcemaps.init())
-		        .pipe(concat('script.js'))
-		        .pipe(uglify())
-		        .pipe(sourcemaps.write())
+		        .pipe(concat('script.min.js'))
 		        .pipe(eslint())
 		        // eslint.format() outputs the lint results to the console. 
 		        // Alternatively use eslint.formatEach() (see Docs). 
@@ -130,19 +128,23 @@ function swallowError (error) {
 		        // To have the process exit with an error code (1) on 
 		        // lint error, return the stream and pipe to failAfterError last. 
 		        // .pipe(eslint.failAfterError())
-		        .pipe(gulp.dest('./assets/js/'));
+		        .pipe(uglify())
+		        .pipe(sourcemaps.write())
+
+		        .pipe(gulp.dest('./assets/js/'))
+
+		        .pipe( browserSync.reload({stream:true}) );
 	});
 
 
-	// task for concatenating and linting the primary js file, On file modification (it doesn't run any dependent tasks first)
+	// task for concatenating, uglifying, linting the primary js file, On file modification (it doesn't run any dependent tasks first)
 	gulp.task('js:watch',function(){ 
-		        return gulp.src(['./assets/js/*.js'])
+		        return gulp.src(['./assets/js/script.js'])
 		        .pipe(plumber({
 					errorHandler: onError
 				}))
 				.pipe(sourcemaps.init())
-		        .pipe(concat('script.js'))
-		        .pipe(sourcemaps.write())
+		        .pipe(concat('script.min.js'))
 		        .pipe(eslint())
 		        // eslint.format() outputs the lint results to the console. 
 		        // Alternatively use eslint.formatEach() (see Docs). 
@@ -150,7 +152,11 @@ function swallowError (error) {
 		        // To have the process exit with an error code (1) on 
 		        // lint error, return the stream and pipe to failAfterError last. 
 		        // .pipe(eslint.failAfterError())
+		        .pipe(uglify())
+		        .pipe(sourcemaps.write())
+
 		        .pipe(gulp.dest('./assets/js/'))
+		        
 		        .pipe( browserSync.reload({stream:true}) );
 	});
 
@@ -191,7 +197,7 @@ function swallowError (error) {
 			.pipe(sourcemaps.init())
 	        .pipe(sass())
 	        .pipe(postcss(postcssPlugins))
-	        .pipe(cleanCss())
+	        // .pipe(cleanCss())
 	        .on('error', swallowError)
 	        .pipe(sourcemaps.write())
 	        .pipe(gulp.dest('./assets/css/'))
@@ -238,7 +244,7 @@ function swallowError (error) {
 	        proxy: "localhost:1234/DU-Lite" // change this to your server proxy address
 	    });
 
-		gulp.watch(['./source/js/*.js'],['js:watch']);
+		gulp.watch(['./assets/js/*.js'],['js:watch']);
 		gulp.watch(['./assets/css/**/*.scss'],['sass']);
 		gulp.watch(['./*.html','./*.php'],['html']);
 

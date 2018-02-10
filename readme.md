@@ -1,15 +1,15 @@
-## DU Lite Website Project
+# DU Lite Website Project
 
-####Intro
+##Intro
 	This is the official lite version website for the digitizingu.com digital platform 
 
 
-####Getting Started
+###Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 
-##### Prerequisites
+#### Prerequisites
 
 Things you need to install before setting up the 
 
@@ -21,14 +21,15 @@ The Respository (Clone from URL: https://github.com/DigitizingU/DU-Lite.git)
 
 
 ```
-#####This will get the project setup on your machine for development / distribution
+#### These steps will get the project setup on your machine for development / distribution
 
 Run These from a Linux / Git Bash Command Line (for windows find equivalent commands)
 
-1. cd <to project folder>
-2. npm install
-3. bower install
-
+1. CD to project folder
+2. Run `npm install bower -g`
+3. Run `npm install gulp -g`
+4. Run `npm install`
+5. Run `bower install`
 
 
 
@@ -36,7 +37,7 @@ Run These from a Linux / Git Bash Command Line (for windows find equivalent comm
 
 These steps will run the project in appropriate linux server environment
 
-####For Launching a Web server which is a Proxy Server mirroring your Local Linux Server Environment
+#### For Launching a Web server which is a Proxy Server mirroring your Local Linux Server Environment
 
 These steps will launch a web server which will refresh on detecting file changes in your working directory
 
@@ -52,7 +53,7 @@ These steps will launch a web server which will refresh on detecting file change
 2. run command `gulp run`
   
 
-####For Using your own Local Linux Server Environment but compiles your files on file change
+#### For Using your own Local Linux Server Environment but compiles your files on file change
 
 These steps compile necessary files again on detecting file changes in your working directory
 
@@ -61,11 +62,11 @@ These steps compile necessary files again on detecting file changes in your work
 
 2. run command `gulp`
   
-##nothing beyond this point is updated at the moment
+## Nothing beyond this point is updated at the moment
 
 ####Deployment
 
-#Add additional notes about how to deploy this on a live system
+#####Add additional notes about how to deploy this on a live system
 
 ####Built With
 
