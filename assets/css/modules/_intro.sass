@@ -7,6 +7,7 @@
   flex-direction: column
   justify-content: center
   margin: 0 auto
+  z-index: 10
 
   @media (max-width: 1180px)
     max-width: 100%
@@ -15,38 +16,48 @@
     position: relative
     height: 475px
 
-    &::before
+    /* &::before
       content: ""
       position: absolute
       bottom: 20px
       left: -15px
       right: 0
       height: 2px
-      background-color: $muted-gray
+      background-color: $muted-gray */
 
-    &::after
+    /* &::after
       content: ""
       position: absolute
       bottom: 18px
       left: 0
       width: 30px
       height: 4px
-      background-color: $highlight
+      background-color: $primaryHighlight */
 
     h1
       position: relative
-      font-size: 68px
-      font-weight: 900
+      font-size: 4.5rem
+      font-weight: 400
+      color: rgb(255,255,255)
+      letter-spacing: -.01em
       line-height: 1
       z-index: 1
+      font-family: $contentFont;
+      text-transform: capitalize;
+      margin-bottom: 1.2em
+      // font-variant: small-caps
+      // text-shadow: 5px 5px 22px rgba(0,0,255,.3), 5px 5px 12px rgba(0,0,255,.2), 1px 1px 1px rgba(0,0,0,.2), -1px -1px 15px rgba(0,0,0,.4)
 
     button
       position: relative
       padding: 5px 17px 5px 12px
-      font-weight: 700
-      text-transform: uppercase
+      margin-right: 1.5rem
+      font-weight: 400
+      font-size: 1.5rem
+      text-transform: capitalize
       background-color: transparent
       border: none
+
 
       .btn-background
         position: absolute
@@ -54,9 +65,14 @@
         left: 23px
         right: 0
         height: 100%
-        background-color: $highlight
         z-index: -1
         transition: left .2s ease-in-out
+
+        &--highlight
+          background-color: $primaryHighlight
+
+        &--dull
+          background-color: $black
 
       &:hover
         .btn-background
@@ -70,11 +86,20 @@
         left: 5px
         width: 15px
         fill: $white
+    
+    .muted-link
+      display: block
+      color: $grayed-white
+      font-size: 1.1rem
+      margin: 1.35rem 1rem
 
-    img
+
+
+/*     img
       position: absolute
       bottom: 21px
       right: -12px
+      display: none
 
   &--options
     display: flex
@@ -97,7 +122,7 @@
       text-transform: uppercase
 
     p
-      margin-bottom: 0
+      margin-bottom: 0 */
 
 @media (max-width: 900px)
 

@@ -245,7 +245,9 @@ function swallowError (error) {
 	    });
 
 		gulp.watch(['./assets/js/*.js'],['js:watch']);
-		gulp.watch(['./assets/css/**/*.scss'],['sass']);
+		gulp.watch(['./assets/css/**/*.scss',
+					'./assets/css/**/*.sass'],['sass']);
+		
 		gulp.watch(['./*.html','./*.php'],['html']);
 
 	});
@@ -258,7 +260,9 @@ function swallowError (error) {
 	gulp.task('watch', function(){
 
 		gulp.watch(['./source/js/*.js'],['js']);
-		gulp.watch(['./assets/css/**/*.scss'],['sass']);
+		gulp.watch(['./assets/css/**/*.scss',
+					'./assets/css/**/*.sass'],['sass']);
+		
 		gulp.watch(['./*.html','./*.php'],['html']);
 
 	});
