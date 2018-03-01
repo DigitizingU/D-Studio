@@ -26,6 +26,7 @@ summary {
   display: block;
 }
 
+
 audio,
 canvas,
 progress,
@@ -218,4 +219,11 @@ table {
 td,
 th {
   padding: 0;
+}
+
+
+// my resets
+
+figure{
+  margin: 0;
 }

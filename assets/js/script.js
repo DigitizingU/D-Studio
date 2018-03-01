@@ -2,6 +2,8 @@
 
 $( document ).ready(function() {
 
+  var work = $('.work');
+
   // DOMMouseScroll included for firefox support
   var canScroll = true,
       scrollController = null;
@@ -176,8 +178,159 @@ $( document ).ready(function() {
   }
 
   function workSlider() {
+    var activeInnerSlider;
 
-    $('.slider--prev, .slider--next').click(function() {
+    var outerSlider = work.find('.outer-slider');
+    /*var outerSliderPrevBtn = outerSlider.siblings('.slider--prev');
+    var outerSliderNextBtn = outerSlider.siblings('.slider--next');
+*/
+    var innerSlider = work.find('.inner-slider');
+    var innerSliderPrevBtn = work.find('.inner-slider--prev');
+    var innerSliderNextBtn = work.find('.inner-slider--next');
+
+    console.log(innerSlider);
+    console.log(innerSliderPrevBtn);
+    console.log(innerSliderNextBtn);
+
+
+      /* outer slider */
+
+    outerSlider.owlCarousel({
+      center: true,
+      items:1,
+      loop:true,
+      margin:0,
+      mouseDrag:false,
+      touchDrag:false,
+      pullDrag: false,
+
+      responsive:{
+          700:{
+              // items:3,
+              // margin: 0
+          }
+      },
+      URLhashListener:true,
+      nav: false,
+      dots: false,
+      animateOut: 'fadeOut',
+      startPosition: 'URLHash'/*,
+      autoWidth:true*/
+
+    });
+
+      /* inner slider */
+
+    innerSlider.owlCarousel({
+      center: true,
+      items:2,
+      loop:true,
+      margin:10,
+      responsive:{
+          700:{
+              items:3,
+              margin: 0
+          }
+      },
+      URLhashListener:true,
+      autoplayHoverPause:true,
+      nav: true,
+      startPosition: 'URLHash'/*,
+      autoWidth:true*/
+
+    });
+
+ 
+    console.log('here outerSlider');
+    console.log(outerSlider);
+    console.log('activeInnerSlider');
+    console.log(activeInnerSlider);
+
+    outerSlider.on('translated.owl.carousel',function(){
+        /*activeInnerSlider = innerSlider.closest('.owl-item').filter(function(){
+          return $(this).hasClass('active');
+        }).find('.inner-slider');
+
+        console.log('activeInnerSlider');
+        console.log(activeInnerSlider);
+        // detach handlers
+        innerSliderPrevBtn.off('click');
+        innerSliderNextBtn.off('click');
+        alert('attach');
+        // then attach handlers
+        attachEvToInnerSliderControls();    */
+      
+    })
+
+    // execture function to attach event handler to slider btns
+    function attachEvToInnerSliderControls(){
+        
+        alert('attached');
+
+        // Go to the previous item for currently active inner Slider
+        innerSliderPrevBtn.click(function(e) {
+            var $this = $(this);
+            // alert('prev');
+            // With optional speed parameter
+            // Parameters has to be in square bracket '[]'
+            
+            console.log('prev clicked');
+            activeInnerSlider.trigger('prev.owl.carousel', [500]);
+            e.stopPropagation();
+        })
+
+        // Go to the next item for currently active inner Slider
+        innerSliderNextBtn.click(function(e) {
+            var $this = $(this);
+            // alert('next');
+            
+            activeInnerSlider.trigger('next.owl.carousel', [500]);
+            e.stopPropagation();
+        })
+
+    }
+      
+
+    
+
+
+  }
+
+  
+
+  function transitionLabels() {
+
+    $('.work-request--information input').focusout(function(){
+
+      var textVal = $(this).val();
+
+      if (textVal === "") {
+        $(this).removeClass('has-value');
+      }
+      else {
+        $(this).addClass('has-value');
+      }
+
+      // correct mobile device window position
+      window.scrollTo(0, 0);
+
+    });
+
+  }
+
+  outerNav();
+  workSlider();
+  transitionLabels();
+
+});
+
+
+
+
+
+/* 
+
+ $('.slider--prev, .slider--next').click(function() {
 
       var $this = $(this),
           curLeft = $('.slider').find('.slider--item-left'),
@@ -251,30 +404,6 @@ $( document ).ready(function() {
 
     });
 
-  }
 
-  function transitionLabels() {
 
-    $('.work-request--information input').focusout(function(){
-
-      var textVal = $(this).val();
-
-      if (textVal === "") {
-        $(this).removeClass('has-value');
-      }
-      else {
-        $(this).addClass('has-value');
-      }
-
-      // correct mobile device window position
-      window.scrollTo(0, 0);
-
-    });
-
-  }
-
-  outerNav();
-  workSlider();
-  transitionLabels();
-
-});
+*/

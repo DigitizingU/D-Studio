@@ -1,3 +1,6 @@
+// .owl-carousel .owl-item img
+//   width: auto
+
 .work
   position: relative
   display: flex
@@ -18,80 +21,141 @@
 
   &--lockup
     position: relative
-
-    .slider
-      position: relative
-      display: flex
-      width: 80%
-      margin: 0 auto
-      padding: 0
-      list-style: none
+    
+    .outer-slider
+      height: 70vh
 
       &--item
-        position: absolute
-        display: none
-        text-align: center
+        height: 100%
+    .inner-slider
+
+      // position: relative
+      // display: flex
+      // width: 80%
+      // margin: 0 auto
+      padding: 0
+      list-style: none
+      
+
+
+      &--item
+        // 
+        // position: absolute
+        // display: none
+        // text-align: center
+
 
         a
           text-decoration: none
-          color: #858585
+          color: #fafafa
+          font-family: $contentFont2
+          
+
+          &:hover .inner-slider--item-image
+            transform: scale(1.3)
+
+          &:hover .inner-slider--item-image-container
+            transform: scale(.9)
+
+          &:hover .inner-slider--item-image-container:after
+            opacity: 0
+
+          &:hover .inner-slider--item-image-container:after
+            opacity: 0
+
+          &:hover .inner-slider--item-content:after
+            opacity: 1
+
+          
+        &-content
+          padding: 2rem 2rem
+          position: relative
+          z-index: 1
+          border-radius: 4px
+          overflow: hidden
+
+          &:after
+            @include pseudo
+            background: linear-gradient(135deg, rgba(173,42,92,.5), rgba(17,37,214,.5))
+            background-size: cover
+            opacity: 0
+            transition: all .3s
+            z-index: -1
+
 
         &-title
           margin-top: 10px
-          font-size: 12px
+          font-size: 1.5rem
+          letter-spacing: .06em;
           font-weight: 700
-          text-transform: uppercase
+          text-transform: capitalize
 
         &-description
-          display: none
-          max-width: 250px
-          margin: 0 auto
-
-        &-image
-          width: 150px
-          height: 150px
-          margin: 0 auto
-          border-radius: 50%
+          font-family: $contentFont
+          // display: none
+          width: 100%
+          padding: 0 .4em 0 0em
+         
+        &-image-container
+          position: relative
+          // width: 150px
+          height: 40vh
+          min-height: 140px
+          // margin: 0 auto
+          border-radius: 4px
           overflow: hidden
+          transition: all .3s
 
-          img
+          .inner-slider--item-image
+            @include absolute
             width: 100%
+            height: 100%
+            object-fit: cover
+            transition: all .3s
+
+          &:after
+            @include pseudo
+            opacity: 1;
+            background-color: rgba(0,0,0,.15)
+            background: linear-gradient(135deg, rgba(173,42,92,.5), rgba(17,37,214,.5))
+            z-index: 2
+            transition: all .3s
 
         &-left
-          top: 50%
-          left: 0
-          transform: translateY(-50%)
-          display: block
+          // top: 50%
+          // left: 0
+          // transform: translateY(-50%)
+          // display: block
 
         &-right
-          top: 50%
-          right: 0
-          transform: translateY(-50%)
-          display: block
+          // top: 50%
+          // right: 0
+          // transform: translateY(-50%)
+          // display: block
 
         &-center
-          position: relative
-          top: 30px
-          left: 50%
-          transform: translateX(-50%)
-          display: block
+          // position: relative
+          // top: 30px
+          // left: 50%
+          // transform: translateX(-50%)
+          // display: block
 
           a
-            color: $white
+            // color: $white
 
-          .slider--item-title
+          .inner-slider--item-title
             margin-top: 25px
             font-size: 16px
 
-          .slider--item-description
+          .inner-slider--item-description
             display: block
 
-          .slider--item-image
+          .inner-slider--item-image
             width: 300px
             height: 300px
 
-    .slider--next,
-    .slider--prev
+    .inner-slider--next,
+    .inner-slider--prev
       position: absolute
       top: 160px
       display: flex
@@ -102,15 +166,16 @@
       background-color: $muted-gray
       border-radius: 50%
       cursor: pointer
+      z-index: 20
 
       svg
         width: 20px
         fill: $white
 
-    .slider--next
+    .inner-slider--next
       right: 0
 
-    .slider--prev
+    .inner-slider--prev
       left: 0
 
 @media (max-width: 900px)
@@ -119,7 +184,7 @@
 
     &--lockup
 
-      .slider
+      .inner-slider
 
         &--item
 
@@ -129,12 +194,12 @@
 
           &-center
 
-            .slider--item-image
+            .inner-slider--item-image
               width: 240px
               height: 240px
 
-      .slider--next,
-      .slider--prev
+      .inner-slider--next,
+      .inner-slider--prev
         top: 130px
 
 @media (max-width: 767px)
@@ -143,7 +208,7 @@
 
     &--lockup
 
-      .slider
+      .inner-slider
         width: 75%
 
         &--item
@@ -154,12 +219,12 @@
 
           &-center
 
-            .slider--item-image
+            .inner-slider--item-image
               width: 190px
               height: 190px
 
-      .slider--next,
-      .slider--prev
+      .inner-slider--next,
+      .inner-slider--prev
         top: 105px
 
 @media (max-width: 600px)
@@ -168,7 +233,7 @@
 
     &--lockup
 
-      .slider
+      .inner-slider
         width: auto
 
         &--item
