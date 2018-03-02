@@ -8,7 +8,7 @@
   max-width: 80%
   height: 100%
   flex-direction: column
-  justify-content: center
+  justify-content: flex-end
   margin: 0 auto
 
   @media (max-width: 1180px)
@@ -24,9 +24,47 @@
     
     .outer-slider
       height: 70vh
+      // list-style: none
+      // &--wrapper
+
+      &--controls
+        // background: white
+        margin-bottom: 1rem
+        width: 80%
+
+      &--btn
+        background: rgb(40,40,40)
+        color: white
+        text-decoration: none
+        display: inline-block
+        width: calc(30% - .8rem)
+        margin: 1rem .8rem
+        text-align: center
+        padding: 1rem .5rem
+        font-size: 1.2rem
+        letter-spacing: .05em
+        font-family: $primaryFont
+        text-transform: uppercase
+        font-weight: 500
+        border-radius: 3px
+        
+
+
+        &.swiper-slide-active
+          
+          background: linear-gradient(135deg,rgba(173,42,92,.55), rgba(17,37,214,.55))
+          background: rgb(10,10,10)
+          color: rgb(200,200,200)
+          box-shadow: 4px 2px 15px 2px hsla(231, 100%, 53%,.25), -4px -2px 15px 2px hsla(231, 100%, 53%,.25), 4px 2px 15px 2px hsla(285, 100%, 45%,.25), -4px -2px 15px 2px hsla(285, 100%, 45%,.25)
+          border-top-left-radius: 10px 60px
+          border-bottom-right-radius: 10px 60px
+        // border: 1px solid red
+
 
       &--item
         height: 100%
+        list-style: none
+
     .inner-slider
 
       // position: relative
@@ -34,11 +72,13 @@
       // width: 80%
       // margin: 0 auto
       padding: 0
-      list-style: none
+      // list-style: none
       
-
-
+      // &--wrapper
+        
       &--item
+        list-style: none
+        width: 30%
         // 
         // position: absolute
         // display: none
@@ -107,7 +147,7 @@
           transition: all .3s
 
           .inner-slider--item-image
-            @include absolute
+            // @include absolute
             width: 100%
             height: 100%
             object-fit: cover

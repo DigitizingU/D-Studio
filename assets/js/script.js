@@ -185,111 +185,86 @@ $( document ).ready(function() {
     var outerSliderNextBtn = outerSlider.siblings('.slider--next');
 */
     var innerSlider = work.find('.inner-slider');
+
     var innerSliderPrevBtn = work.find('.inner-slider--prev');
     var innerSliderNextBtn = work.find('.inner-slider--next');
+
+    var outerSliderControls = work.find('.outer-slider--controls');
 
     console.log(innerSlider);
     console.log(innerSliderPrevBtn);
     console.log(innerSliderNextBtn);
 
+    // init swiper slider for outer slides
+    var outerSwiper = new Swiper (outerSlider, {
+      loop: true,
+      loopedSlides: 4,
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      normalizeSlideIndex: true,
+      direction: 'vertical',
+      allowTouchMove: false,
+      effect: 'slide',
+      /*fadeEffect: {
+        crossFade: true
+      },*/
+      controller:{
+        by: 'slide'
+      }
+      /*,
+      hashNavigation: true,
+      hashNavigation: {
+        watchState: true
+      }*/
+    });
 
-      /* outer slider */
+    var outerSwiperControls = new Swiper(outerSliderControls, {
+      spaceBetween: 0,
+      effect: 'slide',
+      normalizeSlideIndex: true,
+      direction: 'horizontal',
+      centeredSlides: true,
+      loop: true,
+      loopedSlides: 4,
+      slidesPerView: 'auto',
+      touchRatio: 0.2,
+      slideToClickedSlide: true
+    });
 
-    outerSlider.owlCarousel({
-      center: true,
-      items:1,
-      loop:true,
-      margin:0,
-      mouseDrag:false,
-      touchDrag:false,
-      pullDrag: false,
+    outerSwiperControls.controller.control = outerSwiper;
+    outerSwiper.controller.control = outerSwiperControls;
 
-      responsive:{
-          700:{
-              // items:3,
-              // margin: 0
-          }
+    // init swiper slider for outer slides
+    var innerSwiper = new Swiper (innerSlider, {
+      
+      direction: 'horizontal',
+      loop: true,
+      spaceBetween: 0,
+      // slidesPerView: 3,
+      slidesPerView: 'auto',
+      loopedSlides: 7,
+      loopAdditionalSlides: 10,
+      centeredSlides: true,
+      spaceBetween: 0,
+
+      effect: 'coverflow',
+      // grabCursor: true,
+      coverflowEffect: {
+        rotate: 40,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows : true
       },
-      URLhashListener:true,
-      nav: false,
-      dots: false,
-      animateOut: 'fadeOut',
-      startPosition: 'URLHash'/*,
-      autoWidth:true*/
+      normalizeSlideIndex: true,
+      slideToClickedSlide: true
+      
 
     });
 
-      /* inner slider */
 
-    innerSlider.owlCarousel({
-      center: true,
-      items:2,
-      loop:true,
-      margin:10,
-      responsive:{
-          700:{
-              items:3,
-              margin: 0
-          }
-      },
-      URLhashListener:true,
-      autoplayHoverPause:true,
-      nav: true,
-      startPosition: 'URLHash'/*,
-      autoWidth:true*/
 
-    });
 
- 
-    console.log('here outerSlider');
-    console.log(outerSlider);
-    console.log('activeInnerSlider');
-    console.log(activeInnerSlider);
-
-    outerSlider.on('translated.owl.carousel',function(){
-        /*activeInnerSlider = innerSlider.closest('.owl-item').filter(function(){
-          return $(this).hasClass('active');
-        }).find('.inner-slider');
-
-        console.log('activeInnerSlider');
-        console.log(activeInnerSlider);
-        // detach handlers
-        innerSliderPrevBtn.off('click');
-        innerSliderNextBtn.off('click');
-        alert('attach');
-        // then attach handlers
-        attachEvToInnerSliderControls();    */
-      
-    })
-
-    // execture function to attach event handler to slider btns
-    function attachEvToInnerSliderControls(){
-        
-        alert('attached');
-
-        // Go to the previous item for currently active inner Slider
-        innerSliderPrevBtn.click(function(e) {
-            var $this = $(this);
-            // alert('prev');
-            // With optional speed parameter
-            // Parameters has to be in square bracket '[]'
-            
-            console.log('prev clicked');
-            activeInnerSlider.trigger('prev.owl.carousel', [500]);
-            e.stopPropagation();
-        })
-
-        // Go to the next item for currently active inner Slider
-        innerSliderNextBtn.click(function(e) {
-            var $this = $(this);
-            // alert('next');
-            
-            activeInnerSlider.trigger('next.owl.carousel', [500]);
-            e.stopPropagation();
-        })
-
-    }
-      
 
     
 
