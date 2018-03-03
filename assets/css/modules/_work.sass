@@ -10,22 +10,43 @@
   flex-direction: column
   justify-content: flex-end
   margin: 0 auto
+  // background: linear-gradient(to right, rgb(12,12,12), transparent, rgb(12,12,12)),  url("../img/new (2).jpg")
+  // background: linear-gradient(to right, rgb(12,12,12), transparent, rgb(12,12,12)), linear-gradient(135deg,rgba(173,42,92,.75), rgba(17,37,214,.75)),  url("../img/new (1).jpg")
+  // background-size: cover
+  // background-repeat: no-repeat
+  // background-position: 50% -40%
 
   @media (max-width: 1180px)
     max-width: 100%
 
-  h2
-    margin: 0 0 20px 0
+  h2.section__title
+    // margin: 0 0 20px 0
     font-size: 30px
+    font-weight: 300
+    text-transform: lowercase
     text-align: center
+    // background: linear-gradient(135deg,rgba(173,42,92,.95), rgba(17,37,214,.95))
+    // color: rgba(255,255,255,.1)
+    // text-shadow: 4px 4px 10px rgba(0,0,0,.3)
 
   &--lockup
     position: relative
+
     
     .outer-slider
       height: 70vh
+      // padding: 1rem 0
+      position: relative
+
       // list-style: none
       // &--wrapper
+
+      // &:after
+      //   @include pseudo
+      //   background: $primaryHighlight
+      //   opacity: .3
+      //   transform: scale3d(1, 1, 1)
+      //   border-radius: 4px
 
       &--controls
         // background: white
@@ -67,14 +88,16 @@
 
     .inner-slider
 
-      // position: relative
+      position: relative
       // display: flex
       // width: 80%
       // margin: 0 auto
       padding: 0
+      // background: linear-gradient(to right, rgb(12,12,12), transparent, rgb(12,12,12)), linear-gradient(135deg,rgba(173,42,92,.75), rgba(17,37,214,.75))
       // list-style: none
       
       // &--wrapper
+
         
       &--item
         list-style: none
@@ -113,10 +136,12 @@
           z-index: 1
           border-radius: 4px
           overflow: hidden
+          background: rgba(0,0,0,.15)
 
           &:after
             @include pseudo
-            background: linear-gradient(135deg, rgba(173,42,92,.5), rgba(17,37,214,.5))
+            background: linear-gradient(135deg, rgba(173,42,92,1), rgba(17,37,214,1))
+            border: 3px solid white
             background-size: cover
             opacity: 0
             transition: all .3s
