@@ -4,6 +4,25 @@
   visibility: hidden
   transition: opacity .4s ease-in-out, visibility 0s .4s
 
+  &__title
+    // margin: 0 0 20px 0
+    font-size: 2.8rem
+    word-spacing: .1em
+    font-weight: 300
+    text-transform: lowercase
+    text-align: center
+
+    .sub
+      display: block
+      margin-top: 1em
+      font-size: .4em
+      font-weight: 300
+      font-family: $contentFont2
+      text-transform: capitalize
+      letter-spacing: .03em
+      word-spacing: .05em
+      color: rgb(200,200,200);
+
   &--is-active
     opacity: 1
     visibility: visible
@@ -33,6 +52,25 @@
     background-position: 50% 50%
     background-size: cover
     background-repeat: no-repeat
+
+  &--hire
+    position: relative
+    background: url("../img/new (2).jpg")
+    background-position: 50% 50%
+    background-size: cover
+    background-repeat: no-repeat
+    z-index: 1
+
+    &:after
+      @include pseudo
+      background: linear-gradient(to right, rgb(12,12,12), transparent, rgb(12,12,12)), linear-gradient(-45deg,rgba(173,42,92,.15), rgba(17,37,214,.15)),linear-gradient(-45deg,rgba(0,0,0,.3), rgba(0,0,0,.3)),  url("../img/new (6).jpg")
+
+      background-position: 50% 50%
+      background-size: cover
+      background-repeat: no-repeat
+      z-index: -1
+      opacity: .95
+
 
   &--hero
 
