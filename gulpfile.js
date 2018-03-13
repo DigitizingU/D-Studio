@@ -253,13 +253,15 @@ function swallowError (error) {
 	});
 
 
+
+
 	/************
 	*******			=watch task
 	************/
 
 	gulp.task('watch', function(){
 
-		gulp.watch(['./source/js/*.js'],['js']);
+		gulp.watch(['./assets/js/*.js','!./assets/js/*.min.js'],['js']);
 		gulp.watch(['./assets/css/**/*.scss',
 					'./assets/css/**/*.sass'],['sass']);
 		

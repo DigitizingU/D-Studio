@@ -3,6 +3,7 @@
 $( document ).ready(function() {
 
   var work = $('.work');
+  var hire = $('.hire');
 
   // DOMMouseScroll included for firefox support
   var canScroll = true,
@@ -181,9 +182,9 @@ $( document ).ready(function() {
     var activeInnerSlider;
 
     var outerSlider = work.find('.outer-slider');
-    /*var outerSliderPrevBtn = outerSlider.siblings('.slider--prev');
-    var outerSliderNextBtn = outerSlider.siblings('.slider--next');
-*/
+      /*var outerSliderPrevBtn = outerSlider.siblings('.slider--prev');
+      var outerSliderNextBtn = outerSlider.siblings('.slider--next');
+      */
     var innerSlider = work.find('.inner-slider');
 
     var innerSliderPrevBtn = work.find('.inner-slider--prev');
@@ -262,13 +263,6 @@ $( document ).ready(function() {
 
     });
 
-
-
-
-
-    
-
-
   }
 
   
@@ -293,9 +287,65 @@ $( document ).ready(function() {
 
   }
 
+  function startProjectForm(){
+      var startProjectForm = $('#startProjectForm');
+
+      var nameField = $('#nameSP');
+      var emailField = $('#emailSP');
+      var webServiceField = $('#service-web');
+      var servicesCont = webServiceField.closest('.work-request--services');
+
+
+      // change validation messages and customize options
+
+      startProjectForm.parsley({
+        requiredMessage: 'This field is required'
+        
+      });
+
+      emailField.parsley({
+        typeMessage: "Enter a valid e-mail address"
+      });
+
+      webServiceField.parsley({
+        requiredMessage: "Please select the digital service/s you want us to work on", // only works when using the first checkbox in the group
+        errorsContainer: function (Field) {
+          
+          return servicesCont;
+        },
+        classHandler: function (Field) {
+          return servicesCont;
+        }
+      });
+
+
+      // act to validation errors and success 
+
+      startProjectForm.parsley().on('form:error',function(){
+
+          alert('validation errors');  
+
+      }).on('form:submit',function(e){
+
+          console.log('Form Submitted');
+
+          // write code here to submit to DB
+
+          
+
+          return false;  
+      });
+
+
+
+
+  }
+
   outerNav();
   workSlider();
   transitionLabels();
+
+  startProjectForm();
 
 });
 
