@@ -5,7 +5,7 @@
   max-width: 75%
   height: 100%
   flex-direction: column
-  justify-content: center
+  justify-content: flex-start
   margin: 0 auto
   z-index: 10
 
@@ -14,7 +14,8 @@
 
   &--banner
     position: relative
-    height: 475px
+    height: 22.5rem
+    margin-top: 9rem
 
     /* &::before
       content: ""
@@ -36,28 +37,34 @@
 
     h1
       position: relative
-      font-size: 4.5rem
+      font-size: 2.4rem
       font-weight: 400
       color: rgb(255,255,255)
       letter-spacing: -.01em
-      line-height: 1
+      word-spacing: .1em
+      line-height: 1.2em
       z-index: 1
       font-family: $primaryFont;
       text-transform: capitalize;
       margin-bottom: 1.2em
       // font-variant: small-caps
       // text-shadow: 5px 5px 22px rgba(0,0,255,.3), 5px 5px 12px rgba(0,0,255,.2), 1px 1px 1px rgba(0,0,0,.2), -1px -1px 15px rgba(0,0,0,.4)
+    
 
     button
       position: relative
       padding: 5px 17px 5px 12px
-      margin-right: 1.5rem
+      margin: 0 1rem 0 0rem
       font-weight: 400
       font-size: 1.5rem
       text-transform: capitalize
       background-color: transparent
       border: none
 
+      display: block
+      margin-bottom: 2rem
+
+      
 
       .btn-background
         position: absolute
@@ -70,9 +77,14 @@
 
         &--highlight
           background-color: $primaryHighlight
+          left: 0
+
 
         &--dull
-          background-color: $black
+          background-color: rgba(0,0,0,.3)
+          box-shadow: inset 0 0 0 1px rgba(255,255,255,.7)
+          left: 0
+          
 
       &:hover
         .btn-background
@@ -90,8 +102,8 @@
     .muted-link
       display: block
       color: $grayed-white
-      font-size: 1.1rem
-      margin: 1.35rem 1rem
+      font-size: 1.4rem
+      margin: 1.35rem .5rem
 
 
 
@@ -124,64 +136,6 @@
     p
       margin-bottom: 0 */
 
-@media (max-width: 900px)
-
-  .intro
-
-    &--banner
-      height: 380px
-
-      h1
-        font-size: 55px
-
-      img
-        width: 430px
-
-    &--options
-
-      & > a
-        margin-right: 30px
-
-        &:last-child
-          margin-right: 0
-
-@media (max-width: 767px)
-
-  .intro
-
-    &--banner
-      height: 305px
-
-      h1
-        font-size: 44px
-
-      img
-        width: 330px
-
-    &--options
-      display: block
-
-      & > a
-        display: block
-        max-width: 100%
-        margin: 0 0 30px 0
-
-        &:last-child
-          margin-bottom: 0
-
-@media (max-width: 600px)
-
-  .intro
-
-    &--banner
-      height: 360px
-
-      h1
-        font-size: 55px
-
-      img
-        display: none
-
 @media (max-width: 600px) and (max-height: 750px)
 
   .intro
@@ -196,5 +150,86 @@
       h1
         margin-top: 0
 
+
+
     &--options
       display: none
+
+
+
+@media (min-width: 600px)
+
+  .intro
+
+    &--banner
+      height: 360px
+      height: 305px
+
+    button
+      display: inline-block
+      margin: 0 1rem 0 0rem
+
+      .btn-background
+
+        &--highlight
+          left: 23px
+
+
+@media (min-width: 600px) and (orientation: portrait)
+
+  .intro
+      h1
+        font-size: 3rem
+
+      button
+        font-size: 1.8rem
+
+      .muted-link
+        font-size: 1.7rem
+
+
+
+
+
+
+@media (min-width: 767px)
+
+  .intro
+
+    &--banner
+      height: 380px
+
+    &--options
+      display: block
+
+      & > a
+        display: block
+        max-width: 100%
+        margin: 0 0 30px 0
+
+        &:last-child
+          margin-bottom: 0
+
+
+
+@media (min-width: 900px)
+
+  .intro
+
+    &--banner
+      height: 475px
+
+      h1
+        font-size: 4rem
+        line-height: 1em
+
+      margin-top: 7rem
+
+    &--options
+
+      & > a
+        margin-right: 30px
+
+        &:last-child
+          margin-right: 0
+

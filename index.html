@@ -89,23 +89,26 @@
                     <h1>
                         bridging the gap <br> between you and the <br> digital world
                     </h1>
-                    <button class="cta">get in touch
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-                      <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-                        <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
-                      </g>
-                      </svg>
-                      <span class="btn-background btn-background--dull"></span>
-                    </button>
+                    <!-- =cta-container  -->
+                    <div class="cta-container">
+                    	<button class="cta">get in touch
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+							  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+							    <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+							  </g>
+							</svg>
+	                      	<span class="btn-background btn-background--dull"></span>
+	                    </button>
 
-                    <button class="cta">start a project
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-                      <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-                        <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
-                      </g>
-                      </svg>
-                      <span class="btn-background btn-background--highlight"></span>
-                    </button>
+	                    <button class="cta">start a project
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+							  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+							    <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+							  </g>
+							</svg>
+	                      	<span class="btn-background btn-background--highlight"></span>
+	                    </button>
+                    </div> <!-- /cta-container ENDS  -->
 
                     <a class="muted-link" href="#">know about our vision</a>
                   </div>
@@ -133,302 +136,354 @@
             <li class="l-section section section--work">
               <div class="work">
                 <h2 class="section__title">our work</h2>
-                <div class="work--lockup">
+                <div class="work__lockup">
                   
-                  <div class="outer-slider--controls swiper-container">
-                    <div class="wrapper swiper-wrapper">
-                      
-                      <a href="#ui-ux" class="outer-slider--btn swiper-slide">UI/UX</a>
-                      <a href="#web" class="outer-slider--btn swiper-slide">WEB</a>
-                      <a href="#mobile" class="outer-slider--btn swiper-slide">MOBILE</a>
-                      <a href="#graphics" class="outer-slider--btn swiper-slide">GRAPHICS</a>
-                    </div>
-                  </div>
+					<div class="outer-slider__controls swiper-container">
 
-                  <div class="outer-slider swiper-container">
+						<div class="wrapper swiper-wrapper">
+						  
+							<a href="#ui-ux" class="outer-slider__btn swiper-slide">
+					  			<span class="text">
+					  				UI/UX
+					  			</span>
+							</a>
 
-                      <ul class="outer-slider--wrapper swiper-wrapper">
-                          <li data-hash="ui-ux" class="outer-slider--item swiper-slide">
-                              <div class="inner-slider swiper-container">
-                                  <ul class="inner-slider--wrapper swiper-wrapper">
-                                    <li class="inner-slider--item swiper-slide">
-                                        <a href="#ui-ux-1-clicked" data-hash="ui-ux-1">
-                                          <figure class="inner-slider--item-content">
+							<a href="#web" class="outer-slider__btn swiper-slide">
+					  			
+					  			<span class="text">
+					  				WEB
+					  			</span>
+							</a>
 
-                                              <div class="inner-slider--item-image-container">
-                                                <img class="inner-slider--item-image" src="assets/img/ui-ux (1).jpg" alt="Victory">
-                                              </div>
+							<a href="#mobile" class="outer-slider__btn swiper-slide">
+					  			
+					  			<span class="text">
+					  				MOBILE
+					  			</span>
+							</a>
 
-                                              <figcaption>
-                                                  <p class="inner-slider--item-title">Victory</p>
-                                                  <p class="inner-slider--item-description">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
-                                                  </p>
-                                              </figcaption>
+							<a href="#graphics" class="outer-slider__btn swiper-slide">
+					  			
+					  			<span class="text">
+					  				GRAPHICS
+					  			</span>
+					  			
+							</a>
 
-                                          </figure>
-                                        </a>
-                                    </li>
+						</div>
 
-                                    <li class="inner-slider--item swiper-slide">
-                                        <a href="#ui-ux-2-clicked" data-hash="ui-ux-2">
+						<!-- If we need navigation buttons -->
+					    <div class="outer-slider__nav outer-slider__nav--prev">
+					    	<span class="icon icon--prev">
+								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+					                <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+					                  <path d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29
+					                  c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180
+					                  c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"/>
+					                </g>
+					            </svg>
 
-                                          <figure class="inner-slider--item-content">
+							</span>
+					    </div>
 
-                                              <div class="inner-slider--item-image-container">
-                                                  <img class="inner-slider--item-image" src="assets/img/ui-ux (2).jpg" alt="Victory">
-                                              </div>
+					    <div class="outer-slider__nav outer-slider__nav--next">
+					    	<span class="icon icon--next">
+								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+									  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+									    <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+									  </g>
+								</svg>
+									
+							</span>
+					    </div>
+					</div>
 
-                                              <figcaption>
-                                                  <p class="inner-slider--item-title">Army</p>
-                                                  <p class="inner-slider--item-description">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
-                                                  </p>
-                                              </figcaption>
-                                        
-                                          </figure>
-                                        </a>
-                                    </li>
+					<div class="outer-slider swiper-container">
 
-                                    <li class="inner-slider--item swiper-slide">
-                                        <a href="#ui-ux-3-clicked" data-hash="ui-ux-3">
-                                          <figure class="inner-slider--item-content">
+					  <ul class="outer-slider__wrapper swiper-wrapper">
+					      <li data-hash="ui-ux" class="outer-slider__item swiper-slide">
+					          <div class="inner-slider swiper-container">
+									<ul class="inner-slider__wrapper swiper-wrapper">
+										<li class="inner-slider__item swiper-slide">
+										    <a href="#ui-ux-1-clicked" data-hash="ui-ux-1">
+										      <figure class="inner-slider__item-content">
 
-                                            <div class="inner-slider--item-image-container">
-                                              <img class="inner-slider--item-image" src="assets/img/ui-ux (1).png" alt="Victory">
-                                            </div>
+										          <div class="inner-slider__item-image-container">
+										            <img class="inner-slider__item-image" src="assets/img/ui-ux (1).jpg" alt="Victory">
+										          </div>
 
-                                            <figcaption>
-                                              <p class="inner-slider--item-title">Love</p>
-                                              <p class="inner-slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-                                            </figcaption>
+										          <figcaption>
+										              <p class="inner-slider__item-title">Victory</p>
+										              <p class="inner-slider__item-description">
+										                Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+										              </p>
+										          </figcaption>
 
-                                          </figure>
-                                          
-                                        </a>
-                                    </li>
-                                  
-                                  </ul>
-                                
-                              </div>
-                              <!-- swiper-container ENDS  -->
-                          </li>
-                          <li data-hash="web" class="outer-slider--item swiper-slide">
-                              <div class="inner-slider swiper-container">
-                                  <ul class="inner-slider--wrapper swiper-wrapper">
-                                    <li class="inner-slider--item swiper-slide">
-                                        <a href="#web-1-clicked" data-hash="web-1">
-                                          <figure class="inner-slider--item-content">
+										      </figure>
+										    </a>
+										</li>
 
-                                              <div class="inner-slider--item-image-container">
-                                                <img class="inner-slider--item-image" src="assets/img/web (1).png" alt="Victory">
-                                              </div>
+										<li class="inner-slider__item swiper-slide">
+										    <a href="#ui-ux-2-clicked" data-hash="ui-ux-2">
 
-                                              <figcaption>
-                                                  <p class="inner-slider--item-title">Victory</p>
-                                                  <p class="inner-slider--item-description">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
-                                                  </p>
-                                              </figcaption>
+										      <figure class="inner-slider__item-content">
 
-                                          </figure>
-                                        </a>
-                                    </li>
-                                    <li class="inner-slider--item swiper-slide">
-                                        <a href="#web-2-clicked" data-hash="web-2">
+										          <div class="inner-slider__item-image-container">
+										              <img class="inner-slider__item-image" src="assets/img/ui-ux (2).jpg" alt="Victory">
+										          </div>
 
-                                          <figure class="inner-slider--item-content">
+										          <figcaption>
+										              <p class="inner-slider__item-title">Army</p>
+										              <p class="inner-slider__item-description">
+										                Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+										              </p>
+										          </figcaption>
+										    
+										      </figure>
+										    </a>
+										</li>
 
-                                              <div class="inner-slider--item-image-container">
-                                                  <img class="inner-slider--item-image" src="assets/img/web (2).png" alt="Victory">
-                                              </div>
+										<li class="inner-slider__item swiper-slide">
+										    <a href="#ui-ux-3-clicked" data-hash="ui-ux-3">
+										      <figure class="inner-slider__item-content">
 
-                                              <figcaption>
-                                                  <p class="inner-slider--item-title">Army</p>
-                                                  <p class="inner-slider--item-description">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
-                                                  </p>
-                                              </figcaption>
-                                        
-                                          </figure>
-                                        </a>
-                                    </li>
+										        <div class="inner-slider__item-image-container">
+										          <img class="inner-slider__item-image" src="assets/img/ui-ux (1).png" alt="Victory">
+										        </div>
 
-                                    <li class="inner-slider--item swiper-slide">
-                                        <a href="#web-3-clicked" data-hash="web-3">
-                                          <figure class="inner-slider--item-content">
+										        <figcaption>
+										          <p class="inner-slider__item-title">Love</p>
+										          <p class="inner-slider__item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+										        </figcaption>
 
-                                            <div class="inner-slider--item-image-container">
-                                              <img class="inner-slider--item-image" src="assets/img/web (3).png" alt="Victory">
-                                            </div>
+										      </figure>
+										      
+										    </a>
+										</li>
 
-                                            <figcaption>
-                                              <p class="inner-slider--item-title">Love</p>
-                                              <p class="inner-slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-                                            </figcaption>
+									</ul>
+					            
+					          </div>
+					          <!-- swiper-container ENDS  -->
+					      </li>
+					      <li data-hash="web" class="outer-slider__item swiper-slide">
+					          <div class="inner-slider swiper-container">
+					              <ul class="inner-slider__wrapper swiper-wrapper">
+					                
+					                    <li class="inner-slider__item swiper-slide">
+					                        <a href="#web-1-clicked" data-hash="web-1">
+					                          <figure class="inner-slider__item-content">
 
-                                          </figure>
-                                          
-                                        </a>
-                                    </li>
-                                  
-                                  </ul>
-                                
-                              </div>
-                              <!-- swiper-container ENDS  -->
-                          </li>
-                          <li data-hash="mobile" class="outer-slider--item swiper-slide">   
-                              <div class="inner-slider swiper-container">
-                                  <ul class="inner-slider--wrapper swiper-wrapper">
-                                    <li class="inner-slider--item swiper-slide">
-                                        <a href="#mobile-1-clicked" data-hash="mobile-1">
-                                          <figure class="inner-slider--item-content">
+					                              <div class="inner-slider__item-image-container">
+					                                <img class="inner-slider__item-image" src="assets/img/web (1).png" alt="Victory">
+					                              </div>
 
-                                              <div class="inner-slider--item-image-container">
-                                                <img class="inner-slider--item-image" src="assets/img/work-victory.jpg" alt="Victory">
-                                              </div>
+					                              <figcaption>
+					                                  <p class="inner-slider__item-title">Victory</p>
+					                                  <p class="inner-slider__item-description">
+					                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+					                                  </p>
+					                              </figcaption>
 
-                                              <figcaption>
-                                                  <p class="inner-slider--item-title">Victory</p>
-                                                  <p class="inner-slider--item-description">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
-                                                  </p>
-                                              </figcaption>
+					                          </figure>
+					                        </a>
+					                    </li>
+					                    <li class="inner-slider__item swiper-slide">
+					                        <a href="#web-2-clicked" data-hash="web-2">
 
-                                          </figure>
-                                        </a>
-                                    </li>
-                                    <li class="inner-slider--item swiper-slide">
-                                        <a href="#mobile-2-clicked" data-hash="mobile-2">
+					                          <figure class="inner-slider__item-content">
 
-                                          <figure class="inner-slider--item-content">
+					                              <div class="inner-slider__item-image-container">
+					                                  <img class="inner-slider__item-image" src="assets/img/web (2).png" alt="Victory">
+					                              </div>
 
-                                              <div class="inner-slider--item-image-container">
-                                                  <img class="inner-slider--item-image" src="assets/img/work-metiew-smith.jpg" alt="Victory">
-                                              </div>
+					                              <figcaption>
+					                                  <p class="inner-slider__item-title">Army</p>
+					                                  <p class="inner-slider__item-description">
+					                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+					                                  </p>
+					                              </figcaption>
+					                        
+					                          </figure>
+					                        </a>
+					                    </li>
 
-                                              <figcaption>
-                                                  <p class="inner-slider--item-title">Army</p>
-                                                  <p class="inner-slider--item-description">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
-                                                  </p>
-                                              </figcaption>
-                                        
-                                          </figure>
-                                        </a>
-                                    </li>
+					                    <li class="inner-slider__item swiper-slide">
+					                        <a href="#web-3-clicked" data-hash="web-3">
+					                          <figure class="inner-slider__item-content">
 
-                                    <li class="inner-slider--item swiper-slide">
-                                        <a href="#mobile-3-clicked" data-hash="mobile-3">
-                                          <figure class="inner-slider--item-content">
+					                            <div class="inner-slider__item-image-container">
+					                              <img class="inner-slider__item-image" src="assets/img/web (3).png" alt="Victory">
+					                            </div>
 
-                                            <div class="inner-slider--item-image-container">
-                                              <img class="inner-slider--item-image" src="assets/img/work-alex-nowak.jpg" alt="Victory">
-                                            </div>
+					                            <figcaption>
+					                              <p class="inner-slider__item-title">Love</p>
+					                              <p class="inner-slider__item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+					                            </figcaption>
 
-                                            <figcaption>
-                                              <p class="inner-slider--item-title">Love</p>
-                                              <p class="inner-slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-                                            </figcaption>
+					                          </figure>
+					                          
+					                        </a>
+					                    </li>
+					              
+					              </ul>
+					            
+					          </div>
+					          <!-- swiper-container ENDS  -->
+					      </li>
+					      <li data-hash="mobile" class="outer-slider__item swiper-slide">   
+					          <div class="inner-slider swiper-container">
+					              <ul class="inner-slider__wrapper swiper-wrapper">
+					                <li class="inner-slider__item swiper-slide">
+					                    <a href="#mobile-1-clicked" data-hash="mobile-1">
+					                      <figure class="inner-slider__item-content">
 
-                                          </figure>
-                                          
-                                        </a>
-                                    </li>
-                                  
-                                  </ul>
-                                
-                              </div>
-                              <!-- swiper-container ENDS  -->
-                          </li>
-                          <li data-hash="graphics" class="outer-slider--item swiper-slide">
-                              <div class="inner-slider swiper-container">
-                                  <ul class="inner-slider--wrapper swiper-wrapper">
-                                    <li class="inner-slider--item swiper-slide">
-                                        <a href="#graphics-1-clicked" data-hash="graphics-1">
-                                          <figure class="inner-slider--item-content">
+					                          <div class="inner-slider__item-image-container">
+					                            <img class="inner-slider__item-image" src="assets/img/work-victory.jpg" alt="Victory">
+					                          </div>
 
-                                              <div class="inner-slider--item-image-container">
-                                                <img class="inner-slider--item-image" src="assets/img/graphics (1).jpg" alt="Victory">
-                                              </div>
+					                          <figcaption>
+					                              <p class="inner-slider__item-title">Victory</p>
+					                              <p class="inner-slider__item-description">
+					                                Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+					                              </p>
+					                          </figcaption>
 
-                                              <figcaption>
-                                                  <p class="inner-slider--item-title">Victory</p>
-                                                  <p class="inner-slider--item-description">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
-                                                  </p>
-                                              </figcaption>
+					                      </figure>
+					                    </a>
+					                </li>
+					                <li class="inner-slider__item swiper-slide">
+					                    <a href="#mobile-2-clicked" data-hash="mobile-2">
 
-                                          </figure>
-                                        </a>
-                                    </li>
-                                    <li class="inner-slider--item swiper-slide">
-                                        <a href="#graphics-2-clicked" data-hash="graphics-2">
+					                      <figure class="inner-slider__item-content">
 
-                                          <figure class="inner-slider--item-content">
+					                          <div class="inner-slider__item-image-container">
+					                              <img class="inner-slider__item-image" src="assets/img/work-metiew-smith.jpg" alt="Victory">
+					                          </div>
 
-                                              <div class="inner-slider--item-image-container">
-                                                  <img class="inner-slider--item-image" src="assets/img/graphics (2).jpg" alt="Victory">
-                                              </div>
+					                          <figcaption>
+					                              <p class="inner-slider__item-title">Army</p>
+					                              <p class="inner-slider__item-description">
+					                                Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+					                              </p>
+					                          </figcaption>
+					                    
+					                      </figure>
+					                    </a>
+					                </li>
 
-                                              <figcaption>
-                                                  <p class="inner-slider--item-title">Army</p>
-                                                  <p class="inner-slider--item-description">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
-                                                  </p>
-                                              </figcaption>
-                                        
-                                          </figure>
-                                        </a>
-                                    </li>
+					                <li class="inner-slider__item swiper-slide">
+					                    <a href="#mobile-3-clicked" data-hash="mobile-3">
+					                      <figure class="inner-slider__item-content">
 
-                                    <li class="inner-slider--item swiper-slide">
-                                        <a href="#graphics-3-clicked" data-hash="graphics-3">
-                                          <figure class="inner-slider--item-content">
+					                        <div class="inner-slider__item-image-container">
+					                          <img class="inner-slider__item-image" src="assets/img/work-alex-nowak.jpg" alt="Victory">
+					                        </div>
 
-                                            <div class="inner-slider--item-image-container">
-                                              <img class="inner-slider--item-image" src="assets/img/graphics (1).png" alt="Victory">
-                                            </div>
+					                        <figcaption>
+					                          <p class="inner-slider__item-title">Love</p>
+					                          <p class="inner-slider__item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+					                        </figcaption>
 
-                                            <figcaption>
-                                              <p class="inner-slider--item-title">Love</p>
-                                              <p class="inner-slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-                                            </figcaption>
+					                      </figure>
+					                      
+					                    </a>
+					                </li>
+					              
+					              </ul>
+					            
+					          </div>
+					          <!-- swiper-container ENDS  -->
+					      </li>
+					      <li data-hash="graphics" class="outer-slider__item swiper-slide">
+					          <div class="inner-slider swiper-container">
+					              <ul class="inner-slider__wrapper swiper-wrapper">
+					                <li class="inner-slider__item swiper-slide">
+					                    <a href="#graphics-1-clicked" data-hash="graphics-1">
+					                      <figure class="inner-slider__item-content">
 
-                                          </figure>
-                                          
-                                        </a>
-                                    </li>
-                                  
-                                  </ul>
-                                
-                              </div>
-                              <!-- swiper-container ENDS  -->    
-                          </li>
-                      </ul>
-                       outer-slider--wrapper ENDS
-                    
-                  </div>
-                  outer-slider ENDS
+					                          <div class="inner-slider__item-image-container">
+					                            <img class="inner-slider__item-image" src="assets/img/graphics (1).jpg" alt="Victory">
+					                          </div>
+
+					                          <figcaption>
+					                              <p class="inner-slider__item-title">Victory</p>
+					                              <p class="inner-slider__item-description">
+					                                Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+					                              </p>
+					                          </figcaption>
+
+					                      </figure>
+					                    </a>
+					                </li>
+					                <li class="inner-slider__item swiper-slide">
+					                    <a href="#graphics-2-clicked" data-hash="graphics-2">
+
+					                      <figure class="inner-slider__item-content">
+
+					                          <div class="inner-slider__item-image-container">
+					                              <img class="inner-slider__item-image" src="assets/img/graphics (2).jpg" alt="Victory">
+					                          </div>
+
+					                          <figcaption>
+					                              <p class="inner-slider__item-title">Army</p>
+					                              <p class="inner-slider__item-description">
+					                                Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+					                              </p>
+					                          </figcaption>
+					                    
+					                      </figure>
+					                    </a>
+					                </li>
+
+					                <li class="inner-slider__item swiper-slide">
+					                    <a href="#graphics-3-clicked" data-hash="graphics-3">
+					                      <figure class="inner-slider__item-content">
+
+					                        <div class="inner-slider__item-image-container">
+					                          <img class="inner-slider__item-image" src="assets/img/graphics (1).png" alt="Victory">
+					                        </div>
+
+					                        <figcaption>
+					                          <p class="inner-slider__item-title">Love</p>
+					                          <p class="inner-slider__item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+					                        </figcaption>
+
+					                      </figure>
+					                      
+					                    </a>
+					                </li>
+					              
+					              </ul>
+					            
+					          </div>
+					          <!-- swiper-container ENDS  -->    
+					      </li>
+					  </ul>
+					   <!-- outer-slider--wrapper ENDS -->
+
+					</div>
+                  <!-- outer-slider ENDS -->
                   
 
 
-                  <div class="inner-slider--prev">
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                    viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-                    <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-                      <path d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29
-                      c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180
-                      c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"/>
-                    </g>
-                    </svg>
+                  <div class="inner-slider__nav inner-slider__nav--prev">
+	                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	                    viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+		                    <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+		                      <path d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29
+		                      c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180
+		                      c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"/>
+		                    </g>
+	                    </svg>
                   </div>
-                  <div class="inner-slider--next">
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-                    <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-                      <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
-                    </g>
-                    </svg>
+
+                  <div class="inner-slider__nav inner-slider__nav--next">
+	                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+	                    <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+	                      <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+	                    </g>
+	                    </svg>
                   </div>
                   
                 </div>

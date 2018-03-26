@@ -187,17 +187,19 @@ $( document ).ready(function() {
       */
     var innerSlider = work.find('.inner-slider');
 
-    var innerSliderPrevBtn = work.find('.inner-slider--prev');
-    var innerSliderNextBtn = work.find('.inner-slider--next');
+    var innerSliderPrevBtn = work.find('.inner-slider__nav--prev');
+    var innerSliderNextBtn = work.find('.inner-slider__nav--next');
 
-    var outerSliderControls = work.find('.outer-slider--controls');
+    var outerSliderControls = work.find('.outer-slider__controls');
 
-    console.log(innerSlider);
-    console.log(innerSliderPrevBtn);
-    console.log(innerSliderNextBtn);
+    var outerSliderPrevBtn = work.find('.outer-slider__nav--prev');
+    var outerSliderNextBtn = work.find('.outer-slider__nav--next');
+
+    
 
     // init swiper slider for outer slides
     var outerSwiper = new Swiper (outerSlider, {
+      init: false,
       loop: true,
       loopedSlides: 4,
       slidesPerView: 'auto',
@@ -206,6 +208,7 @@ $( document ).ready(function() {
       direction: 'vertical',
       allowTouchMove: false,
       effect: 'slide',
+      normalizeSlideIndex: true,
       /*fadeEffect: {
         crossFade: true
       },*/
@@ -219,8 +222,18 @@ $( document ).ready(function() {
       }*/
     });
 
+
+    // determining current inner swiper index
+    var currentInnerSwiperIndex;
+    outerSwiper.on('init',function () {
+      console.log('swiper initialized');
+      currentInnerSwiperIndex = outerSwiper.activeIndex;
+      console.log('currentInnerSwiperIndex: '+ currentInnerSwiperIndex);
+    }),
+
+    outerSwiper.init(); // init outerSwiper
+
     var outerSwiperControls = new Swiper(outerSliderControls, {
-      spaceBetween: 0,
       effect: 'slide',
       normalizeSlideIndex: true,
       direction: 'horizontal',
@@ -228,12 +241,32 @@ $( document ).ready(function() {
       loop: true,
       loopedSlides: 4,
       slidesPerView: 'auto',
+      spaceBetween: 35,
       touchRatio: 0.2,
-      slideToClickedSlide: true
+      slideToClickedSlide: true,
+      normalizeSlideIndex: true,
+      navigation: {
+        nextEl: outerSliderNextBtn,
+        prevEl: outerSliderPrevBtn
+      },
+      controller:{
+        by: 'slide'
+      },
+      breakpoints:{
+        700:{
+          slidesPerView: 'auto',
+          spaceBetween: 0
+
+        }
+
+      }
+
     });
+
 
     outerSwiperControls.controller.control = outerSwiper;
     outerSwiper.controller.control = outerSwiperControls;
+
 
     // init swiper slider for outer slides
     var innerSwiper = new Swiper (innerSlider, {
@@ -259,11 +292,76 @@ $( document ).ready(function() {
       },
       normalizeSlideIndex: true,
       slideToClickedSlide: true
-      
 
     });
 
-  }
+
+
+
+    // swiping current innerSwiper on clicks
+    
+    var speed = 400;
+    var touch;
+    innerSliderNextBtn.add(innerSliderPrevBtn).on('click touchstart',function(e){
+      var $this = $(this);
+      
+      if (e.type=='touchstart') {
+        touch = true;
+
+        setTimeout(function(){
+          touch = false;
+        },400);
+      }
+
+      // return if click fired within 400 ms after touch
+      if (touch && e.type=='click') {
+        return;
+      }
+
+      var curInnerSwiperCont = outerSwiper.slides[currentInnerSwiperIndex];
+      var curInnerSwiper = $(curInnerSwiperCont).find('.inner-slider')[0];
+      var curSwiperInstance = curInnerSwiper.swiper;
+
+      if ($this.hasClass('inner-slider__prev')) {
+          curInnerSwiper.swiper.slidePrev(400);
+      }else{
+          curInnerSwiper.swiper.slideNext(400);
+      }
+
+    })
+
+    
+
+
+
+
+
+    // detecting outerSwiper transitionEnd to change currentInnerSwiperIndex
+
+    var outerSwiperTrigger , immFireTimeout = 200;
+    outerSwiper.on('transitionEnd',function(){
+      // stopping it to execute multiple times consecutively
+      if (outerSwiperTrigger) {
+        return;
+      }else{
+        outerSwiperTrigger = true;
+      }
+
+      console.log('changed');
+
+      currentInnerSwiperIndex = outerSwiper.activeIndex;
+      console.log('currentInnerSwiperIndex: '+ currentInnerSwiperIndex);
+
+
+      window.setTimeout(function(){
+        outerSwiperTrigger = undefined;
+      },immFireTimeout); // allowing the callback to run after a certain time
+
+    });
+
+
+
+  } // END of workSlider Func
 
   
 

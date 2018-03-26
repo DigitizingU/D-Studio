@@ -54,6 +54,10 @@
     background-size: cover
     background-repeat: no-repeat
 
+    .section__title
+      margin: 4rem 0 2rem
+
+
   &--hire
     position: relative
     background: url("../img/new (2).jpg")
@@ -111,3 +115,13 @@
         background: radial-gradient(farthest-corner at 50% 50%, rgba(12,12,12,0), rgba(12,12,12,1))
         background: linear-gradient(to right,rgba(12,12,12,1), rgba(12,12,12,.2), rgba(12,12,12,1))
         z-index: 3
+
+
+@media all and (max-width: 400px)
+
+  .section
+
+    &--work
+
+      .section__title
+        margin: 4rem 0 .5rem
