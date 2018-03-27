@@ -21,7 +21,7 @@ $( document ).ready(function() {
         clearTimeout(scrollController);
         scrollController = setTimeout(function(){
           canScroll = true;
-        }, 800);
+        }, 1000);
         updateHelper(1);
       }
       else if (delta < -50 && canScroll) {
@@ -29,7 +29,7 @@ $( document ).ready(function() {
         clearTimeout(scrollController);
         scrollController = setTimeout(function(){
           canScroll = true;
-        }, 800);
+        }, 1000);
         updateHelper(-1);
       }
 
