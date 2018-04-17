@@ -1,6 +1,7 @@
 // .owl-carousel .owl-item img
 //   width: auto
 
+
 .work
   position: relative
   display: flex
@@ -22,19 +23,11 @@
 
     
     .outer-slider
-      height: 60vh
+      height: 75vmin
       // padding: 1rem 0
       position: relative
 
-      // list-style: none
-      // &--wrapper
-
-      // &:after
-      //   @include pseudo
-      //   background: $primaryHighlight
-      //   opacity: .3
-      //   transform: scale3d(1, 1, 1)
-      //   border-radius: 4px
+      
 
       &__controls
         // background: white
@@ -92,6 +85,8 @@
       &__item
         height: 100%
         list-style: none
+        overflow: hidden
+        padding: 1px
 
       &__nav
         position: absolute
@@ -122,9 +117,6 @@
             width: 50%
             fill: $white
             
-
-
-      
 
 
     .inner-slider
@@ -188,7 +180,7 @@
          
         &-image-container
           position: relative
-          height: 30vh
+          height: 40vmin
           min-height: 100px
           border-radius: 4px
           overflow: hidden
@@ -219,7 +211,7 @@
           
     .inner-slider__nav
       position: absolute
-      top: 65%
+      top: 45%
       display: flex
       width: 2.8rem
       height: 2.8rem
@@ -272,7 +264,7 @@
 
 
           &-image-container
-            height: 30vh
+            height: 25vmin
             min-height: 140px
 
           &-title
@@ -293,8 +285,6 @@
             left: 10px
 
 
-
-
       .outer-slider
 
         &__controls
@@ -307,8 +297,7 @@
 
 
 
-
-@media all and (min-width: 900px)
+@media all and (min-width: 1200px)
 
   .work
 
@@ -317,30 +306,89 @@
       .inner-slider
 
         &__item
-            width: 30%
+          width: 30%
+
+
 
       .outer-slider
+        height: 55vmin
 
-          &__controls
-            width: 80%
+        &__controls
+          width: 80%
 
-          &__btn
-            width: calc(33.33% - 40px)
-            margin: 0 0rem 0 
+        &__btn
+          width: calc(33.33% - 40px)
+          margin: 0 0rem 0 
 
 
-            &.swiper-slide-active
-              
-              background: linear-gradient(45deg,rgba(210, 70, 124,1), rgba(15, 51, 255,1))
-
-            &:not(.swiper-slide-active)
-              opacity: 1
-              visibility: visible
-
-          &__nav
-            opacity: 0
-            visibility: hidden
+          &.swiper-slide-active
             
+            background: linear-gradient(45deg,rgba(210, 70, 124,1), rgba(15, 51, 255,1))
+
+          &:not(.swiper-slide-active)
+            opacity: 1
+            visibility: visible
+
+        &__nav
+          opacity: 0
+          visibility: hidden
+            
+
+
+@media all and (max-width: 1200px) and (orientation: landscape)
+  
+  .work
+    flex-direction: row
+    align-items: center
+    justify-content: space-around
+
+    .section__title
+      font-size: 2.8rem
+      
+
+
+  .work__lockup
+    width: 60%
+    height: 60%
+
+    .inner-slider
+
+      &__item
+        
+        &-content
+          padding: 1rem
+
+        &-description
+          display: none
+
+      &__nav   
+        top: 70%      
+  
+
+@media all and (max-width: 1200px) and (orientation: landscape) and (min-height: 600px)
+
+  .work__lockup
+
+    .inner-slider
+
+      &__item
+
+        &-description
+          display: block
+    
+  
+@media all and (max-width: 900px) and (orientation: landscape)
+  
+  .work
+    .section__title
+      font-size: 2.5rem
+      
+
+@media all and (max-width: 600px) and (orientation: landscape)
+    
+  .work
+    .section__title
+      font-size: 2.2rem
 
 
 
@@ -359,68 +407,22 @@
 
           &-image-container
               position: relative
-              height: 25vh
+              height: 35vmin
 
-// @media (max-width: 900px)
 
-//   .work
 
-//     &--lockup
 
-//       .inner-slider
 
-//         &--item
 
-//           &-image
-//             width: 120px
-//             height: 120px
+@media all and (max-width: 340px)
+    .work__lockup
+      
+      .inner-slider
 
-//           &-center
+        &__item
 
-//             .inner-slider--item-image
-//               width: 240px
-//               height: 240px
+          &-description
+            display: none
 
-//       .inner-slider--next,
-//       .inner-slider--prev
-//         top: 130px
 
-// @media (max-width: 767px)
 
-//   .work
-
-//     &--lockup
-
-//       .inner-slider
-//         width: 75%
-
-//         &--item
-
-//           &-image
-//             width: 90px
-//             height: 90px
-
-//           &-center
-
-//             .inner-slider--item-image
-//               width: 190px
-//               height: 190px
-
-//       .inner-slider--next,
-//       .inner-slider--prev
-//         top: 105px
-
-// @media (max-width: 600px)
-
-//   .work
-
-//     &--lockup
-
-//       .inner-slider
-//         width: auto
-
-//         &--item
-
-//           &-left,
-//           &-right
-//             display: none

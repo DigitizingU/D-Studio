@@ -59,7 +59,6 @@
 
 
   &--hire
-    position: relative
     background: url("../img/new (2).jpg")
     background-position: 50% 50%
     background-size: cover
@@ -68,7 +67,7 @@
 
     &:after
       @include pseudo
-      background: linear-gradient(to right, rgb(12,12,12), transparent, rgb(12,12,12)), linear-gradient(-45deg,rgba(173,42,92,.15), rgba(17,37,214,.15)),linear-gradient(-45deg,rgba(0,0,0,.3), rgba(0,0,0,.3)),  url("../img/new (6).jpg")
+      background: linear-gradient(to right, rgb(12,12,12), transparent, rgb(12,12,12)), linear-gradient(-45deg,rgba(173,42,92,.2), rgba(17,37,214,.2)),linear-gradient(-45deg,rgba(0,0,0,.3), rgba(0,0,0,.3)),  url("../img/new (6).jpg")
 
       background-position: 50% 50%
       background-size: cover
@@ -85,12 +84,18 @@
       height: 100%
       overflow: hidden
 
+      &:after
+        @include pseudo
+        background-image: url("../img/hero/fallback.jpg")
+        background-size: cover
+        background-position: 60% 100%
+
       video
-        display: block
-        height: 100%;
-        object-fit: cover
+        display: none
+        height: 100%
         width: 100%
         z-index: -2
+        object-fit: cover
 
       .mask
         @include absolute
@@ -116,6 +121,12 @@
         background: linear-gradient(to right,rgba(12,12,12,1), rgba(12,12,12,.2), rgba(12,12,12,1))
         z-index: 3
 
+  &--about
+    background: linear-gradient(to right, rgb(12,12,12), transparent, rgb(12,12,12)), url("../img/new (9).jpg")
+    background-position: 50% 50%
+    background-size: cover
+    background-repeat: no-repeat
+    z-index: 1
 
 @media all and (max-width: 400px)
 
@@ -134,3 +145,24 @@
       
       .section__title
         margin: 4rem 0 .5rem
+
+
+@media all and (min-width: 768px)
+
+  .section
+
+    &--hero
+
+    .video-container
+      @include absolute
+      width: 100%
+      height: 100%
+      overflow: hidden
+
+      &:after
+        display: none
+
+      video
+        display: block
+
+

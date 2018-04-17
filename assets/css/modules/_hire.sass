@@ -116,7 +116,6 @@
       flex-direction: row
       justify-content: space-around
 
-
     .services-b
       display: flex
       width: 100%
@@ -213,7 +212,7 @@
       label
         margin-bottom: .5rem
 
-@media (min-width: 600px)
+@media all and (min-width: 600px)
 
   .hire
     width: 65%
@@ -248,7 +247,7 @@
         width: 100%
 
       .services-b
-        width: 72%
+        width: 100%
 
 
     &--information
@@ -259,7 +258,183 @@
         font-size: 1.9rem
 
 
+
+
+@media all and (min-width: 1200px)
+
+
+  .work-request
+
+    &--services
+
+      .services-a
+        width: 100%
+        justify-content: space-evenly
+
+      .services-b
+        width: 75%
+        justify-content: space-evenly
+
+
+      label
+        width: 180px
       
+
+
+@media all and (max-width: 1200px) and (orientation: landscape)
+
+
+  .hire
+    width: 100%
+    min-width: auto
+    justify-content: flex-start
+
+    .section__title
+      font-size: 2.5rem
+      margin-bottom: 1rem
+
+  .work-request
+    >label
+      margin-bottom: 1.25rem
+
+    .parsley-errors-list
+      font-size: 1.2rem
+      padding: 0 .5em
+
+    &--services
+      margin: 10px 0
+
+      label
+        width: 11rem
+        margin-bottom: 2rem
+        font-size: 1.1rem
+        line-height: 2.5em
+
+        .mobile 
+          display: inline
+        .other
+          display: none
+      
+      .services-a
+        width: 100%
+        flex-wrap: nowrap
+        justify-content: space-around
+
+      .services-b
+        width: 100%
+        flex-wrap: nowrap
+        justify-content: space-evenly
+
+
+    &--information
+      width: 95%
+      margin-bottom: 2.5rem
+
+      .information-name,
+      .information-email
+        font-size: 1.6rem
+
+    
+    button[type="submit"]
+      width: 18rem
+      max-width: 80%
+      padding: 1.5rem 0
+      font-size: 1.5rem
+
+
+
+@media all and (max-width: 960px) and (orientation: landscape)
+
+
+  .hire
+    .section__title
+      font-size: 2rem
+
+  .work-request
+    >label
+      margin-bottom: 0
+
+    .parsley-errors-list
+      font-size: 1rem
+
+    &--services
+
+      label
+        width: 9.5rem
+        margin-bottom: 1rem
+        font-size: .9rem
+
+
+    &--information
+      margin-bottom: 1.5rem
+
+      .information-name,
+      .information-email
+        font-size: 1.5rem
+
+    
+    button[type="submit"]
+      padding: 1.3rem 0
+      font-size: 1.4rem
+
+
+
+
+
+@media all and (max-width: 840px) and (orientation: landscape)
+
+  .hire
+    .section__title
+      margin-bottom: 0
+
+  .work-request
+    >label
+      font-size: 1rem  
+
+    &--services
+      margin: 10px 0
+
+      label
+        width: 7.5rem
+        margin-bottom: 1rem
+        font-size: .9rem
+        line-height: 2.2em
+
+    &--information
+
+      .information-name,
+      .information-email
+        font-size: 1.2rem
+
+    
+    button[type="submit"]
+      width: 15rem
+      padding: 1.1rem 0
+      font-size: 1.3rem
+
+
+
+@media all and (max-width: 600px) and (orientation: landscape)
+
+
+
+  .work-request
+    >label
+      display: none
+
+    .parsley-errors-list
+      font-size: .9rem
+
+    &--services
+
+      label
+        font-size: .9rem
+        line-height: 2em
+
+    button[type="submit"]
+      width: 14rem
+      padding: .9rem 0 .7rem
+      font-size: 1.2rem
 
 
 // @media (max-width: 767px)

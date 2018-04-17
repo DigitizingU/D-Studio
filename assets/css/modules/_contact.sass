@@ -1,75 +1,629 @@
-// position fixed in order to escape the 1440px wrapper
-.contact
+.contact__popup
   position: fixed
+  padding: 0 5%
   top: 0
-  left: 0
+  bottom: 0
+  left: 0%
+  right: 0%
+  z-index: 100
+  background: linear-gradient(to right, rgba(0,0,0,.8) 1%, rgba(0,0,0,.95), rgba(0,0,0,.8) 99%)
+  transition: all .5s
+  overflow-y: auto
+
+  &.off
+    visibility: hidden
+    opacity: 0
+
+
+  .contact__form-container
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    position: relative
+    padding: 70px 0
+
+  .contact__form-title
+    margin-top: 0
+    display: inline-block
+    align-self: flex-start
+    line-height: 1em
+    font-size: 2rem
+    text-align: left
+    padding: 0 .3em
+    margin-left: -.3em
+    border-bottom: 2px solid $primaryHighlight
+
+  .contact__close-form
+    position: absolute
+    z-index: 2000
+    right: 0
+    border: none
+    margin-top: 0
+    align-self: center
+    background: black
+    padding: 2px 10px
+    border: 2px solid $primaryHighlight
+    font-size: 1.3rem
+    word-spacing: .35em
+    cursor: pointer
+
+    .text
+      display: none
+
+
+    &:hover
+      border: 2px solid $primary
+      & i
+        color: lighten($primaryHighlight,10%)
+
+
+  .contact-form 
+    button[type="submit"]
+      position: relative
+      left: 50%
+      transform: translateX(-50%)
+      width: 18rem
+      max-width: 100%
+      line-height: .03em
+      padding: 1rem 0 .7rem;
+      border-radius: 3px
+      font-size: 1.5rem
+      letter-spacing: .05em
+      word-spacing: .2em;
+      font-weight: 300
+      text-transform: lowercase
+      background-color: $primary
+      border: none
+      border-bottom: 3px solid darken($primary,15%)
+      border-left: 3px solid darken($primary,15%)
+      border: none
+      background: transparent
+      z-index: 1
+      margin-top: 20px
+
+      .icon
+        display: inline-block
+        vertical-align: middle
+        transform: translateX(0)
+        transition: transform .3s
+
+
+      &:after,
+      &:before
+        @include pseudo
+        z-index: -1
+        border-radius: 2px
+        transition: background .3s
+        background: linear-gradient(135deg,darken($primaryHighlight,5%), lighten($primaryHighlight,5%))
+
+
+      &:before
+        transform: translate3d(-5px,8px,0)
+        
+      &:after
+        transform: translate3d(5px,0px,0)
+        
+
+      &:focus
+        outline: none
+        
+      &:focus,
+      &:hover
+
+        &:after,
+        &:before
+          transition: background .3s
+          background: linear-gradient(135deg,lighten(rgba(173,42,92,1),5%), lighten(rgba(17,37,214,1),5%))
+       
+        .icon
+          transform: translateX(10px)
+
+
+        
+    &__information,
+    &__details,
+    &__subject
+
+      display: flex
+      width: 100%
+      justify-content: space-between
+      margin-bottom: 1.5rem
+      flex-wrap: wrap
+
+
+      .information-name,
+      .information-email,
+      .information-details
+        position: relative
+        width: 45%
+        height: 50px
+        font-size: 1.4rem
+        font-weight: 300
+        margin-top: 10px
+
+      .information-details
+
+        width: 100%
+        height: 100px
+        margin-top: 10px
+
+        
+
+      
+      input[type="text"],
+      input[type="email"],
+      textarea,
+      select
+        width: 100%
+        height: 100%
+        font-size: 1.4rem
+        text-transform: capitalize
+        padding: 0 0 5px 10px
+        background-color: transparent
+        border: none
+        border-bottom: 1px solid $white
+        border-radius: 0
+        word-spacing: 0.2em
+        background-color: rgba(255,255,255,.05)
+
+        &:focus
+          outline: none
+          background-color: rgba(15, 51, 255,.1)
+
+      textarea
+        resize: none
+
+      select
+        padding: 20px 10px
+        height: auto
+        cursor: pointer
+
+        option
+          font-size: 1.4rem
+          background: $primaryHighlight
+          color: $white
+          padding: 20px 10px
+      
+
+      label
+        text-transform: lowercase
+        position: absolute
+        top: 0
+        left: 10px
+        pointer-events: none
+        transition: top .2s ease-in-out, font-size .2s ease-in-out
+
+
+      .form-field--normal:focus ~ label,
+      .form-field--normal.has-value ~ label
+        top: -23px
+        font-size: 14px
+
+      &.no-absolute-label label
+        position: static
+        width: 100%
+        font-size: 1.4rem
+
+// ------ page design starts (the above code is for contact form)
+
+
+// position fixed in order to escape the 1440px wrapper
+
+.contact
   width: 100%
   height: 100%
-  background:
-    image: url("../img/contact-visual.png")
-    position: center
-    size: cover
-    repeat: no-repeat
+  
+  &:after
+    @include pseudo
+    background: 
+      image: url("https://maps.googleapis.com/maps/api/staticmap?center=New+Delhi,India,ND&zoom=10&format=jpg&sensor=false&maptype=roadmap&size=1920x1080&scale=2&maptype=roadmap&markers=color:brown|label:D%7C28.645110,77.169322&style=feature%3Aall%7Celement%3Aall%7Chue%3A0x0000b0%7Cinvert_lightness%3Atrue%7Csaturation%3A-30%7C&key=AIzaSyDO9Po9G4gF1NFf5IkX9IP23SQUcHdaoaU")
+      position: center
+      size: cover
+      repeat: no-repeat
+    z-index: -2
+
+  &:before
+    @include pseudo
+    background: linear-gradient(to right, rgb(12,12,12), transparent, rgb(12,12,12)), linear-gradient(135deg,rgba(173,42,92,.35), rgba(17,37,214,.35)),  linear-gradient(135deg,rgba(0,0,0,.15), rgba(0,0,0,.15))
+    background-position: 50% 50%
+    background-size: cover
+    background-repeat: no-repeat
+    z-index: -1
+
 
   &--lockup
     position: relative
     display: flex
-    width: 900px
-    max-width: 75%
+    width: 90%
+    max-width: 1400px
     height: 100%
     align-items: center
-    justify-content: flex-end
+    justify-content: center
     margin: 0 auto
-
-    @media (max-width: 1180px)
-      max-width: 90%
-
-    @media (max-width: 767px)
-      justify-content: center
+      
 
     .modal
-      padding: 45px 45px
+      max-width: 75%
+      padding: 1rem
       text-align: center
+      overflow: hidden
       background-color: $black
       box-shadow: 0 0 30px 0 rgba(0,0,0,.75)
+      border-radius: 5px
 
       &--information
+        width: 100%
 
-        p,
-        a
-          display: block
-          margin: 14px 0
-          text-decoration: none
-          color: $white
-          font-weight: 700
+        .numbers
+          font-family: $numbersFont
+          font-size: 0.9rem
+          font-weight: 400
+          letter-spacing: .1em
 
-        p
-          margin-top: 0
-
-      &--options
-        margin: 0
-        padding: 0
-        list-style: none
-
-        & > li
-          width: 130px
-          margin: 0 auto 25px auto
-
-        li:nth-child(1)
-          background-color: #1769ff
-
-        li:nth-child(2)
-          background-color: #ea4c89
-
-        li:nth-child(3)
-          margin-bottom: 0
-          background-color: $primaryHighlight
-          text-transform: uppercase
-
-        a
-          display: block
+        ul
           width: 100%
-          padding: 8px 0
-          text-decoration: none
-          color: $white
-          font-weight: 700
+
+        li
+          width: 100%
+          font-size: 1.125rem
+          margin-bottom: 10px
+          display: flex
+          justify-content: center
+          flex-wrap: wrap
+
+
+          .icon
+            display: inline-block
+            width: 100%
+            text-align: center
+            font-size: 1.7rem
+            color: $primaryHighlight
+            height: 22px
+            line-height: 22px
+
+          .name
+            flex: 1 1 calc(50% - 20px)
+            margin-right: 5px
+            text-align: left
+            padding: 0 10px
+            display: none
+
+
+          .detail
+            display: inline-block
+            word-spacing: .05em
+            margin-right: 5px
+            margin-right: 0
+            margin-bottom: 10px
+            // max-width: calc(80% - 40px)
+            // flex: 2 2 auto
+            flex: 1 1 calc(80% - 30px)
+            padding: 0 20px
+            text-align: center
+            display: block
+            
+            .main
+              font-size: 1.1em
+              letter-spacing: 0.03em
+
+              a
+                display: inline-block
+                position: relative
+                color: inherit
+                text-decoration: none
+                transition: all .3s
+
+                &:after
+                  @include pseudo
+                  border-bottom: 1px solid $primaryHighlight
+                &:hover
+                  color: lighten($primaryHighlight,10%)
+            
+            .caption
+              font-size: .9em
+              margin-left: 5px
+              display: none
+
+              &:before
+                content: '|'
+                margin-right: 5px
+
+
+        .cta
+          min-width: 150px
+          margin-top: 20px
+          border-radius: 5px
+          font-size: 1.5rem
+          padding: .5rem 0
+          background: $primaryHighlight
+          border: none
+          text-transform: lowercase
+
+          &:focus
+            outline: none
+
+
+
+    .social-media
+      position: absolute
+      height: 50px
+      bottom: 0
+      width: 100%
+      background: rgba(0,0,0,.85)
+      box-shadow: 0 -20px 30px rgba(0,0,0,.3)
+      display: flex
+      color: white
+      flex-direction: row
+      border-radius: 5px 5px 0 0 
+      overflow: hidden
+
+      &__heading
+        background: linear-gradient(135deg,rgba(173,42,92,.85), rgba(17,37,214,.85)), linear-gradient(135deg,rgba(0,0,0,1), rgba(0,0,0,1))
+        
+        &.equal
+          font-size: 1.2rem !important
+
+      &__icon
+        background: darken($primaryHighlight,40%)
+
+      &__icon:nth-child(2)
+        background: darken($primaryDark,20%)
+
+
+
+      .equal
+        flex: 1 1 100px
+        min-width: 100px
+        font-size: 1.5rem
+        text-align: center
+        line-height: 50px
+        color: rgb(240,240,240)
+
+
+
+
+///////////////
+
+@media all and (min-width: 600px)
+
+  .contact__popup
+    padding: 0 15%
+
+    .contact__close-form
+      margin-top: 20px
+      padding: 2px 10px
+      border: 2px solid $primaryHighlight
+
+      .text
+        display: inline
+
+
+  .contact
+
+    &--lockup
+      width: 100%
+        
+      .modal
+        padding: 2rem 1rem 
+
+
+        &--information
+
+          li
+            font-size: 1.25rem
+
+            .numbers
+              font-family: $numbersFont //
+            
+            .icon
+              flex: 0 0 auto
+              width: 10%
+              text-align: center
+              font-size: 1.7rem
+
+            .name
+              display: inline-block
+              width: 6.25rem
+              flex: 1 0 auto
+              margin-right: 5px
+              text-align: left
+              padding: 0 0.625rem
+
+
+            .detail
+              width: 450px
+              flex: 1 1 auto
+              padding: 0 1.25rem
+              text-align: left
+              
+              .main
+                font-size: 1em //
+                
+              .caption
+                font-size: .8em
+                margin-left: 5px //
+                display: inline-block
+
+                &:before
+                  margin-right: 10px
+
+
+
+
+
+@media all and (min-width: 768px)
+
+  .contact
+
+    &--lockup
+      justify-content: flex-end
+
+      .modal
+
+        li
+          flex-wrap: nowrap
+
+          .numbers
+            font-family: $numbersFont //
+          
+          .icon
+            width: 10%
+            text-align: center
+            font-size: 1.7rem
+
+          .name
+            display: inline-block
+            // width: 6.25rem
+            // flex: 1 0 auto
+            margin-right: 5px
+            text-align: left
+            padding: 0 0.625rem
+            flex: 1 1 calc(20% - 20px)
+
+
+          .detail
+            flex: 1 1 calc(80% - 20px)
+            padding: 0 1.25rem
+            text-align: left
+            
+            .main
+              font-size: 1em //
+              
+            .caption
+              font-size: .8em
+              margin-left: 5px //
+              display: inline-block
+
+              &:before
+                margin-right: 10px
+
+
+
+
+@media all and (min-width: 900px) 
+
+  .contact
+
+    .social-media
+      color: white
+      height: 100px
+      width: 100%
+      
+
+      &__heading
+        background: linear-gradient(135deg,rgba(173,42,92,.85), rgba(17,37,214,.85)), linear-gradient(135deg,rgba(0,0,0,1), rgba(0,0,0,1))
+        
+        &.equal
+          font-size: 2rem !important
+
+      &__icon
+        background: darken($primaryHighlight,40%)
+
+      &__icon:nth-child(2)
+        background: darken($primaryDark,20%)
+
+
+
+      .equal
+        font-size: 2rem
+        line-height: 100px
+        color: rgb(240,240,240)
+        transition: all .3s
+        
+      a.equal:hover
+        background: rgba(20,20,20,.35)
+
+
+@media all and (min-width: 1180px)
+
+  .contact
+
+    &--lockup
+      max-width: 85%
+
+        
+
+@media all and (max-width: 900px) and (orientation: landscape)
+
+  .contact
+
+    &--lockup
+      justify-content: flex-end
+      align-items: flex-start
+        
+      .modal
+        margin-top: 5rem
+        padding: 1rem 1rem 
+
+
+
+        &--information
+
+          li
+            flex-wrap: nowrap
+
+            .icon
+              text-align: left
+              width: 10% !important
+            .name
+              display: none
+
+
+            .detail
+              width: auto
+              padding: 0 1.25rem
+              margin-bottom: 0
+              text-align: center
+              // white-space: nowrap
+              
+              .main
+                font-size: 1em //
+                
+              .caption
+                display: none
+
+                &:before
+                  margin-right: 10px
+
+          
+          .cta
+            margin-top: 10px
+            font-size: 1.2rem
+            padding: .2rem 0
+
+            &:focus
+              outline: none
+
+
+@media all and (max-width: 400px) 
+
+  .contact
+
+    &--lockup
+      width
+        
+      .modal
+
+        &--information
+
+          li
+            .detail
+              margin-bottom: 0
+
+
+@media all and (max-width: 600px) and (orientation: landscape)
+
+  .contact
+
+    &--lockup
+        
+      .modal
+        margin-top: 4rem
+
+        &--information
+
+          li
+            font-size: .95rem
+
+            .icon
+              font-size: 1.5rem

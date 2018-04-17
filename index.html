@@ -5,76 +5,146 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="HTML5 website template">
-  <meta name="keywords" content="global, template, html, sass, jquery">
-  <meta name="author" content="Bucky Maler">
+  <meta name="description" content="Digitizing U Studio (Lite Version)">
+  <meta name="keywords" content="">
+  <meta name="author" content="Vimal Patra">
+  <meta name="theme-color" content="#2b1726" />
 
-  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,400i,500,500i,700|Alegreya+Sans+SC:300,400,400i,500,500i,700,700i|Arvo:400,400i,700|Exo+2:300,400,400i,500,500i,600|Josefin+Sans:300,400,400i,600|Lato:300,400,400i,700|Montserrat:300,400,400i,500,500i,600|Open+Sans+Condensed:300|PT+Sans:400,400i,700|Poppins:300,400,400i,500,600|Quicksand:300,400,500|Raleway:300,400,400i,500,500i,600|Ubuntu:300,400,400i,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,400i,500,500i,700|Alegreya+Sans+SC:300,400,400i,500,500i,700,700i|Quicksand:400" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
+
 </head>
 <body>
 
   <!-- notification for small viewports and landscape oriented smartphones -->
-  <div class="device-notification">
-    <a class="device-notification--logo" href="#0">
-      <img src="assets/img/logo.png" alt="Global">
-      <p>Global</p>
-    </a>
-    <p class="device-notification--message">Global has so much to offer that we must request you orient your device to portrait or find a larger screen. You won't be disappointed.</p>
-  </div>
+  
+  <!-- <div class="browser-notification">
+  	    <a class="device-notification--logo" href="#0">
+  	      <img src="assets/img/logo.png" alt="Digitizing U Logo">
+  	      <p>Digitizing U</p>
+  	    </a>
+  	    <p class="browser-notification--message">DigitizingU Studio is a modern web portal and thus we require you to switch to a newer version of a modern day browser from the given links below.  Be Assured you won't be disappointed.</p>
+  </div> -->
 
+  <!-- <div class="device-notification">
+  	    <a class="device-notification--logo" href="#0">
+  	      <img src="assets/img/logo.png" alt="Digitizing U Logo">
+  	      <p>Digitizing U</p>
+  	    </a>
+  	    <p class="device-notification--message">DigitizingU Studio has so much to offer that we must request you orient your device to portrait or find a larger screen. Be Assured you won't be disappointed.</p>
+  	    <p class="browser-notification--message">DigitizingU Studio is a modern web portal and thus we require you to switch to a newer version of a modern day browser from the given links below.  Be Assured you won't be disappointed.</p>
+  </div>
+   -->
   <div class="perspective effect-rotate-left">
     <div class="container"><div class="outer-nav--return"></div>
       <div id="viewport" class="l-viewport">
         <div class="l-wrapper">
+
           <header class="header">
-            <a class="header--logo" href="#0">
-              <img src="assets/img/logo.png" alt="Global">
-              <p>DigitizingU <br> Studio</p>
-            </a>
-            <!-- <button class="header--cta cta">Hire Us</button> -->
-            <div class="header--nav-toggle">
-              <span></span>
-            </div>
+	            <a class="header--logo" href="#0">
+	              <!-- <img src="assets/img/logo.png" alt="Global"> -->
+	              <p>DU Studio</p>
+	            </a>
+	            <!-- <button class="header--cta cta">Hire Us</button> -->
+	            <div class="header--nav-toggle">
+	              <span></span>
+	            </div>
           </header>
 
           <nav class="l-side-nav">
-            <ul class="side-nav">
-              <li class="is-active"><span>Home</span></li>
-              <li><span>Works</span></li>
-              <li><span>About</span></li>
-              <li><span>Contact</span></li>
-              <li><span>Hire us</span></li>
-            </ul>
+	            <ul class="side-nav">
+	              <li class="is-active"><span>Home</span></li>
+	              <li><span>Works</span></li>
+	              <li><span>About</span></li>
+	              <li><span>Contact</span></li>
+	              <li><span>Hire us</span></li>
+	            </ul>
           </nav>
 
+          <div id="contact__popup" class="contact__popup off">
+
+				<div class="contact__form-container">
+
+					<button id="close-contact-form" class="contact__close-form">
+						<span class="text">Close Form </span>
+						<i class="ion-close"></i>
+					</button>
+
+					<h2 class="contact__form-title section__title">
+						Fill the form below
+					  <!-- <span class="sub">select what you want us to work on</span> -->
+					</h2>
+
+					<!-- checkout formspree.io for easy form setup -->
+					<form id="contactForm" class="contact-form">
+					  
+						<div class="contact-form__subject no-absolute-label">
+							<label for="">
+								Subject for contact
+							</label>
+						
+							<select name="subjectCF" id="subjectCF">
+								<option value="">
+									project enquiry
+								</option>
+								<option value="">
+									business enquiry
+								</option>
+								<option value="">
+									join us
+								</option>
+								<option value="">
+									other
+								</option>
+							</select>
+
+						</div>
+
+					  <div class="contact-form__information">
+
+					    <div class="information-name" >
+					      <input class="form-field--normal" required id="nameCF" type="text" spellcheck="false" data-parsley-trigger="focusout input" >
+					      <label for="name">Name</label>
+					    </div>
+
+					    <div class="information-email" >
+					      <input class="form-field--normal" required id="emailCF" type="email" spellcheck="false" data-parsley-trigger="focusout" data-parsley-trigger-after-failure="input">
+					      <label for="email">Email</label>
+					    </div>
+					  </div>
+
+					  <div class="contact-form__details">
+
+					    <div class="information-details" >
+					      <textarea class="form-field--normal" required id="detailsCF" type="text" spellcheck="false" data-parsley-trigger="focusout input" >
+
+					      </textarea>
+					      <label for="details">Provide Details</label>
+					    </div>
+					  </div>
+
+					  <button type="submit">
+					  	Send Query <i class="icon ion-android-send"></i>
+					  </button>
+					</form>
+
+				</div>
+
+		  </div>
+
           <ul class="l-main-content main-content">
+
             <li class="l-section section section--hero section--is-active">
 
               <div class="section__wrapper">
                 <div class="video-container">
-                    <video loop autoplay>
-                      <source src="assets/videos/hero/NycTraffic.mp4" type="video/mp4">
-                      <!-- <source src="assets/videos/hero/Cars_Timelapse.mov" type="video/mp4"> -->
-                      <!-- <source src="assets/videos/hero/006_3.mp4" type="video/mp4"> -->
-                      <!-- <source src="assets/videos/hero/170307_Particles_07_1080p.mp4" type="video/mp4"> -->
-                      <!-- <source src="assets/videos/hero/Blue_Particle_Motion_Background_1080.mp4" type="video/mp4"> -->
-                      <!-- <source src="assets/videos/hero/hd0926.mov" type="video/mp4"> -->
-                      <!-- <source src="assets/videos/hero/hd1119.mov" type="video/mp4"> -->
-                      <!-- <source src="assets/videos/hero/Lightning.mp4" type="video/mp4"> -->
-                      
-
-
-                      <!-- tech videos   -->
-
-                      <!-- <source src="assets/videos/hero/keyboard/a/Enigma _ Home Video Bg.mp4" type="video/mp4"> -->
-                      <!-- <source src="assets/videos/hero/keyboard/a/From Enfold Theme.MKV" type="video/mp4"> -->
-                      <!-- <source src="assets/videos/hero/keyboard/a/Skywell - OnePage - Full - Home - SkilltechWebDesign.com.webm" type="video/mp4"> -->
-                      <!-- <source src="assets/videos/hero/keyboard/a/Typing_dark_03_Videvo.mov" type="video/mp4"> -->
-                      <!-- <source src="assets/videos/hero/keyboard/a/Typing_on_Keyboard_2821_Videvo.mov" type="video/mp4"> -->
-
-
+                    <video loop autoplay poster="assets/img/hero/poster.jpg">
+                      <source src="assets/videos/hero/hd0926.mp4" type="video/mp4">
+                      <source src="assets/videos/hero/hd0926.ogg" type="video/ogg">
+                      <source src="assets/videos/hero/hd0926.webm" type="video/webm">
+                      <!-- <source src="assets/videos/hero/NycTraffic.mp4" type="video/mp4"> -->
                       Your browser does not support the video tag.
                     </video>
 
@@ -85,13 +155,16 @@
                 </div>
 
                 <div class="intro">
-                  <div class="intro--banner">
-                    <h1>
-                        bridging the gap <br> between you and the <br> digital world
-                    </h1>
-                    <!-- =cta-container  -->
-                    <div class="cta-container">
-                    	<button class="cta">get in touch
+					<div class="intro--banner">
+						<h1>
+						    bridging the gap <br> between you and the <br> digital world
+						</h1>
+
+					</div>
+
+	                <!-- =cta-container  -->
+	                <div class="cta-container">
+	                	<button class="cta cta--contact">get in touch
 							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
 							  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
 							    <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
@@ -100,7 +173,7 @@
 	                      	<span class="btn-background btn-background--dull"></span>
 	                    </button>
 
-	                    <button class="cta">start a project
+	                    <button class="cta cta--hire">Hire Us
 							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
 							  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
 							    <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
@@ -108,34 +181,24 @@
 							</svg>
 	                      	<span class="btn-background btn-background--highlight"></span>
 	                    </button>
-                    </div> <!-- /cta-container ENDS  -->
+	            		<a class="cta cta--about muted-link" href="#">know more</a>
+	                </div> <!-- /cta-container ENDS  -->
 
-                    <a class="muted-link" href="#">know about our vision</a>
-                  </div>
-
-                  <!-- <div class="intro--options">
-                    <a href="#0">
-                      <h3>Metiew &amp; Smith</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-                    </a>
-                    <a href="#0">
-                      <h3>Fantasy interactive</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-                    </a>
-                    <a href="#0">
-                      <h3>Paul &amp; shark</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-                    </a>
-                  </div> -->
-                </div>
+                  
+				
+                </div><!-- /intro--banner ENDS -->
                 
-              </div>
+              </div> <!-- /intro ENDS -->
 
             </li>
 
             <li class="l-section section section--work">
               <div class="work">
-                <h2 class="section__title">our work</h2>
+                <h2 class="section__title">
+                	<span class="word">our</span>
+                	<span class="word">work</span>
+                </h2>
+
                 <div class="work__lockup">
                   
 					<div class="outer-slider__controls swiper-container">
@@ -490,59 +553,220 @@
 
               </div>
             </li>
-            <li class="l-section section">
-              <div class="about">
-                <div class="about--banner">
-                  <h2>We<br>believe in<br>passionate<br>people</h2>
-                  <a href="#0">Career
-                    <span>
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-                      <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-                        <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
-                      </g>
-                      </svg>
-                    </span>
-                  </a>
-                  <img src="assets/img/about-visual.png" alt="About Us">
-                </div>
-                <div class="about--options">
-                  <a href="#0">
-                    <h3>Winners</h3>
-                  </a>
-                  <a href="#0">
-                    <h3>Philosophy</h3>
-                  </a>
-                  <a href="#0">
-                    <h3>History</h3>
-                  </a>
-                </div>
-              </div>
+
+            <li class="l-section section section--about">
+				
+				<div class="about">
+
+				    <div class="about--banner">
+
+						<div class="slider swiper-container">
+							<div class="slider__wrapper swiper-wrapper">
+
+								<div class="slider__slide swiper-slide swiper-slide-1">
+									<h2>Why Us?</h2>
+
+									<h3>
+										Cause digital perfection 
+										<br>
+										is the cutting edge
+									</h3>
+
+									<a href="#0">Career
+										<span>
+										  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+										  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+										    <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+										  </g>
+										  </svg>
+										</span>
+									</a>
+
+									<div class="image"></div>
+									
+								</div>
+
+								<div class="slider__slide swiper-slide swiper-slide-2">
+									<h2>
+										Our Vision.
+									</h2>
+
+									<h3>
+										We<br>believe in<br>Thinking Digital
+									</h3>
+
+									<a href="#0">Career
+										<span>
+										  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+										  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+										    <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+										  </g>
+										  </svg>
+										</span>
+									</a>
+
+									<div class="image"></div>
+									
+								</div>
+
+								<div class="slider__slide swiper-slide swiper-slide-3">
+									<h2>
+										What's Coming
+									</h2>
+
+									<h3>
+										The future <br> of Digital <br> Revolution
+									</h3>
+
+									<a href="#0">Career
+										<span>
+										  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+										  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+										    <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+										  </g>
+										  </svg>
+										</span>
+									</a>
+
+									<!-- <div class="video-container">
+										<video loop autoplay>
+														                      	<source src="assets/videos/about/a8.mp4" type="video/mp4">
+														                     
+														                      	Your browser does not support the video tag.
+														                    </video>
+									</div> -->
+
+									<div class="image"></div>
+									
+								</div>
+
+							</div>
+
+						</div>
+
+				    </div>
+
+				    <div class="about--options">
+
+						<a href="#why" data-slide="0">
+							<h3>Why</h3>
+						</a>
+
+						<a href="#vision" data-slide="1">
+							<h3>Vision</h3>
+						</a>
+
+						<a href="#future" data-slide="2">
+							<h3>Future</h3>
+						</a>
+
+				    </div>
+
+				</div>
             </li>
 
-            <li class="l-section section">
+            <li class="l-section section section--contact">
               <div class="contact">
                 <div class="contact--lockup">
+
                   <div class="modal">
-                    <div class="modal--information">
-                      <p>Pawia 5, 31-154 Kraków, Poland</p>
-                      <a href="mailto:ouremail@gmail.com">ouremail@gmail.com</a>
-                      <a href="tel:+148126287560">+48 12 628 75 60</a>
-                    </div>
-                    <ul class="modal--options">
-                      <li><a href="#0">Bēhance</a></li>
-                      <li><a href="#0">dribbble</a></li>
-                      <li><a href="mailto:ouremail@gmail.com">Contact Us</a></li>
-                    </ul>
+	                    <div class="modal--information">
+	                      <ul>
+	                      	<li class="meet">
+	                      		<span class="icon ion-ios-people">
+	                      			
+	                      		</span>
+	                      		<span class="name">
+	                      			Meet Us:
+	                      		</span>
+	                      		<span class="detail">
+	                      			New Delhi, India
+	                      		</span>
+
+	                      	</li>
+	                      	<li>
+	                      		<span class="icon ion-ios-telephone">
+	                      			
+	                      		</span>
+	                      		<span class="name">
+	                      			Phone:
+	                      		</span>
+	                      		<span class="detail">
+	                      			<span class="main">
+	                      				<span class="numbers">91 9999 695369</span> (IN)
+                      				</span>
+                      				
+	                      			<span class="caption">11 am - 4 pm (IST)</span>
+
+	                      		</span>
+	                      	</li>
+
+	                      	<li>
+	                      		<span class="icon ion-social-whatsapp">
+	                      			
+	                      		</span>
+	                      		<span class="name">
+	                      			Whatsapp:
+	                      		</span>
+	                      		<span class="detail">
+	                      			<span class="main">
+	                      				<span class="numbers">91 9999 695369</span> (IN)
+	                      			</span>
+	                      			
+	                      			<span class="caption">Response in 24 hrs</span>
+	                      		</span>
+	                      	</li>
+
+	                      	<li>
+	                      		<span class="icon ion-ios-email">
+	                      			
+	                      		</span>
+	                      		<span class="name">
+	                      			E-Mail:
+	                      		</span>
+	                      		<span class="detail">
+	                      			<span class="main">
+	                      				<a href="mailto:studio@digitizingu.com">studio@digitizingu.com</a>
+	                      			</span>
+	                      			
+	                      			<span class="caption">Response in 48 hrs</span>
+	                      		</span>
+	                      	</li>
+
+	                      </ul>
+	                      <button class="cta cta--contact">
+	                      	Get In Touch
+	                      </button>
+	                    </div>
+	                    
+                  </div>
+
+                  <div class="social-media">
+	                  	<div class="equal social-media__heading">
+	                  		Get Social.
+	                  	</div>
+	                  	<a href="#" class="equal social-media__icon">
+	                  		<i class="ion-social-facebook"></i>
+	                  		
+	                  	</a>
+
+	                  	<a href="#" class="equal social-media__icon">
+	                  		<i class="ion-social-twitter"></i>
+	                  	</a>
+
                   </div>
                 </div>
+
               </div>
             </li>
             
                 <!-- section-hire | START A PROJECT -->
             <li class="l-section section section--hire">
+              
               <div class="hire">
+
                 <h2 class="section__title">
-                  start a project
+                  Hire Us
                   <!-- <span class="sub">select what you want us to work on</span> -->
                 </h2>
 
@@ -664,12 +888,16 @@
                   </button>
 
                 </form>
+
               </div>
+
             </li>
+
           </ul>
         </div>
       </div>
     </div>
+
     <ul class="outer-nav">
       <li class="is-active">Home</li>
       <li>Works</li>
@@ -677,6 +905,7 @@
       <li>Contact</li>
       <li>Hire us</li>
     </ul>
+
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

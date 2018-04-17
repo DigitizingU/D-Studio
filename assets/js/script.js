@@ -2,12 +2,79 @@
 
 $( document ).ready(function() {
 
-  var work = $('.work');
-  var hire = $('.hire');
+  var $document = this;
+
+  /*setInterval(function(){
+    alert("$(document).clientHeight: " + document.documentElement.clientHeight);
+    alert("$(document).innerHeight: " + $(document).innerHeight());
+  },5000);*/
+
+  function viewportDimensions(){
+
+    window.vh = $document.documentElement.clientHeight;
+    window.vw = $document.documentElement.clientWidth;
+    window.vmin = vh > vw ? vw : vh;
+    window.vmax = vh < vw ? vw : vh;
+
+  }
+
+  viewportDimensions();
+
+
+
+
+
+
+  updateToLastPos(); // update to the last known section
+
+  var body = $('body');
+  var work = body.find('.work');
+  var hire = body.find('.hire');
+  var about = body.find('.about');
+  var contact = body.find('.contact');
+  var formFields = body.find('input, textarea');
+
+  // nav menu links click handler
+  $('.side-nav li, .outer-nav li').click(function(){
+
+    if (!($(this).hasClass('is-active'))) {
+
+      var $this = $(this),
+          curActive = $this.parent().find('.is-active'),
+          curPos = $this.parent().children().index(curActive),
+          nextPos = $this.parent().children().index($this),
+          lastItem = $(this).parent().children().length - 1;
+
+      updateNavs(nextPos);
+      updateContent(curPos, nextPos, lastItem);
+
+    }
+  });
+
+  // cta buttons
+  $('.cta').click(function(){
+    var $this = $(this);
+
+    if ($this.hasClass('cta--contact')) {
+      var contactPopup = $('#contact__popup');
+
+      contactPopup.removeClass('off');
+
+    }else if($this.hasClass('cta--about')){
+      changeSlideTo(2); // about section is on index - 2
+    }else if($this.hasClass('cta--hire')){
+      changeSlideTo(4); // hire us section is on index - 4
+    }
+
+  });
+
+
+  /* START - functions for navigating through slides */
 
   // DOMMouseScroll included for firefox support
   var canScroll = true,
       scrollController = null;
+
   $(this).on('mousewheel DOMMouseScroll', function(e){
 
     if (!($('.outer-nav').hasClass('is-vis'))) {
@@ -34,37 +101,9 @@ $( document ).ready(function() {
       }
 
     }
-
   });
+  
 
-  $('.side-nav li, .outer-nav li').click(function(){
-
-    if (!($(this).hasClass('is-active'))) {
-
-      var $this = $(this),
-          curActive = $this.parent().find('.is-active'),
-          curPos = $this.parent().children().index(curActive),
-          nextPos = $this.parent().children().index($this),
-          lastItem = $(this).parent().children().length - 1;
-
-      updateNavs(nextPos);
-      updateContent(curPos, nextPos, lastItem);
-
-    }
-
-  });
-
-  $('.cta').click(function(){
-
-    var curActive = $('.side-nav').find('.is-active'),
-        curPos = $('.side-nav').children().index(curActive),
-        lastItem = $('.side-nav').children().length - 1,
-        nextPos = lastItem;
-
-    updateNavs(lastItem);
-    updateContent(curPos, nextPos, lastItem);
-
-  });
 
   // swipe support for touch devices
   var targetElement = document.getElementById('viewport'),
@@ -84,6 +123,32 @@ $( document ).ready(function() {
     }
 
   });
+
+  function updateToLastPos(){
+    
+    var lastKnownPos = sessionStorage.getItem('activeSectionClass');
+    
+    if (!(+lastKnownPos)) return;
+    var curPos = 0,
+        lastItem = $('.side-nav').children().length - 1,
+        nextPos = lastKnownPos;
+
+      /*if (curPos == 0){
+        nextPos = curPos - 1;*/
+        updateNavs(nextPos);
+        updateContent(curPos, nextPos, lastItem);
+      /*}
+      else if (curPos !== lastItem) {
+        nextPos = curPos + 1;
+        updateNavs(nextPos);
+        updateContent(curPos, nextPos, lastItem);
+      }
+      else {
+        updateNavs(nextPos);
+        updateContent(curPos, nextPos, lastItem);
+      }*/
+       
+  }
 
   // determine scroll, swipe, and arrow key direction
   function updateHelper(param) {
@@ -119,6 +184,8 @@ $( document ).ready(function() {
 
   }
 
+
+
   // sync side and outer navigations
   function updateNavs(nextPos) {
 
@@ -128,8 +195,12 @@ $( document ).ready(function() {
 
   }
 
+
   // update main content area
   function updateContent(curPos, nextPos, lastItem) {
+
+    // save the next active section for the session to restore on reload
+    sessionStorage.setItem('activeSectionClass',nextPos); 
 
     $('.main-content').children().removeClass('section--is-active');
     $('.main-content').children().eq(nextPos).addClass('section--is-active');
@@ -154,8 +225,10 @@ $( document ).ready(function() {
 
   }
 
+
   function outerNav() {
 
+    /* Opens the navigation menu */
     $('.header--nav-toggle').click(function(){
 
       $('.perspective').addClass('perspective--modalview');
@@ -166,6 +239,7 @@ $( document ).ready(function() {
 
     });
 
+    /* Closes the navigation menu on click of an item*/    
     $('.outer-nav--return, .outer-nav li').click(function(){
 
       $('.perspective').removeClass('effect-rotate-left--animate');
@@ -177,6 +251,91 @@ $( document ).ready(function() {
     });
 
   }
+
+  function changeSlideTo(updateTo){
+
+      var curActive = $('.side-nav').find('.is-active'),
+          curPos = $('.side-nav').children().index(curActive),
+          lastItem = $('.side-nav').children().length - 1,
+          nextPos = updateTo;
+
+      /*console.log('curActive: ' + curActive);
+      console.log('curPos: '+curPos);
+      console.log('lastItem: '+lastItem);
+      console.log('nextPos: '+nextPos);*/
+      updateNavs(updateTo);
+      updateContent(curPos, nextPos, lastItem);
+
+  }
+
+
+  /* END -  functions for navigating through slides */
+
+
+  function aboutSlider() {
+
+    var aboutSlider = about.find('.slider');
+    var options = about.find('.about--options a');
+
+    var slidingSpeed = 1500;
+
+    /*
+    var outerSliderPrevBtn = outerSlider.siblings('.slider--prev');
+    var outerSliderNextBtn = outerSlider.siblings('.slider--next');
+    */
+
+    /* var innerSlider = work.find('.inner-slider');
+
+    var innerSliderPrevBtn = work.find('.inner-slider__nav--prev');
+    var innerSliderNextBtn = work.find('.inner-slider__nav--next');
+
+    var outerSliderControls = work.find('.outer-slider__controls');
+
+    var outerSliderPrevBtn = work.find('.outer-slider__nav--prev');
+    var outerSliderNextBtn = work.find('.outer-slider__nav--next');
+
+    */
+
+    // init swiper slider for outer slides
+    var swiper = new Swiper (aboutSlider, {
+      init: true,
+      loop: true,
+      loopedSlides: 4,
+      speed: slidingSpeed,
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      normalizeSlideIndex: true,
+      direction: 'horizontal',
+      effect: 'fade',
+      normalizeSlideIndex: true,
+      fadeEffect: {
+        crossFade: true
+      },
+      controller:{
+        by: 'slide'
+      }
+      /*,
+      hashNavigation: true,
+      hashNavigation: {
+        watchState: true
+      }*/
+    });
+
+
+    options.on('click',function(){
+      var $this = $(this);
+      var slide = $this.data('slide');
+
+      swiper.slideTo(Number(slide), slidingSpeed);
+
+
+    });
+
+
+  } // END of aboutSlider Func
+
+
+
 
   function workSlider() {
     var activeInnerSlider;
@@ -359,15 +518,13 @@ $( document ).ready(function() {
 
     });
 
-
-
   } // END of workSlider Func
 
   
 
   function transitionLabels() {
 
-    $('.work-request--information input').focusout(function(){
+    formFields.focusout(function(){
 
       var textVal = $(this).val();
 
@@ -384,6 +541,21 @@ $( document ).ready(function() {
     });
 
   }
+
+
+  function smallScreenOptimizerForForms(){
+
+      formFields.on('focusin',function(){
+        console.log('focusin');
+        body.addClass('form-field-focused'); // add class of form-field-focused to body
+      });
+
+      formFields.on('focusout',function(){
+        console.log('focusin');
+        body.removeClass('form-field-focused'); // add class of form-field-focused to body
+      });
+  }
+
 
   function startProjectForm(){
       var startProjectForm = $('#startProjectForm');
@@ -434,16 +606,147 @@ $( document ).ready(function() {
           return false;  
       });
 
+  }
 
+  function contactForm(){
+    // alert();
+    var popup = $('#contact__popup');
+    var close = $('#close-contact-form');
+
+    console.log(popup);
+
+    // disabling swiping slide when popup is open
+
+    popup.on('mousewheel DOMMouseScroll',function(e){
+      console.log(e);
+      e.stopPropagation();
+    });
+
+    // swipe support for touch devices
+    var targetElement = document.getElementById('viewport'),
+        mc = new Hammer(targetElement);
+    mc.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+    mc.on('swipeup swipedown', function(e) {
+
+      console.log(e);
+
+    });
+
+    close.on('click',function(){
+      popup.toggleClass('off');
+    });
 
 
   }
 
+  function getViewportBasedHW(percentage,unit){
+
+    return percentage/100 * window[unit];
+
+  } /* getViewportBasedHW ENDS */
+
+
+  function applyViewportHeights(){
+    var l_viewport =  body.find('.l-viewport'); 
+
+    var work__lockup = work.find('.work__lockup'); // quering for using further
+
+    var outerSlider =  work__lockup.find('.outer-slider'); 
+
+    var innerSliderItemImageContainer =  
+    work__lockup.find('.inner-slider__item-image-container'); 
+
+
+    l_viewport.css({
+      height: (getViewportBasedHW(100,'vh')) + 'px' // height needs to be 100vh
+    });
+    
+    outerSlider.css({
+      height: (getViewportBasedHW(75,'vmin')) + 'px' // height needs to be 75vmin
+    });
+
+    innerSliderItemImageContainer.css({
+      height: (getViewportBasedHW(40,'vmin')) + 'px' // height needs to be 40vmin
+    });
+
+    /* 
+      using min widths (when default are already applied 
+      but needs to be overwritten with increasing widths)
+    */
+
+    if (vw > 767) {
+      innerSliderItemImageContainer.css({
+        height: (getViewportBasedHW(25,'vmin')) + 'px' // height needs to be 25vmin
+      });
+    }
+
+    if (vw > 899) {
+
+    }
+    
+    if (vw > 1199) {
+      outerSlider.css({
+        height: (getViewportBasedHW(55,'vmin')) + 'px' // height needs to be 75vmin
+      });
+
+    }
+
+    
+
+    
+
+
+    /* using max widths*/
+
+    if (vw < 400) {
+        innerSliderItemImageContainer.css({
+          height: (getViewportBasedHW(35,'vmin')) + 'px' // height needs to be 35vmin
+        });
+    }
+
+    /* using max widths and orientation*/
+
+    if (vw > vh) {
+
+      innerSliderItemImageContainer.css({
+        'min-height': 'auto' // height needs to be 25vmin
+      });
+
+      if (vw < 1200 && vw > vh) {
+          innerSliderItemImageContainer.css({
+            height: (getViewportBasedHW(30,'vmin')) + 'px' // height needs to be 25vmin
+          });
+      }
+
+    }
+
+
+
+
+
+  } /* applyViewportHeights ENDS */
+
+
+
+  $(window).on('resize',function(){
+    viewportDimensions();
+    applyViewportHeights();
+  }); /* on resize ENDS */
+  
+
+
   outerNav();
+  aboutSlider();
   workSlider();
+
   transitionLabels();
+  smallScreenOptimizerForForms();
 
   startProjectForm();
+  contactForm();
+
+  applyViewportHeights();
+
 
 });
 
