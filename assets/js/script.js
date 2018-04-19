@@ -3,18 +3,49 @@
 $( document ).ready(function() {
 
   var $document = this;
+  var body = $('body');
 
-  /*setInterval(function(){
-    alert("$(document).clientHeight: " + document.documentElement.clientHeight);
-    alert("$(document).innerHeight: " + $(document).innerHeight());
-  },5000);*/
+  if($document.ontouchstart){
+    window.touchAvail = true;
+    body.addClass('touch');
+
+  }else{
+    window.touchAvail = false;
+    body.removeClass('touch');
+
+  }
+
+
+
+/*
+
+setInterval(function(){
+  alert("$(document).clientHeight: " + document.documentElement.clientHeight);
+  alert("$(document).innerHeight: " + $(document).innerHeight());
+},5000);
+
+*/
+
+
 
   function viewportDimensions(){
 
     window.vh = $document.documentElement.clientHeight;
     window.vw = $document.documentElement.clientWidth;
+    window.wh = $(window).height();
+    window.ww = $(window).width();
+    window.dh = $(document).height();
+    window.dw = $(document).width();
     window.vmin = vh > vw ? vw : vh;
     window.vmax = vh < vw ? vw : vh;
+
+
+
+    if(vw< 1024){
+      body.addClass('mobile');
+    }else{
+      body.removeClass('mobile');
+    }
 
   }
 
@@ -27,12 +58,17 @@ $( document ).ready(function() {
 
   updateToLastPos(); // update to the last known section
 
-  var body = $('body');
+  
   var work = body.find('.work');
   var hire = body.find('.hire');
+
+  var hireWrapper = hire.children('.hire__wrapper');
+
+
   var about = body.find('.about');
   var contact = body.find('.contact');
   var formFields = body.find('input, textarea');
+  var contactPopup = $('#contact__popup');
 
   // nav menu links click handler
   $('.side-nav li, .outer-nav li').click(function(){
@@ -56,8 +92,7 @@ $( document ).ready(function() {
     var $this = $(this);
 
     if ($this.hasClass('cta--contact')) {
-      var contactPopup = $('#contact__popup');
-
+    
       contactPopup.removeClass('off');
 
     }else if($this.hasClass('cta--about')){
@@ -101,6 +136,7 @@ $( document ).ready(function() {
       }
 
     }
+  
   });
   
 
@@ -187,7 +223,7 @@ $( document ).ready(function() {
 
 
   // sync side and outer navigations
-  function updateNavs(nextPos) {
+  function updateNavs(nextPos) {      
 
     $('.side-nav, .outer-nav').children().removeClass('is-active');
     $('.side-nav').children().eq(nextPos).addClass('is-active');
@@ -330,7 +366,6 @@ $( document ).ready(function() {
 
 
     });
-
 
   } // END of aboutSlider Func
 
@@ -543,20 +578,6 @@ $( document ).ready(function() {
   }
 
 
-  function smallScreenOptimizerForForms(){
-
-      formFields.on('focusin',function(){
-        console.log('focusin');
-        body.addClass('form-field-focused'); // add class of form-field-focused to body
-      });
-
-      formFields.on('focusout',function(){
-        console.log('focusin');
-        body.removeClass('form-field-focused'); // add class of form-field-focused to body
-      });
-  }
-
-
   function startProjectForm(){
       var startProjectForm = $('#startProjectForm');
 
@@ -597,21 +618,28 @@ $( document ).ready(function() {
 
       }).on('form:submit',function(e){
 
-          console.log('Form Submitted');
+          console.log('Hire Form Submitted');
 
-          // write code here to submit to DB
+          // write code below  to submit to DB for hire form
+
+          // tip: hire section is cached in variable 
+          // above like this ` var hire = body.find('.hire'); ` 
+          // so find the form fields  like var formField = hire.find('something');
 
           
 
           return false;  
+
       });
 
   }
 
   function contactForm(){
     // alert();
-    var popup = $('#contact__popup');
-    var close = $('#close-contact-form');
+    var popup = contactPopup;
+    var close = popup.find('#close-contact-form');
+    var contactForm  = popup.find('form');
+    var emailField =  popup.find('#emailCF');
 
     console.log(popup);
 
@@ -622,7 +650,7 @@ $( document ).ready(function() {
       e.stopPropagation();
     });
 
-    // swipe support for touch devices
+    //  swipe support for touch devices
     var targetElement = document.getElementById('viewport'),
         mc = new Hammer(targetElement);
     mc.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
@@ -637,10 +665,56 @@ $( document ).ready(function() {
     });
 
 
+    // change validation messages and customize options
+
+      contactForm.parsley({
+        requiredMessage: 'This field is required'
+      });
+
+      emailField.parsley({
+        typeMessage: "Enter a valid e-mail address"
+      });
+
+      /*webServiceField.parsley({
+        requiredMessage: "Please select the digital service/s you want us to work on", // only works when using the first checkbox in the group
+        errorsContainer: function (Field) {
+          
+          return servicesCont;
+        },
+        classHandler: function (Field) {
+          return servicesCont;
+        }
+      });*/
+
+
+      // act to validation errors and success 
+
+    contactForm.parsley().on('form:error',function(){
+
+          alert('validation errors');  
+
+      }).on('form:submit',function(e){
+
+          console.log('Contact Form Submitted');
+
+          // write code below  to submit to DB for contact form
+          // tip: contact popup is cached in variable 
+          // above like this ` var contactPopup = $('#contact__popup'); ` 
+          // so we can find the form fields like var formField = contactPopup.find('something');
+
+          
+
+          return false;  
+          
+      });
+
+
+
   }
 
-  function getViewportBasedHW(percentage,unit){
 
+
+  function getViewportBasedHW(percentage,unit){
     return percentage/100 * window[unit];
 
   } /* getViewportBasedHW ENDS */
@@ -720,18 +794,68 @@ $( document ).ready(function() {
 
     }
 
-
-
-
-
   } /* applyViewportHeights ENDS */
+
+
+  function smallScreenOptimizerForForms(){
+
+      formFields.on('focusin',function(){
+        console.log('focusin');
+        body.addClass('form-field-focused'); // add class of form-field-focused to body
+
+        hireWrapper.css({
+          minHeight: hireWrapperHeight  + 'px'
+        });
+
+
+        hire.on('mousewheel DOMMouseScroll',function(e){
+          e.stopPropagation();
+        });
+
+      });
+
+
+      formFields.on('focusout',function(){
+        console.log('focusout');
+        body.removeClass('form-field-focused'); // add class of form-field-focused to body
+
+        hireWrapper.css({
+          minHeight: 'auto'
+        });
+
+        hire.off('mousewheel DOMMouseScroll');
+
+      });
+
+  }
 
 
 
   $(window).on('resize',function(){
+
     viewportDimensions();
     applyViewportHeights();
+
   }); /* on resize ENDS */
+
+
+  $(window).on('load',function(){
+
+    window.hireWrapperHeight = hireWrapper.height();
+    window.setInterval(function(){
+      console.log(hireWrapperHeight);
+    },3000);
+
+  });
+  
+
+/*  if (typeof touchstart) {
+    alert(true);
+  }
+
+  if (document.click) {
+    alert(false);
+  }*/
   
 
 
@@ -750,86 +874,3 @@ $( document ).ready(function() {
 
 });
 
-
-
-
-
-/* 
-
- $('.slider--prev, .slider--next').click(function() {
-
-      var $this = $(this),
-          curLeft = $('.slider').find('.slider--item-left'),
-          curLeftPos = $('.slider').children().index(curLeft),
-          curCenter = $('.slider').find('.slider--item-center'),
-          curCenterPos = $('.slider').children().index(curCenter),
-          curRight = $('.slider').find('.slider--item-right'),
-          curRightPos = $('.slider').children().index(curRight),
-          totalWorks = $('.slider').children().length,
-          $left = $('.slider--item-left'),
-          $center = $('.slider--item-center'),
-          $right = $('.slider--item-right'),
-          $item = $('.slider--item');
-
-      $('.slider').animate({ opacity : 0 }, 400);
-
-      setTimeout(function(){
-
-      if ($this.hasClass('slider--next')) {
-        if (curLeftPos < totalWorks - 1 && curCenterPos < totalWorks - 1 && curRightPos < totalWorks - 1) {
-          $left.removeClass('slider--item-left').next().addClass('slider--item-left');
-          $center.removeClass('slider--item-center').next().addClass('slider--item-center');
-          $right.removeClass('slider--item-right').next().addClass('slider--item-right');
-        }
-        else {
-          if (curLeftPos === totalWorks - 1) {
-            $item.removeClass('slider--item-left').first().addClass('slider--item-left');
-            $center.removeClass('slider--item-center').next().addClass('slider--item-center');
-            $right.removeClass('slider--item-right').next().addClass('slider--item-right');
-          }
-          else if (curCenterPos === totalWorks - 1) {
-            $left.removeClass('slider--item-left').next().addClass('slider--item-left');
-            $item.removeClass('slider--item-center').first().addClass('slider--item-center');
-            $right.removeClass('slider--item-right').next().addClass('slider--item-right');
-          }
-          else {
-            $left.removeClass('slider--item-left').next().addClass('slider--item-left');
-            $center.removeClass('slider--item-center').next().addClass('slider--item-center');
-            $item.removeClass('slider--item-right').first().addClass('slider--item-right');
-          }
-        }
-      }
-      else {
-        if (curLeftPos !== 0 && curCenterPos !== 0 && curRightPos !== 0) {
-          $left.removeClass('slider--item-left').prev().addClass('slider--item-left');
-          $center.removeClass('slider--item-center').prev().addClass('slider--item-center');
-          $right.removeClass('slider--item-right').prev().addClass('slider--item-right');
-        }
-        else {
-          if (curLeftPos === 0) {
-            $item.removeClass('slider--item-left').last().addClass('slider--item-left');
-            $center.removeClass('slider--item-center').prev().addClass('slider--item-center');
-            $right.removeClass('slider--item-right').prev().addClass('slider--item-right');
-          }
-          else if (curCenterPos === 0) {
-            $left.removeClass('slider--item-left').prev().addClass('slider--item-left');
-            $item.removeClass('slider--item-center').last().addClass('slider--item-center');
-            $right.removeClass('slider--item-right').prev().addClass('slider--item-right');
-          }
-          else {
-            $left.removeClass('slider--item-left').prev().addClass('slider--item-left');
-            $center.removeClass('slider--item-center').prev().addClass('slider--item-center');
-            $item.removeClass('slider--item-right').last().addClass('slider--item-right');
-          }
-        }
-      }
-
-    }, 400);
-
-    $('.slider').animate({ opacity : 1 }, 400);
-
-    });
-
-
-
-*/

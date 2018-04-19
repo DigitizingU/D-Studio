@@ -1,13 +1,19 @@
+.touch.form-field-focused .hire__wrapper
+  padding: 0 0 4.375rem
+
 .hire
-  position: relative
-  display: flex
+  position: relative  
   width: 100%
   max-width: 500px
   height: 100%
-  flex-direction: column
-  justify-content: center
   margin: 0 auto
+  overflow: hidden
+  overflow-y: auto
 
+  .hire__wrapper
+    display: flex
+    flex-direction: column
+    justify-content: center
 
 
 .work-request
@@ -284,7 +290,7 @@
 @media all and (max-width: 1200px) and (orientation: landscape)
 
 
-  .hire
+  body:not(.form-field-focused) .hire
     width: 100%
     min-width: auto
     justify-content: flex-start
@@ -293,7 +299,7 @@
       font-size: 2.5rem
       margin-bottom: 1rem
 
-  .work-request
+  body:not(.form-field-focused) .work-request
     >label
       margin-bottom: 1.25rem
 
@@ -346,11 +352,11 @@
 @media all and (max-width: 960px) and (orientation: landscape)
 
 
-  .hire
+  body:not(.form-field-focused) .hire
     .section__title
       font-size: 2rem
 
-  .work-request
+  body:not(.form-field-focused) .work-request
     >label
       margin-bottom: 0
 
@@ -383,11 +389,11 @@
 
 @media all and (max-width: 840px) and (orientation: landscape)
 
-  .hire
+  body:not(.form-field-focused) .hire
     .section__title
       margin-bottom: 0
 
-  .work-request
+  body:not(.form-field-focused) .work-request
     >label
       font-size: 1rem  
 
@@ -418,7 +424,7 @@
 
 
 
-  .work-request
+  body:not(.form-field-focused) .work-request
     >label
       display: none
 
@@ -436,48 +442,3 @@
       padding: .9rem 0 .7rem
       font-size: 1.2rem
 
-
-// @media (max-width: 767px)
-
-//   .work-request
-
-//     &--options
-//       flex-direction: row
-//       justify-content: space-around
-
-//       .options-a,
-//       .options-b
-//         display: block
-//         width: auto
-
-
-
-// @media (max-width: 600px)
-
-//   .work-request
-
-//     &--options
-//       margin: 20px 0
-
-//       @media (max-width: 415px)
-//         justify-content: space-between
-
-//       label
-//         width: 150px
-//         margin-bottom: 15px
-//         font-size: 14px
-
-//       input[type="checkbox"]
-
-//         &:checked + label
-
-//           & svg
-//             width: 12px
-
-//     &--information
-//       margin-bottom: 30px
-
-//       .information-name,
-//       .information-email
-//         height: 40px
-//         font-size: 24px
