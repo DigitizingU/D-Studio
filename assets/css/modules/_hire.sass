@@ -14,6 +14,7 @@
     display: flex
     flex-direction: column
     justify-content: center
+    height: 100%
 
 
 .work-request
@@ -27,8 +28,9 @@
     font-size: 1.2rem
     font-weight: 300
     align-self: center
-    text-transform: capitalize
-    word-spacing: .2em
+    text-transform: lowercase
+    letter-spacing: .04em
+    word-spacing: .1em
     color: rgba(255,255,255,.9)
 
   .parsley-errors-list
@@ -212,13 +214,13 @@
       font-size: 14px
 
 
-@media (max-width: 400px) and (max-height: 500px)
+@media (max-width: $featurephones) and (max-height: 500px)
   
   &--services   
       label
         margin-bottom: .5rem
 
-@media all and (min-width: 600px)
+@media all and (min-width: $smartphones)
 
   .hire
     width: 65%
@@ -228,7 +230,7 @@
   .work-request
 
     >label
-      font-size: 1.5rem  
+      font-size: 2rem  
 
     .parsley-errors-list
       font-size: 1.2rem
@@ -266,7 +268,7 @@
 
 
 
-@media all and (min-width: 1200px)
+@media all and (min-width: $desktops)
 
 
   .work-request
@@ -287,7 +289,7 @@
       
 
 
-@media all and (max-width: 1200px) and (orientation: landscape)
+@media all and (max-width: $desktops) and (orientation: landscape)
 
 
   body:not(.form-field-focused) .hire
@@ -420,7 +422,7 @@
 
 
 
-@media all and (max-width: 600px) and (orientation: landscape)
+@media all and (max-width: $smartphones) and (orientation: landscape)
 
 
 

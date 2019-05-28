@@ -237,7 +237,7 @@
 
 
 
-@media all and (min-width: 768px)
+@media all and (min-width: $tablets)
 
   .work__lockup
 
@@ -297,7 +297,7 @@
 
 
 
-@media all and (min-width: 1200px)
+@media all and (min-width: $desktops)
 
   .work
 
@@ -335,7 +335,7 @@
             
 
 
-@media all and (max-width: 1200px) and (orientation: landscape)
+@media all and (max-width: $desktops) and (orientation: landscape)
   
   .work
     flex-direction: row
@@ -365,7 +365,7 @@
         top: 70%      
   
 
-@media all and (max-width: 1200px) and (orientation: landscape) and (min-height: 600px)
+@media all and (max-width: $desktops) and (orientation: landscape) and (min-height: 600px)
 
   .work__lockup
 
@@ -377,14 +377,14 @@
           display: block
     
   
-@media all and (max-width: 900px) and (orientation: landscape)
+@media all and (max-width: $laptops) and (orientation: landscape)
   
   .work
     .section__title
       font-size: 2.5rem
       
 
-@media all and (max-width: 600px) and (orientation: landscape)
+@media all and (max-width: $smartphones) and (orientation: landscape)
     
   .work
     .section__title
@@ -393,12 +393,12 @@
 
 
 
-@media all and (max-width: 1180px)
+@media all and (max-width: $desktops)
     .work
       max-width: 100%
 
 
-@media all and (max-width: 400px)
+@media all and (max-width: $featurephones)
     .work__lockup
       
       .inner-slider

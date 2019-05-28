@@ -137,18 +137,31 @@ function swallowError (error) {
 	});
 
 
+	gulp.task('js:dist',['vendorJS'],function(){ 
+		        return gulp.src(['./assets/js/script.js'])
+		        .pipe(plumber({
+					errorHandler: onError
+				}))
+		        .pipe(concat('script.min.js'))
+		        .pipe(uglify())
+		        .pipe(gulp.dest('./assets/js/'))
+
+		        .pipe( browserSync.reload({stream:true}) );
+	});
+
+
 	// task for concatenating, uglifying, linting the primary js file, On file modification (it doesn't run any dependent tasks first)
-	gulp.task('js:watch',function(){ 
+	gulp.task('js-watch',function(){ 
 		        return gulp.src(['./assets/js/script.js'])
 		        .pipe(plumber({
 					errorHandler: onError
 				}))
 				.pipe(sourcemaps.init())
 		        .pipe(concat('script.min.js'))
-		        .pipe(eslint())
+		        // .pipe(eslint())
 		        // eslint.format() outputs the lint results to the console. 
 		        // Alternatively use eslint.formatEach() (see Docs). 
-		        .pipe(eslint.formatEach())
+		        // .pipe(eslint.formatEach())
 		        // To have the process exit with an error code (1) on 
 		        // lint error, return the stream and pipe to failAfterError last. 
 		        // .pipe(eslint.failAfterError())
@@ -156,9 +169,24 @@ function swallowError (error) {
 		        .pipe(sourcemaps.write())
 
 		        .pipe(gulp.dest('./assets/js/'))
+		 
+		        .pipe( browserSync.reload({stream:true}) );
+	});
+
+
+	// task for concatenating, uglifying, linting the primary js file, On file modification (it doesn't run any dependent tasks first)
+	gulp.task('js-watch:dist',function(){ 
+		        return gulp.src(['./assets/js/script.js'])
+		        .pipe(plumber({
+					errorHandler: onError
+				}))
+		        .pipe(concat('script.min.js'))
+		        .pipe(uglify())
+		        .pipe(gulp.dest('./assets/js/'))
 		        
 		        .pipe( browserSync.reload({stream:true}) );
 	});
+
 
 	
 
@@ -188,7 +216,7 @@ function swallowError (error) {
 	gulp.task('sass', function(){ 
 			var postcssPlugins = [
 		        cssnext({browsers: ['last 3 version']})
-		    ];	
+		    ];
 
 	        return gulp.src(['./assets/css/*.scss','./assets/css/*.sass'])
 	        .pipe(plumber({
@@ -197,9 +225,27 @@ function swallowError (error) {
 			.pipe(sourcemaps.init())
 	        .pipe(sass())
 	        .pipe(postcss(postcssPlugins))
-	        // .pipe(cleanCss())
 	        .on('error', swallowError)
 	        .pipe(sourcemaps.write())
+	        .pipe(gulp.dest('./assets/css/'))
+	        .pipe( browserSync.stream() );
+
+	});
+
+
+	gulp.task('sass:dist', function(){ 
+			var postcssPlugins = [
+		        cssnext({browsers: ['last 3 version']})
+		    ];	
+
+	        return gulp.src(['./assets/css/*.scss','./assets/css/*.sass'])
+	        .pipe(plumber({
+				errorHandler: onError
+			}))
+	        .pipe(sass())
+	        .pipe(postcss(postcssPlugins))
+	        .pipe(cleanCss())
+	        .on('error', swallowError)
 	        .pipe(gulp.dest('./assets/css/'))
 	        .pipe( browserSync.stream() );
 
@@ -241,16 +287,34 @@ function swallowError (error) {
 	gulp.task('watch_serve', function(){
 		browserSync.init({
 	        // server: "./"
-	        proxy: "localhost:1234/DU-Lite" // change this to your server proxy address
+	        proxy: "localhost:1234/old-projects/d-studio/DU-Lite" // change this to your server proxy address
 	    });
 
-		gulp.watch(['./assets/js/*.js'],['js:watch']);
+		gulp.watch(['./assets/js/*.js'],['js-watch']);
 		gulp.watch(['./assets/css/**/*.scss',
 					'./assets/css/**/*.sass'],['sass']);
 		
 		gulp.watch(['./*.html','./*.php'],['html']);
 
 	});
+
+
+
+
+	gulp.task('watch_serve:dist', function(){
+		browserSync.init({
+	        // server: "./"
+	        proxy: "localhost:1234/old-projects/d-studio/DU-Lite" // change this to your server proxy address
+	    });
+
+		gulp.watch(['./assets/js/*.js'],['js-watch:dist']);
+		gulp.watch(['./assets/css/**/*.scss',
+					'./assets/css/**/*.sass'],['sass:dist']);
+		
+		gulp.watch(['./*.html','./*.php'],['html']);
+
+	});
+
 
 
 
@@ -268,6 +332,10 @@ function swallowError (error) {
 		gulp.watch(['./*.html','./*.php'],['html']);
 
 	});
+
+
+
+
 
 
 
@@ -302,6 +370,12 @@ function swallowError (error) {
 	/* =run task : execute for getting a build and proxying to a server while development */
 	gulp.task('run', ['js','sass'],function(){
 		gulp.start('watch_serve');
+	});
+
+
+	/* =run:dist task : execute for getting a dist build and proxying to a server while development */
+	gulp.task('run:dist', ['js:dist','sass:dist'],function(){
+		gulp.start('watch_serve:dist');
 	});
 
 

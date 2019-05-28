@@ -198,7 +198,7 @@
 
 
 
-@media (min-width: 600px)
+@media (min-width: $smartphones)
 
   .about
 
@@ -226,7 +226,7 @@
 
     
 
-@media (min-width: 768px)
+@media (min-width: $tablets)
 
   .about
     width: 100%
@@ -315,21 +315,21 @@
 
 
 
-@media (min-width: 900px)
+@media (min-width: $laptops)
 
   .about
 
     width: 90%
 
  
-@media (min-width: 1200px)
+@media (min-width: $desktops)
 
   .about
     width: 70%
 
  
 
-@media (max-width: 1200px) and (orientation: landscape)
+@media (max-width: $desktops) and (orientation: landscape)
   
   .about
     flex-direction: row
@@ -411,7 +411,7 @@
         font-size: 1rem
 
   
-@media (max-width: 1200px) and (orientation: landscape) and (min-width: 800px)
+@media (max-width: $desktops) and (orientation: landscape) and (min-width: $tablets)
   
   .about
     &--banner
@@ -420,7 +420,7 @@
         height: 70%
 
 
-@media (max-width: 1200px) and (orientation: landscape) and (min-height: 600px)
+@media (max-width: $desktops) and (orientation: landscape) and (min-height: $smartphones)
 
   
   .about
