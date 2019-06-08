@@ -11,22 +11,22 @@
 .header
   position: absolute
   top: 0
-  left: -7%
-  right: -7%
+  left: -2%
+  right: -2%
   display: flex
-  height: 70px
+  height: 55px
   align-items: center
   justify-content: space-between
   z-index: 101
 
   &--logo
     overflow: hidden
-    width: 110px
+    width: 77px
+    height: 55px
+    position: relative
     top: 10px
     left: 0
-    height: 70px
     display: flex
-    position: relative
     align-items: flex-end
     text-decoration: none
     color: $white
@@ -37,29 +37,28 @@
     &:after
       @include pseudo
       // border: 1px solid red
-      top: 5px
-      left: -7px
-      width: 50px
-      height: 50px
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
       bottom: auto
       right: auto
-      background: url("../img/logo-xs.png") no-repeat
-      background-size: 100% 100%
+      background: url("../img/logos/Web Logo - DigitizingU Studio 0.5x.png") no-repeat
+      background-size: 100%
       
       // animation: logo 200s linear infinite both
 
 
     p
-      // display: none
+      display: none
       margin: 0 0
       position: relative
-      top: 4px
-      left: 40px
-      font-size: 13.5px
-      font-weight: 400
+      top: 5px
+      left: 25px
+      font-size: 12.5px
+      font-weight: 500
       letter-spacing: .2em
       text-transform: uppercase
-      // transform: rotate(-90deg)
       z-index: 2
 
       span.big
@@ -70,11 +69,13 @@
       // transform: rotate(45deg) scaleY(1.3)
 
   &--nav-toggle
+    position: relative
+    top: 5px
     display: flex
     width: 50px
     height: 50px
     flex-direction: column
-    align-items: center
+    align-items: flex-end
     justify-content: center
     cursor: pointer
 
@@ -83,17 +84,17 @@
     &::after
       content: ""
       position: relative
-      width: 16px
-      height: 2px
+      width: 65%
+      height: 3px
       background-color: $white
 
     &::before
-      bottom: 5px
-      width: 23px
+      bottom: 7px
+      width: 65%
 
     &::after
-      top: 5px
-      width: 23px
+      top: 7px
+      width: 35%
 
   &--cta
     position: absolute
@@ -122,3 +123,40 @@
 
     @media (max-width: $tablets)
       display: none
+
+
+@media (min-width: $smartphones)
+  
+  .header
+    left: -2%
+    right: -2%
+    height: 70px
+    
+
+
+
+
+@media (min-width: $desktops)
+
+  
+  .header
+    left: -7%
+    right: -7%
+    height: 70px
+    
+
+    &--logo
+      width: 98px
+      height: 70px
+
+      
+      &:after
+        background: url("../img/logos/Web Logo - DigitizingU Studio.png") no-repeat
+        background-size: 100%
+
+
+
+
+    &--nav-toggle
+      margin-right: 10px
+

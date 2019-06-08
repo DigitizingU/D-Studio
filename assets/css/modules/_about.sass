@@ -1,3 +1,35 @@
+.section--about
+  
+  .bg-2
+    background: 
+      image: $section-overlay-bright
+      position: 50% 50%
+      size: cover
+      repeat: no-repeat
+
+  .bg-1
+    background: 
+      image: $gradient2
+      position: 50% 50%
+      size: cover
+      repeat: no-repeat
+
+  
+  .bg-img
+    background: 
+      image: url("../img/effect-3-1200-min.jpg")
+      position: 50% 50%
+      size: cover
+      repeat: no-repeat
+
+    @media (min-width: $laptops)
+      background: 
+        image: url("../img/effect-3-min.jpg")
+        position: 50% 50%
+        size: cover
+        repeat: no-repeat
+
+
 .about
   position: relative
   display: flex
@@ -21,7 +53,7 @@
       top: 0rem
       left: 5rem
       transform: rotate(-25deg)
-      border: 5px solid $primaryHighlight
+      border: 5px solid $black
       border-right-color: transparent
       border-bottom-color: transparent
 
@@ -33,50 +65,196 @@
       transform: rotate(45deg)
       width: 10px
       height: 10px
-      background-color: $primaryHighlight
+      background-color: $black
 
     .slider
       height: 100%
 
+    .slide-content
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      flex-wrap: wrap
+      margin-top: 4rem
+
+    .extra-content
+      display: flex
+      flex-direction: column
+
 
     h2
+      flex: 1 1 auto
       position: relative
       margin-top: 0
-      margin-bottom: 3.5rem
+      margin-bottom: 1.5rem
       font-size: 2.8rem
       word-spacing: .15em
       font-weight: 400
       line-height: 1
       z-index: 1
+      
 
-      &::before
-        z-index: -1
-        content: ""
-        position: absolute
-        top: 0rem
-        left: 11.375rem
-        width: 1.875rem
-        height: 1.875rem
-        background-color: $primaryHighlight
-        border-radius: 50%
-
+      &::before,
       &::after
         z-index: -1
         content: ""
         position: absolute
-        top: 7.8125rem
-        left: 7.8125rem
+        background-color: $black
+        opacity: .5
+        z-index: -1
+
+      &::before
+        top: 0
+        left: 182px
+        width: 20px
+        height: 20px
+        border-radius: 50%
+
+      &::after
+        top: 55px
+        left: 125px
         width: 10px
         height: 10px
-        background-color: $primaryHighlight
     
+
     h3
+      display: inline-block
+      flex: 1 1 auto
+      align-self: flex-start
+      margin: 1.5rem 0 .5rem
       position: relative
-      font-size: 2.3rem
+      font-size: 2rem
       font-weight: 500
       word-spacing: .15em
       line-height: 1.1em
       z-index: 2
+    
+    h3,
+    ul
+        align-self: center
+
+
+
+    ul>li
+      font-size: 1.5rem
+      letter-spacing: .05em
+      text-transform: lowercase
+
+      .icon
+        display: inline-block
+
+      .arrow
+        position: relative
+        top: 0px
+        padding-right: 5px
+        font-size: 1rem
+        line-height: 1em
+
+      .info
+        font-size: 1.2rem
+        padding-left: 5px
+
+    p
+      display: none
+      
+    .image
+      flex: 0 0 auto
+      width: 200px // calc from 800*600 res 1.33 Ratio
+      height: 150px
+      position: relative
+      right: 0
+      background: 
+        size: contain
+        repeat: no-repeat
+        position: 50% 50%
+      border-radius: 5px
+      box-shadow: 0 0px 40px 0px $secondaryHighlight
+      z-index: 1
+
+
+
+      @media (max-width: $featurephones_)
+        width: 133px // calc from 800*600 res 1.33 Ratio
+        height: 100px
+
+      @media (min-width: $smartphones)
+        width: 266px // calc from 800*600 res 1.33 Ratio
+        height: 200px
+
+      @media (min-width: $laptops)
+        width: 359px // calc from 800*600 res 1.33 Ratio
+        height: 270px
+
+      @media (min-width: $desktops)
+        align-self: flex-end
+        order: 1
+        margin-right: 2.2rem
+
+
+      @media (min-width: $largedesktops)
+        // align-self: flex-end
+        width: 425px // calc from 800*600 res 1.33 Ratio
+        height: 320px
+        // box-shadow: 0 0px 40px 0px $secondaryHighlight
+        // border-radius: 5px
+        align-self: flex-end
+        order: 1
+        margin-right: 2.5rem
+        
+
+
+
+    .swiper-slide-1 .image
+      // background-image: url("../gif/designs/1-200-min.gif")
+      // background-size: 225px 168px 
+
+      @media (max-width: $featurephones_)
+        background: 
+          size: 138px 100px !important
+      
+      // @media (min-width: $smartphones)
+        // background-image: url("../gif/designs/1-300-min.gif") !important
+        // background: 
+          // size: 291px 216px !important
+
+
+      // @media (min-width: $laptops)
+        // background-image: url("../gif/designs/1-500-min.gif") !important
+        // background: 
+          // size: 372px 275px !important
+
+      // @media (min-width: $largedesktops)
+        // background-image: url("../gif/designs/1-min.gif") !important
+        // background: 
+          // size: 472px 350px !important
+        
+
+      
+        
+
+    .swiper-slide-2 .image
+      // background-image: url("../gif/designs/special/14-200-min.gif") !important
+      // background-size: 225px 168px !important
+
+      @media (max-width: $featurephones_)
+        background-size: 138px 100px !important
+
+      // @media (min-width: $smartphones)
+        // background-image: url("../gif/designs/special/14-300-min.gif") !important
+        // background-size: 291px 216px !important
+ 
+
+      // @media (min-width: $laptops)
+        // background-image: url("../gif/designs/special/14-500-min.gif") !important
+        // background-size: 372px 275px !important
+
+      // @media (min-width: $largedesktops)
+        // background-image: url("../gif/designs/special/14-min.gif") !important
+        // background-size: 472px 350px !important
+
+      
+
 
     .video-container
       position: absolute
@@ -119,84 +297,125 @@
         fill: $white
         transition: left .2s ease-in-out
 
-    .image
-      position: absolute
-      z-index: 1
-      height: 70%
-      width: 50%
-      right: 0
-      top: 0
-      background: 
-        size: contain
-        repeat: no-repeat
-        position: 100% 0
-
-
-    .swiper-slide-1 .image
-      background-image: url("../img/trans (1).png")
-      background: 
-        size: contain
-        repeat: no-repeat
-        position: 100% 0
-
-    .swiper-slide-2 .image
-      background-image: url("../img/trans (3).png")
-      background: 
-        size: contain
-        repeat: no-repeat
-        position: 100% 70%
-
-    .swiper-slide-3 .image
-      background-image: url("../img/trans (5).png")
-      background: 
-        size: contain
-        repeat: no-repeat
-        position: 100% 50%
-      
 
   &--options
     display: flex
+    position: relative
     max-width: 100%
-    justify-content: space-between
+    justify-content: space-evenly
     margin: 0
-    margin-top: 2rem
+    margin-top: 1rem
     padding: 0
     list-style: none
+    z-index: $z3
 
     & > a
       position: relative
       width: 60px
-      height: 65px
+      height: 60px
       text-decoration: none
       color: $white
-      border: 0.625rem solid lighten($primaryHighlight,2%)
       background:
-        position: center
-        size: contain
-        repeat: no-repeat
+        size: 100%
+        image: linear-gradient(0deg,rgba(173,42,92,.45), rgba(17,37,214,.45))
+      background: $black
+      border: 4px solid $primaryHighlight
+      border-radius: 4px
+  
+      &:after
+        @include pseudo
+        top: 10%
+        bottom: 10%
+        left: 10%
+        right: 10%
+        background:
+          position: 50%
+          size: contain
+          repeat: no-repeat
+      
+      .icon
+        @include absolute
+        width: 100%
+        height: 100%
+        text-align: center
 
-      &:nth-child(1)
-        background-image: url("../img/trans (1).png"), linear-gradient(0deg,rgba(173,42,92,.45), rgba(17,37,214,.45))
+        i
+          display: inline-block
+          font-size: 2rem
+          line-height: 50px
+          color: lighten($primaryHighlight,5%)
+          animation: little-float 2.5s ease infinite both alternate
+          transform: none
 
-      &:nth-child(2)
-        background-image: url("../img/trans (3).png"), linear-gradient(-135deg,rgba(173,42,92,.45), rgba(17,37,214,.45))
-
-      &:nth-child(3)
-       background-image: url("../img/trans (5).png"), linear-gradient(45deg,rgba(173,42,92,.45), rgba(17,37,214,.45))
+        @keyframes little-float
+          0%
+            transform: translateY(-3px)
+          100%
+            transform: translateY(3px)
+      
 
       &:hover
+        box-shadow: 0 5px 25px $primaryHighlight
+
         h3
           bottom: -50px
+
 
     h3
       position: absolute
       bottom: -38px
       left: 3px
-      font-size: 16px
+      font-size: 1.1rem
+      letter-spacing: .005em
       text-transform: uppercase
       transition: bottom .2s ease-in-out, left .2s ease-in-out
 
 
+
+@media (max-width: $featurephones_)
+
+  .about
+    &--banner
+
+      h2
+        font-size: 2rem   
+
+      h3
+        font-size: 1.3rem
+      
+
+      ul>li
+        font-size: 1.1rem
+
+        .arrow
+          font-size: .9rem
+
+        .info
+          font-size: 1rem
+
+      
+    
+    &--options
+
+      & > a
+        width: 50px
+        height: 50px
+   
+        .icon
+          i
+            display: inline-block
+            font-size: 1.8rem
+            line-height: 40px
+        
+
+        &:hover
+          h3
+            bottom: -45px
+
+      h3
+        bottom: -33px
+        font-size: 1rem
+      
 
 @media (min-width: $smartphones)
 
@@ -206,245 +425,468 @@
       height: auto
 
       &::before
-        left: 155px
+        left: 11rem
 
       &::after
-        left: 310px
+        left: 25rem
+
+      .slide-content
+        margin-top: 0
 
       h2
         margin-top: 0
-        font-size: 55px
+        margin-bottom: 2.5rem
+        font-size: 3.2rem
 
         &::before
           top: 43px
-          left: 214px
+          left: 254px
+          width: 30px
+          height: 30px
 
         &::after
-          top: 205px
-          left: 205px
+          top: 175px
+          left: 75px
+          width: 20px
+          height: 20px
+      
+      
 
 
+      
+      h3
+        font-size: 2.4rem
+        margin: 2.5rem 0 1rem
+        
+      
+      ul>li
+        font-size: 1.8rem
+
+      .icon
+        &.arrow
+          font-size: 1.5rem
+        &.info
+          font-size: 1.7rem
+
+    &--options
+      margin-top: 2rem
+
+      & > a
+        width: 80px
+        height: 80px    
+        border-width: 5px
+        // border-radius: 4px
     
+        .icon
+          @include absolute
+          width: 100%
+          height: 100%
+          text-align: center
+
+          i
+            font-size: 3rem
+            line-height: 70px
+            animation: little-float 2.5s ease infinite both alternate
+        
+
+          // @keyframes little-float
+          //   0%
+          //     transform: translateY(-3px)
+          //   100%
+          //     transform: translateY(3px)
+
+        &:hover
+          h3
+            bottom: -60px
+
+
+      h3
+        bottom: -46px
+        font-size: 1.4rem
+        letter-spacing: .03em
+        
+
+@media (min-width: $featurephones) and (orientation: landscape) and (max-height: $smartphones_) and (max-width: $laptops_) 
+
+  .about 
+    &--banner  
+
+      h2
+        margin-bottom: 0
+        font-size: 2rem   
+
+      h3
+        font-size: 1.3rem
+        margin-top: 1rem
+      
+      h3,
+      ul
+        align-self: center
+
+      ul>li
+        font-size: 1rem
+
+        .arrow
+          font-size: .9rem
+
+        .info
+          font-size: .8rem
+
+      .image
+        display: none
+
+    &--options
+
+      & > a
+        width: 50px
+        height: 50px
+   
+        .icon
+          i
+            display: inline-block
+            font-size: 1.8rem
+            line-height: 40px
+        
+
+        &:hover
+          h3
+            bottom: -42px
+
+      h3
+        left: 0
+        bottom: -33px
+        font-size: .9rem
+      
+
 
 @media (min-width: $tablets)
 
   .about
-    width: 100%
-    max-width: 1400px
-    height: 100%
 
     &--banner
-      height: 350px
 
       &::before
         top: 1.25rem
         left: 12.5rem
 
-      &::after
-        top: 4.6875rem
-        left: 25rem
-
       h2
-        margin-top: 0
-        font-size: 3.2rem
-
         &::before
-          top: 3.75rem
-          left: 16.75rem
+          top: 60px
+          left: 268px
+
 
         &::after
-          top: 15.9375rem
-          left: 15.9375rem
+          top: 255px
+          left: 255px
+          // width: 20px
+          // height: 20px
+          
 
       h3
-        position: relative
-        font-size: 2.75rem
-        font-weight: 500
-        letter-spacing: .02em
+        margin: 3rem 0 1rem
+        // font-size: 3rem
         
 
+      
+      // ul>li
+      //   font-size: 2rem
 
-      .image
-        height: 90%
-        width: 50%
-
-
-      .swiper-slide-1 .image
-        background-image: url("../img/trans (1).png")
-        background: 
-          position: 90% 0
-
-      .swiper-slide-2 .image
-        background-image: url("../img/trans (3).png")
-
-      .swiper-slide-3 .image
-        background-image: url("../img/trans (5).png")
+      // .icon
+      //   &.arrow
+      //     font-size: 1.5rem
+      //   &.info
+      //     font-size: 1.7rem
 
       
     &--options
-      justify-content: flex-start
-      margin-top: 60px
+      margin-top: 3rem
 
-      & > a
-        position: relative
-        width: 8.125rem
-        height: 6.5625rem
-        text-decoration: none
-        margin-right: 3.125rem
-        color: $white
-        border: 0.625rem solid lighten($primaryHighlight,2%)
-        
+      & > a 
+        .icon i
+          animation: little-float 3s ease infinite both alternate
 
-        &:nth-child(1)
-          background-image: url("../img/trans (1).png"), linear-gradient(0deg,rgba(173,42,92,.45), rgba(17,37,214,.45))
-
-        &:nth-child(2)
-          background-image: url("../img/trans (3).png"), linear-gradient(-135deg,rgba(173,42,92,.45), rgba(17,37,214,.45))
-
-        &:nth-child(3)
-         background-image: url("../img/trans (5).png"), linear-gradient(45deg,rgba(173,42,92,.45), rgba(17,37,214,.45))
-
-        &:hover
-          h3
-            bottom: -65px
-
-      h3
-        bottom: -3.25rem
-        left: 0.3125rem
-        font-size: 1.4rem
+          @keyframes little-float
+            0%
+              transform: translateY(-5px)
+            100%
+              transform: translateY(5px)
 
 
 
 @media (min-width: $laptops)
 
   .about
-
     width: 90%
-
- 
-@media (min-width: $desktops)
-
-  .about
-    width: 70%
-
- 
-
-@media (max-width: $desktops) and (orientation: landscape)
-  
-  .about
-    flex-direction: row
-    align-items: flex-start
-    padding-top: 6rem
-
+    
+    .slide-content
+    
     &--banner
-      padding-bottom: 20px
-      width: 80%
-
-      &::before
-        top: 1.25rem
-        left: 12.5rem
-
-      &::after
-        top: 4.6875rem
-        left: 25rem
 
       h2
-        margin-top: 0
-        font-size: 2.5rem
-
         &::before
-          top: 3.75rem
-          left: 16.75rem
+          top: 60px
+          left: 268px
+          // width: 30px
+          // height: 30px
 
         &::after
-          top: 15.9375rem
-          left: 15.9375rem
+          top: 255px
+          left: 255px
+          // width: 20px
+          // height: 20px
+      
 
       h3
-        font-size: 1.8rem
-        font-weight: 500
-        letter-spacing: .02em
-        
+        margin: 3rem 0 1rem
+        // font-size: 3rem
+
+  
+  
+    &--options
+      margin-top: 4rem
+      justify-content: center
+
+      & > a 
+        margin: 0 3rem
+
+      
+   
+
+@media (min-width: $laptops) and (orientation: landscape) and (max-height: $laptops_) and (max-width: $desktops_)
+
+  .about 
+    &--banner  
+
+      h2
+        margin-bottom: 1rem
+        font-size: 2rem   
+
+      h3
+        font-size: 1.5rem
+        margin-top: 1rem
+      
+      h3,
+      ul
+        align-self: center
+
+      ul>li
+        font-size: 1.2rem
+
+        .arrow
+          font-size: 1rem
+
+        .info
+          font-size: 1rem
+
 
 
       .image
-        height: 90%
-        width: 50%
-
+        width: 200px // calc from 800*600 res 1.33 Ratio
+        height: 150px   
 
       .swiper-slide-1 .image
         background: 
-          position: 80% 0
+          size: 225px 168px 
+        
 
       .swiper-slide-2 .image
         background: 
-          position: 15% 0
-        
+          size: 225px 168px 
 
-      .swiper-slide-3 .image
-        background: 
-          position: 15% 0
-      
     &--options
-      padding-bottom: 10px
-      width: 20%
-      flex-direction: column
-      justify-content: center
-      align-items: flex-end
-      margin-top: 0
+      margin-top: 1rem
 
       & > a
-        width: 3.75rem
-        height: 2.8125rem
-        margin-right: 0
-        margin-bottom: 25px
-        border: 5px solid lighten($primaryHighlight,2%)
+        width: 50px
+        height: 50px
+   
+        .icon
+          i
+            display: inline-block
+            font-size: 1.8rem
+            line-height: 40px
         
 
         &:hover
           h3
-            bottom: -2.8rem
+            bottom: -42px
 
       h3
-        bottom: -2rem
-        left: 0.3125rem
-        font-size: 1rem
+        left: -3px
+        bottom: -33px
+        font-size: .9rem
+      
+
+
+@media (min-width: $desktops)
+
+  .about
+    width: 80%
+    justify-content: flex-start
+    
+    .slide-content
+      height: 50%
+      justify-content: space-between
+      margin-top: 7rem
+    
+    &--banner
+      height: 600px
+
+      h2
+        align-self: flex-start
+        font-size: 3rem
+        // margin-top: 0
+        // margin-bottom: 2.5rem
+
+
+      h3
+        width: 50%
+        font-size: 2rem
+        margin: 3rem 0 0rem
+
+      h3,
+      ul
+        align-self: flex-start
+
+      ul
+        order: 2
+
+        >li
+          font-size: 1.5rem
+
+        .icon
+          &.arrow
+            font-size: 1.2rem
+          &.info
+            font-size: 1.2rem
 
   
-@media (max-width: $desktops) and (orientation: landscape) and (min-width: $tablets)
-  
+    &--options
+      margin-top: 0rem
+      justify-content: flex-start
+
+      & > a 
+
+        &:hover
+          h3
+            bottom: -60px
+
+
+      h3
+        left: 0px
+        bottom: -46px
+        font-size: 1.3rem
+        letter-spacing: .03em
+
+
+        
+
+
+@media (min-width: $desktops) and (min-height: 700px)
+
   .about
+    
+    .slide-content
+      height: 43%
+    
+    &--banner
+      height: 700px
+
+
+      p
+        display: block
+        padding: .5rem 1rem
+        font-size: 1.2rem
+        font-weight: 400
+        letter-spacing: .05em
+        line-height: 1.5em
+        text-transform: lowercase
+        border-left: 5px solid $primary
+        border-radius: 10px
+
+    &--options
+      margin-top: -4rem
+      justify-content: flex-start
+
+      
+
+
+
+@media (min-width: $largedesktops)
+
+  .about
+    width: 70%
+    max-width: 1300px
+    justify-content: flex-start
+    
+    .slide-content
+      height: 50%
+
+
     &--banner
 
-      .image
-        height: 70%
+      h2
+        font-size: 3.5rem
 
+      h3
+        font-size: 2.5rem
 
-@media (max-width: $desktops) and (orientation: landscape) and (min-height: $smartphones)
+      ul>li
+          font-size: 2rem
 
+      p
+        display: none
+
+      
   
-  .about
-    flex-direction: row
-    align-items: flex-start
-    padding-top: 6rem
- 
+
     &--options
+      margin-top: 4rem
 
       & > a
-        width: 75px
-        height: 65px
-        margin-right: 0
-        margin-bottom: 45px
-        border: 10px solid lighten($primaryHighlight,2%)
+        width: 100px
+        height: 100px
+        margin: 0 3rem
+        border-width: 6px
+        border-radius: 6px
+    
         
+        .icon i
+          display: inline-block
+          font-size: 4rem
+          line-height: 90px
+
 
         &:hover
           h3
-            bottom: -3.4rem
+            bottom: -68px
+
 
       h3
-        bottom: -2.6rem
-        font-size: 1.1rem
+        bottom: -54px
+        font-size: 1.5rem
+        letter-spacing: .05em
+   
+
+
+
+@media (min-width: $largedesktops) and (min-height: 900px)
+
+  .about
+
+    .slide-content
+      height: 50%
+    
+    &--banner
+      p
+        display: block
+
+    &--options
+      margin-top: 0rem
+    
+
+
+
 
 
 

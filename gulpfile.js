@@ -72,7 +72,13 @@ function swallowError (error) {
 
 
 
-
+	var jsFilesArr = [
+		'./assets/js/main.js',
+		'./assets/js/events.js',
+		'./assets/js/forms.js',
+		'./assets/js/work.js',
+		'./assets/js/about.js',
+	];
 
 
 		/*********
@@ -115,44 +121,7 @@ function swallowError (error) {
 
 	// task for concatenating and linting the primary js file 
 	gulp.task('js',['vendorJS'],function(){ 
-		        return gulp.src(['./assets/js/script.js'])
-		        .pipe(plumber({
-					errorHandler: onError
-				}))
-				.pipe(sourcemaps.init())
-		        .pipe(concat('script.min.js'))
-		        .pipe(eslint())
-		        // eslint.format() outputs the lint results to the console. 
-		        // Alternatively use eslint.formatEach() (see Docs). 
-		        .pipe(eslint.formatEach())
-		        // To have the process exit with an error code (1) on 
-		        // lint error, return the stream and pipe to failAfterError last. 
-		        // .pipe(eslint.failAfterError())
-		        .pipe(uglify())
-		        .pipe(sourcemaps.write())
-
-		        .pipe(gulp.dest('./assets/js/'))
-
-		        .pipe( browserSync.reload({stream:true}) );
-	});
-
-
-	gulp.task('js:dist',['vendorJS'],function(){ 
-		        return gulp.src(['./assets/js/script.js'])
-		        .pipe(plumber({
-					errorHandler: onError
-				}))
-		        .pipe(concat('script.min.js'))
-		        .pipe(uglify())
-		        .pipe(gulp.dest('./assets/js/'))
-
-		        .pipe( browserSync.reload({stream:true}) );
-	});
-
-
-	// task for concatenating, uglifying, linting the primary js file, On file modification (it doesn't run any dependent tasks first)
-	gulp.task('js-watch',function(){ 
-		        return gulp.src(['./assets/js/script.js'])
+		        return gulp.src(jsFilesArr)
 		        .pipe(plumber({
 					errorHandler: onError
 				}))
@@ -165,7 +134,46 @@ function swallowError (error) {
 		        // To have the process exit with an error code (1) on 
 		        // lint error, return the stream and pipe to failAfterError last. 
 		        // .pipe(eslint.failAfterError())
+		        // .pipe(uglify())
+		        .pipe(sourcemaps.write())
+
+		        .pipe(gulp.dest('./assets/js/'))
+
+		        .pipe( browserSync.reload({stream:true}) );
+	});
+
+
+	gulp.task('js:dist',['vendorJS'],function(){ 
+		        return gulp.src(jsFilesArr)
+		        .pipe(plumber({
+					errorHandler: onError
+				}))
+				.pipe(sourcemaps.init())
+		        .pipe(concat('script.min.js'))
 		        .pipe(uglify())
+		        .pipe(sourcemaps.write())
+		        .pipe(gulp.dest('./assets/js/'))
+
+		        .pipe( browserSync.reload({stream:true}) );
+	});
+
+
+	// task for concatenating, uglifying, linting the primary js file, On file modification (it doesn't run any dependent tasks first)
+	gulp.task('js-watch',function(){ 
+		        return gulp.src(jsFilesArr)
+		        .pipe(plumber({
+					errorHandler: onError
+				}))
+				.pipe(sourcemaps.init())
+		        .pipe(concat('script.min.js'))
+		        // .pipe(eslint())
+		        // eslint.format() outputs the lint results to the console. 
+		        // Alternatively use eslint.formatEach() (see Docs). 
+		        // .pipe(eslint.formatEach())
+		        // To have the process exit with an error code (1) on 
+		        // lint error, return the stream and pipe to failAfterError last. 
+		        // .pipe(eslint.failAfterError())
+		        // .pipe(uglify())
 		        .pipe(sourcemaps.write())
 
 		        .pipe(gulp.dest('./assets/js/'))
@@ -176,7 +184,7 @@ function swallowError (error) {
 
 	// task for concatenating, uglifying, linting the primary js file, On file modification (it doesn't run any dependent tasks first)
 	gulp.task('js-watch:dist',function(){ 
-		        return gulp.src(['./assets/js/script.js'])
+		        return gulp.src(jsFilesArr)
 		        .pipe(plumber({
 					errorHandler: onError
 				}))
@@ -287,7 +295,7 @@ function swallowError (error) {
 	gulp.task('watch_serve', function(){
 		browserSync.init({
 	        // server: "./"
-	        proxy: "localhost:1234/old-projects/d-studio/DU-Lite" // change this to your server proxy address
+	        proxy: "localhost:1234/old-projects/d-studio/" // change this to your server proxy address
 	    });
 
 		gulp.watch(['./assets/js/*.js'],['js-watch']);
@@ -304,7 +312,7 @@ function swallowError (error) {
 	gulp.task('watch_serve:dist', function(){
 		browserSync.init({
 	        // server: "./"
-	        proxy: "localhost:1234/old-projects/d-studio/DU-Lite" // change this to your server proxy address
+	        proxy: "localhost:1234/old-projects/d-studio/" // change this to your server proxy address
 	    });
 
 		gulp.watch(['./assets/js/*.js'],['js-watch:dist']);
@@ -323,15 +331,15 @@ function swallowError (error) {
 	*******			=watch task
 	************/
 
-	gulp.task('watch', function(){
+	// gulp.task('watch', function(){
 
-		gulp.watch(['./assets/js/*.js','!./assets/js/*.min.js'],['js']);
-		gulp.watch(['./assets/css/**/*.scss',
-					'./assets/css/**/*.sass'],['sass']);
+	// 	gulp.watch(['./assets/js/*.js','!./assets/js/*.min.js'],['js']);
+	// 	gulp.watch(['./assets/css/**/*.scss',
+	// 				'./assets/css/**/*.sass'],['sass']);
 		
-		gulp.watch(['./*.html','./*.php'],['html']);
+	// 	gulp.watch(['./*.html','./*.php'],['html']);
 
-	});
+	// });
 
 
 

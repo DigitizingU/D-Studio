@@ -1,6 +1,8 @@
 // Colors
 $white: #fff
 $black: #0c0c0c
+$red: #ff4d4d
+$yellow: #ffad33
 
 $milky-white: #eeeeee 
 $grayed-white: #e0e0e0
@@ -16,6 +18,29 @@ $secondary: rgb(148,21,193)
 $secondaryDark: rgb(105, 15, 138)
 
 
+
+$gradient6: linear-gradient(135deg,darken($primaryDark, 10%), darken($secondaryDark, 10%))
+
+// $hero-gradient: linear-gradient(135deg, rgba(151,72,127,.5), rgba(26,81,171,.5))
+// $hero-gradient: linear-gradient(135deg,rgba(173,86,137,.5), rgba(34,170,217,.5))
+$hero-gradient: linear-gradient(135deg,rgba(173,42,92,.65), rgba(17,37,214,.65)) // chosen
+$gradient2: linear-gradient(-45deg,rgba(173,42,92,.45), rgba(17,37,214,.45))
+$gradient1:  linear-gradient(-45deg,rgba(173,42,92,.25), rgba(17,37,214,.25))
+
+
+$contact-gradient: linear-gradient(135deg,rgba(173,42,92,.45), rgba(17,37,214,.45)) 
+
+
+$section-overlay: linear-gradient(to right,rgba(12,12,12,1), rgba(12,12,12,.2), rgba(12,12,12,1))
+$section-overlay-bright: linear-gradient(to right, rgb(12,12,12), rgba(12,12,12,.05), rgb(12,12,12))
+
+$half-opaque: linear-gradient(135deg, rgba(0,0,0,.5), rgba(0,0,0,.5))
+$perspective-gradient: radial-gradient(closest-side circle at 60% 50%, rgba(0,0,0,.4), rgba(0,0,0,.9))
+
+
+$gradient3: linear-gradient(135deg,$primary, $secondary)
+$gradient4: linear-gradient(135deg,$primaryHighlight, $secondaryHighlight)
+$gradient5: linear-gradient(135deg,$primaryDark, $secondaryDark)
 
 
 // fonts
@@ -44,6 +69,9 @@ $smartphones: 600px
 $tablets: 768px
 $laptops: 900px
 $desktops: 1200px
+$largedesktops: 1600px
+$tv: 2000px
+
 
 $olderphones_: 339px
 $featurephones_: 399px
@@ -51,3 +79,35 @@ $smartphones_: 599px
 $tablets_: 767px
 $laptops_: 899px
 $desktops_: 1199px
+$largedesktops_: 1599px
+$tv_: 1999px
+
+
+// Z Indexes
+
+
+$z3: 20
+$z4: 50
+$z5: 100
+$z6: 200
+$z7: 300
+$z8: 500
+$z9: 1000
+$z10: 2000
+$z11: 3000
+
+
+
+// gmap url
+
+
+$urlEncodeThisPart: "%7Clabel:D%7C28.589,77.199&style=feature%3Aall%7Celement%3Aall%7Chue%3A0x0000b0%7Cinvert_lightness%3Atrue%7Csaturation%3A-30%7C"
+// $desktopMapUrl: "https://maps.googleapis.com/maps/api/staticmap?center=Gwalior,+India&zoom=6&scale=2&format=jpg&visual_refresh=true&maptype=roadmap&size=1920x1080&maptype=roadmap&markers=color:white|label:D%7C28.645110,77.169322&style=feature%3Aall%7Celement%3Aall%7Chue%3A0x0000b0%7Cinvert_lightness%3Atrue%7Csaturation%3A-30%7C&key=AIzaSyDO9Po9G4gF1NFf5IkX9IP23SQUcHdaoaU"
+$old_desktopMapUrl: "https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAOzXMngJoIQQGg3w2F-69Z9skjSOXMU8I&center=Bareilly,+India&zoom=6&scale=2&format=jpg&visual_refresh=true&maptype=roadmap&size=1920x1080&maptype=roadmap&markers=color:white%7Clabel:D%7C28.589,77.199&style=feature%3Aall%7Celement%3Aall%7Chue%3A0x0000b0%7Cinvert_lightness%3Atrue%7Csaturation%3A-30%7C"
+$old_phoneMapUrl: "https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAOzXMngJoIQQGg3w2F-69Z9skjSOXMU8I&center=Sabalgarh,+India&zoom=7&scale=2&format=jpg&visual_refresh=true&maptype=roadmap&size=480x854&maptype=roadmap&markers=color:white%7Clabel:D%7C28.589,77.199&style=feature%3Aall%7Celement%3Aall%7Chue%3A0x0000b0%7Cinvert_lightness%3Atrue%7Csaturation%3A-30%7C"
+
+
+// $desktopMapUrl: "https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAOzXMngJoIQQGg3w2F-69Z9skjSOXMU8I&center=Bareilly,+India&zoom=6&scale=2&format=jpg&visual_refresh=true&maptype=roadmap&size=1920x1080&maptype=roadmap&markers=color:white%7Clabel:D%7C28.589,77.199&style=feature%3Aall%7Celement%3Aall%7Chue%3A0x0000b0%7Cinvert_lightness%3Atrue%7Csaturation%3A-30%7C&signature=rUat5Cb61KxeVsSC5I7ryu15KTs="
+// $phoneMapUrl: "https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyAOzXMngJoIQQGg3w2F-69Z9skjSOXMU8I&center=Sabalgarh,+India&zoom=7&scale=2&format=jpg&visual_refresh=true&maptype=roadmap&size=480x854&maptype=roadmap&markers=color:white%7Clabel:D%7C28.589,77.199&style=feature%3Aall%7Celement%3Aall%7Chue%3A0x0000b0%7Cinvert_lightness%3Atrue%7Csaturation%3A-30%7C&signature=yLfuhY-E9Fv_dnXMdmbcEMdoMsM="
+$phoneMapUrl: "../img/phone-map.jfif"
+$desktopMapUrl: "../img/map.jfif"

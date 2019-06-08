@@ -1,15 +1,43 @@
 // .owl-carousel .owl-item img
 //   width: auto
 
+.section--work
+  background: 
+    image: $section-overlay, $gradient1,  url("../img/effect-1-600-min.jpg")
+    position: 50% 50%
+    size: cover
+    repeat: no-repeat
+
+  @media (min-width: $smartphones)
+    background: 
+      image: $section-overlay, $gradient1,  url("../img/effect-1-900-min.jpg")
+      position: 50% 50%
+      size: cover
+      repeat: no-repeat
+
+  @media (min-width: $laptops)
+    background: 
+      image: $section-overlay, $gradient1,  url("../img/effect-1-1200-min.jpg")
+      position: 50% 50%
+      size: cover
+      repeat: no-repeat
+
+  @media (min-width: $largedesktops)
+    background: 
+      image: $section-overlay, $gradient1,  url("../img/effect-1-min.jpg")
+      position: 50% 50%
+      size: cover
+      repeat: no-repeat
+
+
 
 .work
   position: relative
   display: flex
-  width: 960px
-  max-width: 80%
+  width: 90%
   height: 100%
   flex-direction: column
-  justify-content: space-evenly
+  justify-content: flex-start
   margin: 0 auto
   // background: linear-gradient(to right, rgb(12,12,12), transparent, rgb(12,12,12)),  url("../img/new (2).jpg")
   // background: linear-gradient(to right, rgb(12,12,12), transparent, rgb(12,12,12)), linear-gradient(135deg,rgba(173,42,92,.75), rgba(17,37,214,.75)),  url("../img/new (1).jpg")
@@ -17,41 +45,72 @@
   // background-repeat: no-repeat
   // background-position: 50% -40%
 
+  &__popup
+    // display: none
+    // opacity: .9
+    z-index: 200
+
+    &-wrapper
+      height: 100vh
+      background: rgb(12,12,12)
+      padding: 2rem
+
+      .work-heading
+        font-size: 3rem
+        font-weight: 400
+        letter-spacing: .08em
+        text-align: center
+
+      .work-slider-container
+        margin: 0 auto
+        min-height: 300px
+
+      .work-attachments
+        display: flex
+        flex-direction: row
+        justify-content: space-evenly
+
+        li
+          flex: 1 1 auto
+
+        a
+          display: inline-block 
+          text-align: center
+          color: white
+          background: $primaryHighlight
+
+      .work-brief
+        color: white
+
 
   &__lockup
     position: relative
 
     
-    .outer-slider
-      height: 75vmin
-      // padding: 1rem 0
-      position: relative
-
-      
-
-      &__controls
-        // background: white
-        margin-bottom: 3rem
-        width: 100%
-        height: 2.8125rem
+    .slider-filters
+      // background: white
+      margin-bottom: 4rem
+      width: 100%
+      height: 2.8125rem
 
       &__btn
-        width: calc(50%)
-        border-radius: 50px
-        background: darken($primary,7%)
+        display: inline-block
+        width: 100%
+        height: 2.8rem
+        background: lighten($black,2%)
         color: white
-        font-size: 1.2rem
+        font-size: 1.15rem
         font-family: $primaryFont
-        font-weight: 500
-        height: 2.8125rem
+        font-weight: 400
         line-height: 2.8125rem
         text-decoration: none
-        display: inline-block
         margin: 0 0 0 0
         text-align: center
-        letter-spacing: .05em
-        text-transform: uppercase
+        text-transform: lowercase
+        letter-spacing: .1em
+        word-spacing: .1em
         transition: background .3s
+        border-radius: 3px
 
         &:hover
           background: $primaryHighlight
@@ -71,16 +130,14 @@
           // border-top-right-radius: 4px
           // border-bottom-right-radius: 10px 60px
           // border-bottom-left-radius: 4px
-          border-radius: 50px
-          font-size: 1.25rem
+          font-size: 1.2rem
           transform: scale(1.05) translateY(0px)
+          border-radius: 8px
           // border: 1px solid red
           
         &:not(.swiper-slide-active)
-          opacity: 0
-          visibility: hidden
-
-
+          // opacity: 0
+          // visibility: hidden
 
       &__item
         height: 100%
@@ -90,34 +147,36 @@
 
       &__nav
         position: absolute
-        top: 0.15625rem
+        top: .15rem
         z-index: 200
         height: 2.5rem
         width: 2.5rem
-        background: $primary
+        background: $black
         text-align: center
+        box-shadow: 0 0px 30px rgba(255,255,255,.3)
+        cursor: pointer
 
         &--prev
-          left: 0px
-          border-radius: 3.125rem 0.625rem 0.625rem 3.125rem 
+          left: -20px
+          border-radius: 3.125rem 3.125rem 
 
         &--next
-          right: 0px
-          border-radius:  0.625rem 3.125rem 3.125rem 0.625rem
+          right: -20px
+          // border-radius:  0.625rem 3.125rem 3.125rem 0.625rem
+          border-radius: 3.125rem 3.125rem 
         
 
         .icon
           display: inline-block
           height: 100%
           width: 100%
-          line-height: 2.8125rem
+          line-height: 2.9rem
           
           svg
             display: inline
             width: 50%
             fill: $white
             
-
 
     .inner-slider
 
@@ -131,6 +190,7 @@
 
 
         a
+          display: block
           text-decoration: none
           color: #fafafa
           font-family: $contentFont2
@@ -168,7 +228,7 @@
         &-title
           margin: 0.625rem 0 0
           font-size: 1.2rem
-          letter-spacing: .06em;
+          letter-spacing: .06em
           font-weight: 700
           text-transform: capitalize
 
@@ -194,7 +254,7 @@
 
           &:after
             @include pseudo
-            opacity: 1;
+            opacity: 1
             background-color: rgba(0,0,0,.15)
             background: linear-gradient(135deg, rgba(173,42,92,.5), rgba(17,37,214,.5))
             z-index: 2
@@ -207,34 +267,54 @@
 
           .inner-slider__item-description
             display: block
-
           
     .inner-slider__nav
       position: absolute
-      top: 45%
+      top: 48%
       display: flex
       width: 2.8rem
       height: 2.8rem
       align-items: center
       justify-content: center
-      background-color: rgba(0, 0, 0,.6)
-      border: 1.5px solid rgba(255,255,255,.6)
+      background: white 
+      // border: 1.5px solid rgba(255,255,255,.6)
       cursor: pointer
       z-index: 20
       border-radius: 50%
-      border-radius:  0.625rem 
+      border-radius: 5px
+      box-shadow: 0 0 20px white
 
       svg
         width: 20px
-        fill: $white
+        fill: $black
 
       &--next
-        right: 0
+        right: -20px
 
       &--prev
-        left: 0
+        left: -20px
 
 
+
+// @media (max-width: $featurephones)
+
+//   .work__lockup
+//     .slider-filters
+//       &__nav
+
+//         &--next
+//           right: -20px
+
+//         &--prev
+//           left: -20px
+
+
+@media (min-width: $smartphones)
+
+  .work__lockup
+    .slider-filters
+      &__btn
+        width: 240px
 
 
 @media all and (min-width: $tablets)
@@ -279,10 +359,10 @@
           height: 3rem
 
           &--next
-            right: 10px
+            right: -10px
 
           &--prev
-            left: 10px
+            left: -10px
 
 
       .outer-slider
@@ -300,6 +380,7 @@
 @media all and (min-width: $desktops)
 
   .work
+    width: 80%
 
     &__lockup
 
@@ -334,6 +415,16 @@
           visibility: hidden
             
 
+@media all and (min-width: $largedesktops)
+
+  .work
+    &__lockup
+      .inner-slider
+        &__item
+          width: 25%
+
+
+
 
 @media all and (max-width: $desktops) and (orientation: landscape)
   
@@ -344,12 +435,19 @@
 
     .section__title
       font-size: 2.8rem
+      flex: 0 0 50%
+      transform: translateX(-1rem) translateY(-1rem) rotate(-90deg)
       
 
 
   .work__lockup
     width: 60%
     height: 60%
+
+    .work__lockup
+    .slider-filters
+      &__btn
+        width: 100%
 
     .inner-slider
 
@@ -381,21 +479,37 @@
   
   .work
     .section__title
-      font-size: 2.5rem
+      font-size: 2rem
+
+    &__lockup
+
+      .slider-filters
+        margin-bottom: 2rem
       
 
-@media all and (max-width: $smartphones) and (orientation: landscape)
+@media all and (max-width: $laptops) and (orientation: landscape) and (max-height: 400px)
     
   .work
     .section__title
-      font-size: 2.2rem
+      font-size: 1.5rem
 
 
+    &__lockup
+      .slider-filters
+        margin-bottom: 1.5rem
+      
+        &__btn
+          height: 2.5rem
+          line-height: 2.5rem
+          font-size: 1rem
+
+          &.swiper-slide-active
+            font-size: 1rem
+
+        &__nav
+          top: 0
 
 
-@media all and (max-width: $desktops)
-    .work
-      max-width: 100%
 
 
 @media all and (max-width: $featurephones)
@@ -408,7 +522,6 @@
           &-image-container
               position: relative
               height: 35vmin
-
 
 
 

@@ -1,5 +1,45 @@
-.touch.form-field-focused .hire__wrapper
-  padding: 0 0 4.375rem
+.section--hire
+  z-index: 1
+  
+  .bg-2
+    background-image: $section-overlay-bright, $gradient2, linear-gradient(-45deg,rgba(0,0,0,.2), rgba(0,0,0,.2))
+    background:
+      position: 50% 50%
+      size: cover
+      repeat: no-repeat
+
+
+  .bg-1
+    // using the usual background as on other sections but as on overlay with opacity to make the wallpaper on this section look kinda similar
+    opacity: .95
+
+    // @media (min-width: $smartphones)
+    //   background-image: linear-gradient(to right, rgb(12,12,12), transparent, rgb(12,12,12)), linear-gradient(-45deg,rgba(173,42,92,.2), rgba(17,37,214,.2)),linear-gradient(-45deg,rgba(0,0,0,.2), rgba(0,0,0,.2)),  url("../img/effect-1-900-min.jpg")
+    //   background: 
+    //     position: 50% 50%
+    //     size: cover
+    //     repeat: no-repeat
+    
+    // @media (min-width: $laptops)
+    //   background-image: linear-gradient(to right, rgb(12,12,12), transparent, rgb(12,12,12)), linear-gradient(-45deg,rgba(173,42,92,.2), rgba(17,37,214,.2)),linear-gradient(-45deg,rgba(0,0,0,.2), rgba(0,0,0,.2)),  url("../img/effect-1-1200-min.jpg")
+    //   background:
+    //     position: 50% 50%
+    //     size: cover
+    //     repeat: no-repeat
+    
+    // @media (min-width: $largedesktops)
+    //   background-image: linear-gradient(to right, rgb(12,12,12), transparent, rgb(12,12,12)), linear-gradient(-45deg,rgba(173,42,92,.2), rgba(17,37,214,.2)),linear-gradient(-45deg,rgba(0,0,0,.2), rgba(0,0,0,.2)),  url("../img/effect-1-min.jpg")
+    //   background: 
+    //     position: 50% 50%
+    //     size: cover
+    //     repeat: no-repeat
+
+
+  .bg-img
+    z-index: -3
+
+
+
 
 .hire
   position: relative  
@@ -8,14 +48,18 @@
   height: 100%
   margin: 0 auto
   overflow: hidden
-  overflow-y: auto
+  
+  body.touch.form-field-focused &
+    overflow-y: auto // scrollable when touch device and work-request form is focused
 
   .hire__wrapper
     display: flex
     flex-direction: column
-    justify-content: center
+    justify-content: flex-start
     height: 100%
 
+    body.touch.form-field-focused &
+      padding: 0 0 4rem // bottom huge padding to push content up when touch device and work-request form is focused
 
 .work-request
   display: flex
@@ -24,76 +68,99 @@
   align-items: center
   color: $white
 
-  >label
-    font-size: 1.2rem
-    font-weight: 300
-    align-self: center
-    text-transform: lowercase
-    letter-spacing: .04em
-    word-spacing: .1em
-    color: rgba(255,255,255,.9)
+  .form-section
+    display: none // just a visual backup until js kicks in
+    opacity: 0
+    transform: translateY(10px)
+    transition: opacity .2s ease-in-out, transform .2s ease-in-out
 
-  .parsley-errors-list
-    margin: .3rem 0
-    font-size: 1rem
-    padding: 0 .2em
-    line-height: 1.5em
-    background: white
-    text-transform: lowercase
-    color: #cc0000
-    font-weight: 500
-    border-radius: 2px
+    &.current
+      display: block // just a visual backup until js kicks in
+      opacity: 1
+      transform: translateY(0px)
+      transition: opacity .4s .2s ease-in-out, transform .4s .2s ease-in-out
 
-    li:first-child
-      position: relative
+  .form-navigation
+    display: flex
+    width: 100%
+    justify-content: space-evenly
+    flex-wrap: wrap
 
-      &:after
-        @include pseudo
-        background: white
-        bottom: 100%
-        right: auto
-        left: 5%
-        width: 10px
-        height: 10px
-        transform: translateY(-50%) rotate(45deg)
-   
+    button
+      display: none
+
+      &.show
+        display: inline-block
+
+      &.previous,
+      &.next
+        width: 40%
+        max-width: 15rem
+        margin: 1.2rem 1rem
+        padding: .7rem 1.4rem .5rem
+        font-size: 1.4rem
+        font-weight: 500
+        text-transform: uppercase
+        letter-spacing: .12em
+        line-height: 1.4em
+        color: $black
+        background: $white
+        border: none
+        border-radius: 4px
+        box-shadow: 0 3px 30px rgba(255,255,255,.4)
+
+        &:focus
+          outline: none
+
+        .icon
+          display: inline-block
+          position: relative
+          top: -2px
+          padding: 0 5px
+          vertical-align: middle
+    
+    .submit-block
+      width: 100%
+      display: flex
+      justify-content: center
 
 
   button[type="submit"]
+    display: none
     position: relative
-    width: 18rem
+    width: 17rem
     max-width: 100%
+    margin-top: 1rem
+    padding: 1.6rem 0 1.6rem
     line-height: .03em
-    padding: 1.7rem 0;
-    border-radius: 3px
-    font-size: 1.5rem
+    font-size: 1.7rem
     letter-spacing: .05em
-    word-spacing: .2em;
-    font-weight: 300
+    word-spacing: .2em
+    font-weight: 400
     text-transform: lowercase
     background-color: $primary
-    border: none
-    border-bottom: 3px solid darken($primary,15%)
-    border-left: 3px solid darken($primary,15%)
-    border: none
     background: transparent
+    border: none
     z-index: 1
+
+    &.show
+      display: block
 
 
     &:after,
     &:before
       @include pseudo
       z-index: -1
-      border-radius: 2px
+      border-radius: 0px
       transition: background .3s
-      background: linear-gradient(135deg,darken($primaryHighlight,5%), lighten($primaryHighlight,5%))
-
+      background: linear-gradient(135deg,darken($primaryHighlight,0%), lighten($primaryHighlight,10%))
+      box-shadow: 0 10px 40px -5px rgba(15, 51, 255,.8)
 
     &:before
-      transform: translate3d(-5px,8px,0)
+      transform: translate3d(-3px,8px,0)
       
     &:after
-      transform: translate3d(5px,0px,0)
+      transform: translate3d(3px,0px,0)
       
 
     &:focus
@@ -105,9 +172,91 @@
       &:after,
       &:before
         transition: background .3s
-        background: linear-gradient(135deg,lighten(rgba(173,42,92,1),5%), lighten(rgba(17,37,214,1),5%))
+        background: linear-gradient(-135deg, lighten($secondaryHighlight,10%), lighten(rgba(17,37,214,1),10%))
 
-        
+  .parsley-errors-list
+    margin: .7rem 0 0
+    font-size: .95rem
+    font-weight: 500
+    line-height: 1.5em
+    letter-spacing: .05em
+    text-transform: lowercase
+    border-radius: 2px
+    z-index: 1
+
+    li
+      padding: 0 .5rem
+      color: #fff
+      background: lighten($black,5%)
+      border-bottom: 2px solid darken(red,10%)
+
+    li:first-child
+      position: relative
+
+      &:after
+        @include pseudo
+        background: lighten($black,5%)
+        bottom: 100%
+        right: auto
+        left: 5%
+        width: 10px
+        height: 10px
+        transform: translateY(-50%) rotate(45deg) 
+        z-index: -1
+  
+  .hf-message
+    position: relative
+    margin: 3rem 1rem 2rem
+    padding: .5rem 1rem
+    font-size: 1.5rem
+    line-height: 1.1em
+    letter-spacing: .05em
+    word-spacing: .1em
+    text-transform: lowercase
+    text-align: center
+    color: $black
+    background: $white
+    box-shadow: 0 10px 40px -10px rgba(255,255,255,.5)
+    border-radius: 5px
+    z-index: $z3
+    animation: alert-disappear .5s 13s 1 ease-in-out both 
+
+    &.hf-message-success
+      border-bottom: 5px solid $primaryHighlight
+      box-shadow: 0 10px 40px -10px $primaryHighlight
+
+    &.hf-message-warning
+      border-bottom: 5px solid $yellow
+      box-shadow: 0 10px 40px -10px $yellow
+
+    &.hf-message-error
+      border-bottom: 5px solid $red
+      box-shadow: 0 10px 40px -10px $red
+
+    
+
+    @keyframes alert-disappear
+
+      0%
+        opacity: 1
+        visibility: visible
+
+      100%
+        opacity: 0
+        visibility: hidden
+
+
+
+  .services-label
+    align-self: center
+    font-size: 1.5rem
+    font-weight: 400
+    letter-spacing: .05em
+    line-height: 1.3em
+    text-align: center
+    text-transform: lowercase
+    word-spacing: .1em
+    color: rgba(255,255,255,.9)
 
   &--services
     display: flex
@@ -115,30 +264,40 @@
     flex-direction: column
     align-items: center
     flex-wrap: no-wrap
-    margin: 0.625rem 0
+    margin: 1.2rem 0 .5rem 
 
     .services-a
       display: flex
       width: 100%
       flex-wrap: wrap
       flex-direction: row
-      justify-content: space-around
+      justify-content: space-between
 
     .services-b
       display: flex
       width: 100%
       flex-wrap: wrap
-      justify-content: space-around
+      flex-direction: row
+      justify-content: center
+
+      label
+        width: 50%
+
+    .services-c
+      display: flex
+      width: 100%
+      flex-wrap: wrap
+      justify-content: space-between
 
     label
       display: block
-      width: 40%
+      width: 48%
       margin-bottom: 1.5rem
-      line-height: 2.4em
-      font-size: 1.1rem
-      letter-spacing: .03em
-      word-spacing: .1em
-      font-weight: 400
+      line-height: 2.2em
+      font-size: .9rem
+      letter-spacing: .05em
+      word-spacing: .08em
+      font-weight: 500
       text-align: center
       text-transform: uppercase
       border: 2px solid $white
@@ -165,30 +324,59 @@
         border-color: $primaryHighlight
 
         & svg
-          width: 15px
+          width: 12px
 
   &--information
     display: flex
-    width: 100%
     justify-content: space-between
+    flex-wrap: wrap
+    width: 100%
     margin-bottom: 1.5rem
 
     .information-name,
-    .information-email
+    .information-email,
+    .information-type,
+    .information-business,
+    .information-budget,
+    .information-im,
+    .information-username
       position: relative
       width: 45%
-      height: 50px
-      font-size: 1.4rem
-      font-weight: 300
+      min-height: 50px
+      font-size: 1.5rem
+      font-weight: 400
+      letter-spacing: .05em
 
-      
+    .information-type,
+    .information-business,
+    .information-budget,
+    .information-im,
+    .information-username
+      width: 100%
+      margin-bottom: 1.5rem
 
+    .information-username
+      display: none
+      margin-bottom: 0
+
+      &.active
+        display: block
+
+    .information-type
+      option
+        background: $primary
+        color: white
 
     input[type="text"],
-    input[type="email"]
+    input[type="email"],
+    input[type="number"],
+    select
       width: 100%
+      padding: 5px 5px
+      font-size: 1.3rem
+      font-weight: 400
+      letter-spacing: .08em
       text-transform: capitalize
-      padding: 0 0 5px 5px
       background-color: transparent
       border: none
       border-bottom: 1px solid $white
@@ -200,7 +388,7 @@
         background-color: rgba(0,0,0,.3)
       
 
-    label
+    label:not(.checkbox-label)
       text-transform: lowercase
       position: absolute
       top: 0
@@ -208,10 +396,96 @@
       pointer-events: none
       transition: top .2s ease-in-out, font-size .2s ease-in-out
 
-    input:focus ~ label,
-    input.has-value ~ label
-      top: -15px
+    input:focus ~ label:not(.checkbox-label),
+    input.has-value ~ label:not(.checkbox-label)
+      top: -18px
       font-size: 14px
+
+    
+    input#hostingSP,
+    input#imSP
+      position: absolute
+      top: -100000px
+      width: 1px
+      height: 1px
+      background: transparent
+      visibility: hidden
+
+    .checkbox-label
+      display: flex
+      justify-content: flex-start
+      align-items: center
+      font-size: 1.4rem
+      letter-spacing: .05em
+      line-height: 1.4rem
+      word-spacing: .07em
+      text-transform: lowercase
+
+      span.check
+        display: inline-block
+        width: 25px
+        height: 25px
+        flex: 0 0 25px
+        background: black
+        border: 2px solid rgba(255,255,255,.7)
+
+      svg
+        position: relative
+        display: block
+        height: 15px
+        left: 3px
+        top: 2px
+        width: 15px
+        fill: $white
+        transform: translateX(-5px) scale(0)
+        transition: transform .2s ease-in-out
+
+
+      span.text
+        padding-left: 15px
+
+    #hostingSP:checked + .checkbox-label,
+    #imSP:checked + .checkbox-label
+      
+      span.check
+        background: $primaryHighlight
+        border-color: $primary
+
+      svg
+        transform: translateX(0) scale(1)
+
+        
+        
+
+
+
+
+@media (max-width: $featurephones_)
+
+  .hire
+    .work-request
+      .form-navigation
+        
+        button
+          &.previous,
+          &.next
+            margin: 1rem 1rem
+            font-size: 1rem
+
+      &--services
+
+        label
+          font-size: .85rem
+          letter-spacing: .05em
+            
+          svg
+            left: -5px
+
+        input[type="checkbox"]
+
+          &:checked + label svg
+            width: 10px
+
 
 
 @media (max-width: $featurephones) and (max-height: 500px)
@@ -219,6 +493,7 @@
   &--services   
       label
         margin-bottom: .5rem
+
 
 @media all and (min-width: $smartphones)
 
@@ -228,9 +503,11 @@
     max-width: initial
 
   .work-request
-
-    >label
-      font-size: 2rem  
+    
+    button[type="submit"]
+      margin-top: 2rem
+      width: 19rem
+      padding: 1.7rem 0
 
     .parsley-errors-list
       font-size: 1.2rem
@@ -242,24 +519,24 @@
       label
         width: 200px
         margin-bottom: 2rem
-        font-size: 1rem
         padding: 0 1rem
-        line-height: 2.8em
+        font-size: 1.2rem
+        letter-spacing: .08em
+        line-height: 2.4em
 
         .mobile 
           display: none
         .other
           display: inline
       
-      .services-a
-        width: 100%
+      
 
       .services-b
-        width: 100%
+        label
+          width: 200px
 
 
     &--information
-      margin-bottom: 3.75rem
 
       .information-name,
       .information-email
@@ -267,180 +544,100 @@
 
 
 
+@media (min-width: $tablets) and (min-height: $laptops)
+  
+  .work-request
+    &--information
+      .information-type,
+      .information-business,
+      .information-budget
+        margin-bottom: 4rem
 
-@media all and (min-width: $desktops)
 
+
+@media all and (min-width: $laptops)
+  
+  .hire
+    width: 80%
+    min-width: 600px
 
   .work-request
 
-    &--services
+    .hf-message
+      margin: 3.5rem 1rem 2rem
+      padding: 1rem 1.5rem
+      font-size: 1.8rem
 
-      .services-a
-        width: 100%
-        justify-content: space-evenly
+    .form-section
+      width: 100%
 
-      .services-b
-        width: 75%
-        justify-content: space-evenly
-
-
-      label
-        width: 180px
-      
-
-
-@media all and (max-width: $desktops) and (orientation: landscape)
-
-
-  body:not(.form-field-focused) .hire
-    width: 100%
-    min-width: auto
-    justify-content: flex-start
-
-    .section__title
-      font-size: 2.5rem
-      margin-bottom: 1rem
-
-  body:not(.form-field-focused) .work-request
-    >label
-      margin-bottom: 1.25rem
-
-    .parsley-errors-list
-      font-size: 1.2rem
-      padding: 0 .5em
-
-    &--services
-      margin: 10px 0
-
-      label
-        width: 11rem
-        margin-bottom: 2rem
-        font-size: 1.1rem
-        line-height: 2.5em
-
-        .mobile 
-          display: inline
-        .other
-          display: none
-      
-      .services-a
-        width: 100%
-        flex-wrap: nowrap
-        justify-content: space-around
-
-      .services-b
-        width: 100%
-        flex-wrap: nowrap
-        justify-content: space-evenly
-
-
-    &--information
-      width: 95%
-      margin-bottom: 2.5rem
-
-      .information-name,
-      .information-email
-        font-size: 1.6rem
-
-    
-    button[type="submit"]
-      width: 18rem
-      max-width: 80%
-      padding: 1.5rem 0
-      font-size: 1.5rem
-
-
-
-@media all and (max-width: 960px) and (orientation: landscape)
-
-
-  body:not(.form-field-focused) .hire
-    .section__title
-      font-size: 2rem
-
-  body:not(.form-field-focused) .work-request
-    >label
-      margin-bottom: 0
-
-    .parsley-errors-list
-      font-size: 1rem
-
-    &--services
-
-      label
-        width: 9.5rem
-        margin-bottom: 1rem
-        font-size: .9rem
-
-
-    &--information
-      margin-bottom: 1.5rem
-
-      .information-name,
-      .information-email
+    .form-navigation
+      button.previous,
+      button.next
+        max-width: 15rem
         font-size: 1.5rem
 
-    
     button[type="submit"]
-      padding: 1.3rem 0
-      font-size: 1.4rem
-
-
-
-
-
-@media all and (max-width: 840px) and (orientation: landscape)
-
-  body:not(.form-field-focused) .hire
-    .section__title
-      margin-bottom: 0
-
-  body:not(.form-field-focused) .work-request
-    >label
-      font-size: 1rem  
-
-    &--services
-      margin: 10px 0
-
-      label
-        width: 7.5rem
-        margin-bottom: 1rem
-        font-size: .9rem
-        line-height: 2.2em
-
+      width: 20rem
+      padding: 1.8rem 0 1.8rem
+      font-size: 2rem
+    
     &--information
-
-      .information-name,
-      .information-email
-        font-size: 1.2rem
-
-    
-    button[type="submit"]
-      width: 15rem
-      padding: 1.1rem 0
-      font-size: 1.3rem
-
-
-
-@media all and (max-width: $smartphones) and (orientation: landscape)
-
-
-
-  body:not(.form-field-focused) .work-request
-    >label
-      display: none
-
-    .parsley-errors-list
-      font-size: .9rem
+      .information-type,
+      .information-business,
+      .information-budget
+        margin-bottom: 2.5rem
 
     &--services
 
+      .services-a,
+      .services-b,
+      .services-c
+        justify-content: center
+
       label
-        font-size: .9rem
-        line-height: 2em
+        width: 250px
+        margin-left: 1.5rem
+        margin-right: 1.5rem
+        margin-bottom: 2rem
+        // font-size: 1.2rem
+        // line-height: 2.4em
+      
+
+      .services-b
+        label
+          width: 250px
+
+
+
+
+@media all and (min-width: $desktops)
+  .hire
+    width: 70%
+
+  
+
+@media all and (min-width: $largedesktops)
+
+  .work-request
+    &--information
+      margin-bottom: 3.75rem
+
+      .information-type,
+      .information-business,
+      .information-budget
+        margin-bottom: 4rem
+      
+    &--services
+
+      label
+        margin-left: 4rem
+        margin-right: 4rem
 
     button[type="submit"]
-      width: 14rem
-      padding: .9rem 0 .7rem
-      font-size: 1.2rem
+      margin-top: 3rem
+
+    
+      
+
 

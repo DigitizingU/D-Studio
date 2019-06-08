@@ -1,3 +1,54 @@
+.section--hero
+
+  .video-container
+    @include absolute
+    width: 100%
+    height: 100%
+    overflow: hidden
+
+    &:after
+      @include pseudo
+      background:
+        image: url("../img/hero/poster-1200-min.jpg")
+        size: cover
+        position: 60% 100%
+
+      @media (min-width: $tablets)
+        background:
+          image: url("../img/hero/poster-min.jpg")
+          size: cover
+          position: 60% 100%
+
+
+    video
+      display: none
+      height: 100%
+      width: 100%
+      z-index: -2
+      object-fit: cover
+
+      @media (min-width: $laptops)
+        display: block
+
+        
+    .mask
+      @include absolute
+      width: 100%
+      height: 100%
+
+    .mask-1
+      z-index: 1
+
+    .mask-2
+      background: $hero-gradient 
+      
+      z-index: 2
+
+    .mask-3
+      background: $section-overlay-bright
+      z-index: 3 
+
+
 .intro
   position: relative
   display: flex
@@ -14,21 +65,21 @@
 
   &--banner
     position: relative
-    height: 360px
-    margin-top: 9rem
+    height: 200px
+    margin-top: 8rem
 
     h1
       position: relative
-      font-size: 2.4rem
+      font-size: 2.2rem
       font-weight: 400
       color: rgb(255,255,255)
       letter-spacing: -.01em
       word-spacing: .1em
-      line-height: 1.2em
+      line-height: 1.5em
       z-index: 1
       font-family: $primaryFont;
-      text-transform: capitalize;
-      margin-top: 0
+      text-transform: capitalize
+      margin-top: 2rem
       margin-bottom: 1.2em
       // font-variant: small-caps
       // text-shadow: 5px 5px 22px rgba(0,0,255,.3), 5px 5px 12px rgba(0,0,255,.2), 1px 1px 1px rgba(0,0,0,.2), -1px -1px 15px rgba(0,0,0,.4)
@@ -39,14 +90,19 @@
     padding: 5px 17px 5px 12px
     font-weight: 400
     font-size: 1.5rem
+    letter-spacing: .03em
     text-transform: capitalize
     background-color: transparent
     border: none
     display: block
     margin: 0 1rem 2rem 0rem
+    
+    &.cta--contact
+      text-transform: lowercase
 
     &.cta--hire
       word-spacing: .15em
+      min-width: 150px
     
 
     .btn-background
@@ -57,15 +113,17 @@
       height: 100%
       z-index: -1
       transition: left .2s ease-in-out
+      border-radius: 5px
 
       &--highlight
         background-color: $primaryHighlight
         left: 0
+        
 
 
       &--dull
-        background-color: rgba(0,0,0,.3)
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,.7)
+        background-color: rgba(0,0,0,1)
+        box-shadow: inset 0 0 20px darken($black,10%)
         left: 0
         
 
@@ -84,10 +142,24 @@
   
   .muted-link
     display: block
-    color: $grayed-white
+    margin: 0
     font-size: 1.4rem
-    margin: 1.35rem .5rem
-
+    letter-spacing: .07em
+    text-decoration: none
+    color: $milky-white
+    
+    span.text
+      position: relative
+      display: inline-block
+      padding: 0 .4rem  
+      min-width: 100px
+      
+      &:after
+        @include pseudo
+        width: 70%
+        left: auto
+        right: 0
+        border-bottom: 1px solid white
 
 
 
@@ -104,6 +176,7 @@
 
       h1
         margin-top: 0
+        font-size: 2rem
 
 
 @media (min-width: $smartphones)
@@ -111,23 +184,21 @@
   .intro
 
     &--banner
-      height: 305px
+      height: 250px
 
-    button
-      display: inline-block
-      margin: 0 1rem 0 0rem
-
-      .btn-background
-
-        &--highlight
-          left: 23px
+      h1
+        line-height: 1.2em
 
 
+
+    
 @media (min-width: $smartphones) and (orientation: portrait)
 
   .intro
       h1
         font-size: 3rem
+        margin-top: 4rem
+        line-height: 1.5em
 
       button
         font-size: 1.8rem
@@ -142,17 +213,30 @@
   .intro
 
     &--banner
-      height: 16rem
+      height: 256px
 
       h1
         font-size: 3rem
-        line-height: 1em
+
 
     button
+      display: inline-block
+      margin: 0 1rem 0 0rem
       font-size: 1.7rem
 
+      .btn-background
+
+        &--highlight
+          left: 23px
+
+
+
     .muted-link
+      margin: 2rem 0
       font-size: 1.7rem
+
+      span.text
+        padding: 0 .7rem
 
 
 
@@ -161,18 +245,20 @@
   .intro
 
     &--banner
-      height: 17.5rem
-      margin-top: 7rem
+      height: 280px
+      margin-top: 9rem
+
+    .cta-container
+      margin-top: -4rem
 
 
+@media (min-width: $laptops) and (orientation: portrait)
 
-    &--options
+  .intro
 
-      & > a
-        margin-right: 30px
 
-        &:last-child
-          margin-right: 0
+    .cta-container
+      margin-top: 0rem
 
 
 
@@ -182,12 +268,11 @@
   .intro
 
     &--banner
-      height: 17.5rem
+      height: 280px
       margin-top: 9rem
 
       h1
         font-size: 3.5rem
-        line-height: 1em
 
 
 

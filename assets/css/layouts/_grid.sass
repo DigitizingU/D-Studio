@@ -12,29 +12,10 @@
   margin: 0 auto
 
 .l-side-nav
-  position: absolute
-  left: 0
-  display: flex
-  height: 90%
-  align-items: center
-  z-index: 101
+  display: none
 
-  // placed on layout class due to firefox bug
-  &::before
-    content: ""
-    position: absolute
-    top: 50%
-    left: 0
-    transform: translateY(-50%)
-    width: 2px
-    height: 70%
-    max-height: 750px
-    background-color: #555
-    opacity: .35
-    z-index: 10
 
-  @media (max-width: 1180px)
-    display: none
+    
 
 .l-main-content
   position: relative
@@ -48,3 +29,30 @@
   position: absolute
   width: 100%
   height: 100%
+
+
+
+@media (min-width: $desktops)
+
+  .l-side-nav
+    position: absolute
+    left: 0
+    display: flex
+    height: 90%
+    align-items: center
+    z-index: 101
+
+    // placed on layout class due to firefox bug
+    &::before
+      content: ""
+      position: absolute
+      top: 50%
+      left: 0
+      transform: translateY(-50%)
+      width: 2px
+      height: 70%
+      max-height: 750px
+      background-color: #555
+      opacity: .35
+      z-index: 10
+
